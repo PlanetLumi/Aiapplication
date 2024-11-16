@@ -20,24 +20,6 @@ import java.util.Collection;
 import java.util.List;
 
 public class DataCollect extends AppCompatActivity {
-    public Collection<Integer> fillDataGrabs(String[] idNames){
-        List<Integer> dataPoints = new ArrayList<>();
-        for(int i = 0; i < idNames.length; i++) {
-            int resourceId = getResources().getIdentifier(idNames[i], "id", getPackageName());
-            dataPoints.add(resourceId);
-        }
-        return dataPoints;
-    }
-    public String gatherData(Context context, String[] idNames){
-        List<Integer> dataPoints = (List<Integer>) fillDataGrabs(idNames);
-        List<Object> userData = new ArrayList<>();
-        for(int i = 0; i < dataPoints.size(); i++) {
-            EditText current = (EditText) findViewById(dataPoints.get(i));
-            userData.add(current.getText().toString());
-        }
-        return userData.toString();
-    }
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +39,7 @@ public class DataCollect extends AppCompatActivity {
             public void onClick(View v) {
                  SaveData saveData = new SaveData();
             try {
-               saveData.FileSave(DataCollect.this, gatherData());
+               saveData.FileSave(DataCollect.this, DataGrab.gatherData(DataCollect.this, new String[]{"FName", "SName", "age","Region"}));
             } catch (IOException e) {
             throw new RuntimeException(e);
             }

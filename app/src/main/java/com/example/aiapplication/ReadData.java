@@ -13,7 +13,7 @@ public class ReadData {
             }
             stringBuilder.append("1");
             return stringBuilder.toString();
-            } catch (IOException e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }

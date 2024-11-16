@@ -12,8 +12,8 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 
 public class SaveData{
-    public void FileSave(Context context, String userData) throws IOException {
-        FileOutputStream fileOutput = context.openFileOutput("UserData.txt", MODE_PRIVATE);
+    public void FileSave(Context context, String userData,String fileName) throws IOException {
+        FileOutputStream fileOutput = context.openFileOutput(fileName, MODE_PRIVATE);
         OutputStreamWriter outputWriter = new OutputStreamWriter(fileOutput);
         outputWriter.write(userData);
         outputWriter.close();

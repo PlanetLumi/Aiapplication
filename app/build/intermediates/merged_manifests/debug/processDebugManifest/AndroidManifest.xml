@@ -41,6 +41,9 @@
         <activity
             android:name="com.example.aiapplication.DataCollect"
             android:exported="true" />
+        <activity
+            android:name="com.example.aiapplication.RequestPage"
+            android:exported="true" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"

@@ -39,7 +39,7 @@ public class DataCollect extends AppCompatActivity {
             public void onClick(View v) {
                  SaveData saveData = new SaveData();
             try {
-               saveData.FileSave(DataCollect.this, DataGrab.gatherData(DataCollect.this, new String[]{"FName", "SName", "age","Region"}));
+               saveData.FileSave(DataCollect.this, DataGrab.gatherData(DataCollect.this, new String[]{"FName", "SName", "age","Region"}), "userData.txt");
             } catch (IOException e) {
             throw new RuntimeException(e);
             }

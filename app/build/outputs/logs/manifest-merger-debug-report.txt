@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:1:1-27:12
-INJECTED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:1:1-27:12
-INJECTED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:1:1-27:12
-INJECTED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:1:1-27:12
+ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:1:1-32:12
+INJECTED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:1:1-32:12
+INJECTED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:1:1-32:12
+INJECTED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:1:1-32:12
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\Lumie123\.gradle\caches\8.9\transforms\9c87c6d266a2025f233bcf0fe160efff\transformed\material-1.12.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.0] C:\Users\Lumie123\.gradle\caches\8.9\transforms\07cf84000ccc05a58e065440fec94c2b\transformed\constraintlayout-2.2.0\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.appcompat:appcompat-resources:1.7.0] C:\Users\Lumie123\.gradle\caches\8.9\transforms\7b62143df74405de4a59afc05809451d\transformed\appcompat-resources-1.7.0\AndroidManifest.xml:2:1-7:12
@@ -56,8 +56,8 @@ MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\Lumie12
 	xmlns:android
 		ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:1:11-69
 application
-ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:3:5-26:19
-INJECTED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:3:5-26:19
+ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:3:5-30:19
+INJECTED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:3:5-30:19
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\Lumie123\.gradle\caches\8.9\transforms\9c87c6d266a2025f233bcf0fe160efff\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\Lumie123\.gradle\caches\8.9\transforms\9c87c6d266a2025f233bcf0fe160efff\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.0] C:\Users\Lumie123\.gradle\caches\8.9\transforms\07cf84000ccc05a58e065440fec94c2b\transformed\constraintlayout-2.2.0\AndroidManifest.xml:7:5-20
@@ -112,6 +112,12 @@ ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\An
 		ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:25:13-36
 	android:name
 		ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:24:13-40
+activity#com.example.aiapplication.RequestPage
+ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:27:9-29:39
+	android:exported
+		ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:29:13-36
+	android:name
+		ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:28:13-40
 uses-sdk
 INJECTED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml

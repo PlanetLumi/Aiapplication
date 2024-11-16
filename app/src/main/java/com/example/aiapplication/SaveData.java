@@ -1,0 +1,18 @@
+package com.example.aiapplication;
+
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.Context;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+
+public class SaveData{
+    public void FileSave(Context context, String userData) throws IOException {
+        FileOutputStream fileOutput = context.openFileOutput("UserData.txt", MODE_PRIVATE);
+        OutputStreamWriter outputWriter = new OutputStreamWriter(fileOutput);
+        outputWriter.write(userData);
+        outputWriter.close();
+    }
+}

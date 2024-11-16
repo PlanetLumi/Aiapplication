@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:id="@+id/main">
+
+    <EditText
+        android:id="@+id/SName"
+        android:layout_width="203dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/FName"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="17dp"
+        android:hint="Surname" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:textSize="40sp"
+        android:text="Your Info" />
+
+
+    <EditText
+        android:id="@+id/FName"
+        android:layout_width="201dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginRight="22dp"
+        android:layout_toLeftOf="@+id/age"
+        android:hint="First Name" />
+
+    <EditText
+        android:id="@+id/age"
+        android:layout_width="166dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="27dp"
+        android:layout_marginRight="0dp"
+        android:hint="Date Of Birth"
+        android:inputType="date" />
+
+    <EditText
+        android:id="@+id/Region"
+        android:layout_width="211dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/SName"
+        android:layout_marginTop="12dp"
+        android:layout_marginRight="41dp"
+        android:hint="Region" />
+    <Button
+        android:layout_width="500dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Region"
+        android:layout_alignParentLeft="true"
+        android:text="Save Data"
+        android:textSize="30dp"
+        android:id="@+id/Save"/>
+
+    <Button
+        android:id="@+id/Exit"
+        android:layout_width="500dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Save"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="11dp"
+        android:text="Exit"
+        android:textSize="30dp" />
+
+    <TextView
+        android:id="@+id/test"
+        android:layout_width="323dp"
+        android:layout_height="310dp"
+        android:layout_below="@id/Exit"
+        android:layout_marginTop="11dp"
+        android:text="Yes"
+        android:textSize="20dp" />
+
+
+</RelativeLayout>

@@ -1,0 +1,3 @@
+com.example.aiapplication.test
+style WhiteBackgroundDialogTheme
+style WhiteBackgroundTheme

@@ -37,6 +37,7 @@ public class RequestPage extends AppCompatActivity {
                 ReadData readData = new ReadData();
                 TextView testDisplay = findViewById(R.id.testS);
                 testDisplay.setText(readData.returnData(RequestPage.this, "userRequestInput.txt"));
+                startActivity(new Intent(RequestPage.this, GenerationArea.class));
             }
         });
             final Button exitBtn = findViewById(R.id.exitButton);

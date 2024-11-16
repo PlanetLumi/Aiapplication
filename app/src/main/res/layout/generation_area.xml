@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:id="@+id/generationArea">
+
+    <TextView
+        android:id="@+id/requestTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="66dp"
+        android:gravity="center"
+        android:text="Generating Request"
+        android:textSize="45sp" />
+
+
+    <TextView
+        android:id="@+id/GenerationBox"
+        android:layout_width="377dp"
+        android:layout_height="174dp"
+        android:layout_below="@id/requestTitle"
+        android:layout_marginTop="6dp"
+        android:text="Yes"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/requestButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/GenerationBox"
+        android:layout_marginTop="10dp"
+        android:text="Generate Request" />
+    <Button
+        android:id="@+id/exitButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/requestButton"
+        android:layout_marginTop="10dp"
+        android:text="Exit" />
+
+
+
+</RelativeLayout>

@@ -17,8 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DataCollect extends AppCompatActivity {
-    int x = 0;
-
     public String gatherData() {
         TextView testDisplay = findViewById(R.id.test);
         int[] dataPoints = {R.id.FName, R.id.SName, R.id.age, R.id.Region};
@@ -54,6 +52,9 @@ public class DataCollect extends AppCompatActivity {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
+                ReadData readData = new ReadData();
+                TextView testDisplay = findViewById(R.id.test);
+                testDisplay.setText(readData.returnData(DataCollect.this, "UserData.txt"));
             }
         });
     }

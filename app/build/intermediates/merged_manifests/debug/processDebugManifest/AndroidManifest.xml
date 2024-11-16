@@ -21,9 +21,9 @@
         android:extractNativeLibs="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:permission="READ_MEDIA_IMAGES"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:testOnly="true"
         android:theme="@style/Theme.Aiapplication" >
 
         <!-- Launcher activity -->

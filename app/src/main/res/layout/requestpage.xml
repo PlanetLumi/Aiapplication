@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:id="@+id/requestPage">
+
+    <TextView
+        android:id="@+id/requestTitle"
+        android:layout_width="378dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:outline="true"
+        android:text="Make A Request"
+        android:textSize="45dp" />
+
+    <EditText
+        android:id="@+id/companyInp"
+        android:layout_width="384dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/requestTitle"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="5dp"
+        android:hint="Company Name"
+        android:textSize="15dp" />
+
+    <EditText
+        android:id="@+id/detailsInp"
+        android:layout_width="wrap_content"
+        android:layout_height="267dp"
+        android:layout_below="@id/companyInp"
+        android:layout_marginTop="6dp"
+        android:hint="List of Details e.g Price list, Employee name, Price of item etc."
+        />
+
+    <Button
+        android:id="@+id/requestButton"
+        android:layout_width="395dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/detailsInp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="0dp"
+        android:text="Generate Request" />
+
+</RelativeLayout>

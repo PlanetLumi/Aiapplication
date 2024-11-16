@@ -23,5 +23,10 @@
         <activity
             android:name=".DataCollect"
             android:exported="true" />
+
+        <activity
+            android:name=".RequestPage"
+            android:exported="true" />
     </application>
+
 </manifest>

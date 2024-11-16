@@ -30,7 +30,7 @@ public class RequestPage extends AppCompatActivity {
             public void onClick(View v){
                 SaveData saveData = new SaveData();
                 try {
-                    saveData.FileSave(RequestPage.this, DataGrab.gatherData(RequestPage.this, new String[]{"companyInp", "detailsInp"}), "userRequestInput.txt");
+                    saveData.FileSave(RequestPage.this, DataGrab.gatherData(RequestPage.this, new String[]{"companyInp","detailsInp"}), "userRequestInput.txt");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -38,7 +38,7 @@ public class RequestPage extends AppCompatActivity {
                 TextView testDisplay = findViewById(R.id.testS);
                 testDisplay.setText(readData.returnData(RequestPage.this, "userRequestInput.txt"));
             }
-
+        final Button exitBtn = findViewById(R.id.exit);
         });
 
     }

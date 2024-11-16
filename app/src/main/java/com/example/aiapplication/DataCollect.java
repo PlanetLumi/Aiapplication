@@ -34,24 +34,22 @@ public class DataCollect extends AppCompatActivity {
 
         Button save = findViewById(R.id.Save);
         save.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                  SaveData saveData = new SaveData();
             try {
-               saveData.FileSave(DataCollect.this, DataGrab.gatherData(DataCollect.this, new String[]{"FName", "SName", "age","Region"}), "userData.txt");
+               saveData.FileSave(DataCollect.this, DataGrab.gatherData(DataCollect.this, new String[]{"FName","SName","age","Region"}), "userData.txt");
             } catch (IOException e) {
-            throw new RuntimeException(e);
+                throw new RuntimeException(e);
             }
             ReadData readData = new ReadData();
             TextView testDisplay = findViewById(R.id.test);
-            testDisplay.setText(readData.returnData(DataCollect.this, "UserData.txt"));
+            testDisplay.setText(readData.returnData(DataCollect.this, "userData.txt"));
           }
         });
 
         Button exit = findViewById(R.id.Exit);
         exit.setOnClickListener(new View.OnClickListener(){
-
                 @Override
                 public void onClick (View v){
                     startActivity(new Intent(DataCollect.this,MainActivity.class));

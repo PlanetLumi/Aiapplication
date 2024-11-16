@@ -84,8 +84,6 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Lu
 		ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:6:9-41
 	android:roundIcon
 		ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:7:9-54
-	tools:targetApi
-		ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:10:9-29
 	android:icon
 		ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:5:9-43
 	android:allowBackup

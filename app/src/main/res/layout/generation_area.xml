@@ -14,13 +14,22 @@
         android:text="Generating Request"
         android:textSize="45sp" />
 
+    <TextView
+        android:id="@+id/grabbedEmail"
+        android:layout_width="379dp"
+        android:layout_height="71dp"
+        android:layout_below="@id/requestTitle"
+        android:layout_marginTop="-5dp"
+        android:gravity="center"
+        android:text="Email"
+        android:textSize="35sp" />
 
     <TextView
         android:id="@+id/GenerationBox"
-        android:layout_width="377dp"
-        android:layout_height="174dp"
-        android:layout_below="@id/requestTitle"
-        android:layout_marginTop="6dp"
+        android:layout_width="375dp"
+        android:layout_height="263dp"
+        android:layout_below="@id/grabbedEmail"
+        android:layout_marginTop="20dp"
         android:text="Yes"
         android:textSize="15sp" />
 

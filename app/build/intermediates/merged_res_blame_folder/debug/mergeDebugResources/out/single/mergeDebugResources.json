@@ -12,6 +12,10 @@
         "source": "com.example.aiapplication.app-main-33:/layout/activity_main.xml"
     },
     {
+        "merged": "com.example.aiapplication.app-debug-31:/layout_requestpage.xml.flat",
+        "source": "com.example.aiapplication.app-main-33:/layout/requestpage.xml"
+    },
+    {
         "merged": "com.example.aiapplication.app-debug-31:/mipmap-hdpi_ic_launcher.webp.flat",
         "source": "com.example.aiapplication.app-main-33:/mipmap-hdpi/ic_launcher.webp"
     },

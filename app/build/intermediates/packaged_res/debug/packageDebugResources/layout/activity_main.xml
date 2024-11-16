@@ -33,11 +33,20 @@
         android:layout_marginRight="12dp" />
 
     <Button
-        android:layout_width="96dp"
-        android:layout_height="wrap_content"
+        android:id="@+id/takeTo"
+        android:layout_width="126dp"
+        android:layout_height="111dp"
         android:layout_below="@id/times"
         android:layout_alignParentRight="true"
-        android:text="dhbwsyghg"
-        android:id="@+id/takeTo"/>
+        android:layout_marginTop="18dp"
+        android:layout_marginRight="269dp"
+        android:text="dhbwsyghg" />
+
+    <Button
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/takeTo"
+        android:text="dawdwadwadwad"
+        android:id="@+id/takeToRequest"/>
 
 </RelativeLayout>

@@ -5,17 +5,15 @@ plugins {
 android {
     namespace = "com.example.aiapplication"
     compileSdk = 34
-
     defaultConfig {
         applicationId = "com.example.aiapplication"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
-
+    buildToolsVersion = "34.0.0"
     buildTypes {
         release {
             isMinifyEnabled = false

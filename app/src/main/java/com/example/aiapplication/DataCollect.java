@@ -1,5 +1,6 @@
 
 package com.example.aiapplication;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,18 +16,25 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class DataCollect extends AppCompatActivity {
-    public String gatherData() {
-        TextView testDisplay = findViewById(R.id.test);
-        int[] dataPoints = {R.id.FName, R.id.SName, R.id.age, R.id.Region};
+    public Collection<Integer> fillDataGrabs(String[] idNames){
+        List<Integer> dataPoints = new ArrayList<>();
+        for(int i = 0; i < idNames.length; i++) {
+            int resourceId = getResources().getIdentifier(idNames[i], "id", getPackageName());
+            dataPoints.add(resourceId);
+        }
+        return dataPoints;
+    }
+    public String gatherData(Context context, String[] idNames){
+        List<Integer> dataPoints = (List<Integer>) fillDataGrabs(idNames);
         List<Object> userData = new ArrayList<>();
-        for(int i = 0; i < dataPoints.length; i++) {
-            EditText current = (EditText) findViewById(dataPoints[i]);
+        for(int i = 0; i < dataPoints.size(); i++) {
+            EditText current = (EditText) findViewById(dataPoints.get(i));
             userData.add(current.getText().toString());
         }
-        testDisplay.setText(userData.toString());
         return userData.toString();
     }
 
@@ -36,7 +44,7 @@ public class DataCollect extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.data_collect);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.datacollect), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;

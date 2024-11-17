@@ -8,8 +8,7 @@ import android.widget.Button;
 
 public class ExitButtonFunc{
 
-    public static void ExitBtn  (Activity activity, Class<?> targetActivity) {
-        Context context;
+    public static void exitBtn  (Activity activity, Class<?> targetActivity) {
         final Button exitBtn = activity.findViewById(R.id.exitButton);
         if (exitBtn != null) {
             exitBtn.setOnClickListener(new View.OnClickListener() {

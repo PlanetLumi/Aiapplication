@@ -25,21 +25,7 @@ public class RequestPage extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        final Button makeRequestBtn = findViewById(R.id.requestButton);
-        makeRequestBtn.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                SaveData saveData = new SaveData();
-                try {
-                    saveData.FileSave(RequestPage.this, DataGrab.gatherData(RequestPage.this, new String[]{"companyInp", "detailsInp"}), "userRequestInput.txt");
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-                ReadData readData = new ReadData();
-                TextView testDisplay = findViewById(R.id.testS);
-                testDisplay.setText(readData.returnData(RequestPage.this, "userRequestInput.txt"));
-                startActivity(new Intent(RequestPage.this, GenerationArea.class));
-            }
-        });
-        ExitButtonFunc.ExitBtn(RequestPage.this, MainActivity.class);
+        saveButtonFunc.saveBtn(RequestPage.this,RequestPage.this, new String[]{"companyInp", "detailsInp"}, "userRequestInput.txt");
+        ExitButtonFunc.exitBtn(RequestPage.this, MainActivity.class);
     }
 }

@@ -67,7 +67,7 @@
         android:id="@+id/Save"/>
 
     <Button
-        android:id="@+id/Exit"
+        android:id="@+id/exitButton"
         android:layout_width="500dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/Save"
@@ -81,7 +81,7 @@
         android:id="@+id/test"
         android:layout_width="323dp"
         android:layout_height="310dp"
-        android:layout_below="@id/Exit"
+        android:layout_below="@id/exitButton"
         android:layout_marginTop="11dp"
         android:text="Yes"
         android:textSize="20dp" />

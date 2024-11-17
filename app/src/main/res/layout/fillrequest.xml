@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:id="@+id/fillRequest">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="66dp"
+        android:gravity="center"
+        android:text="Please input your request"
+        android:textSize="45sp" />
+
+    <EditText
+        android:id="@+id/reqDomain"
+        android:layout_width="379dp"
+        android:layout_height="71dp"
+        android:layout_below="@id/title"
+        android:layout_marginTop="-5dp"
+        android:gravity="center"
+        android:hint="Please enter service domain"
+        android:textSize="35sp"/>
+
+    <EditText
+        android:id="@+id/infoBox"
+        android:layout_width="375dp"
+        android:layout_height="263dp"
+        android:layout_below="@id/reqDomain"
+        android:layout_marginTop="20dp"
+        android:hint="Please input any useful information, such as payment, product etc"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/fillButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/infoBox"
+        android:layout_marginTop="10dp"
+        android:text="Generate Request" />
+    <Button
+        android:id="@+id/exitButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fillButton"
+        android:layout_marginTop="10dp"
+        android:text="Exit" />
+
+
+
+</RelativeLayout>

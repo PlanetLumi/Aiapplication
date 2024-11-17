@@ -31,7 +31,6 @@
         <activity
             android:name=".GenerationArea"
             android:exported="true" />
-
-    </application>
+        </application>
 
 </manifest>

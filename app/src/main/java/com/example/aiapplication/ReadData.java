@@ -4,7 +4,7 @@ import java.io.IOException;
 import android.content.Context;
 
 public class ReadData {
-    public String returnData(Context context, String nameOfFile){
+    public static String returnData(Context context, String nameOfFile){
         StringBuilder stringBuilder = new StringBuilder();
         try (FileInputStream fileInput = context.openFileInput(nameOfFile)) {
             int character;

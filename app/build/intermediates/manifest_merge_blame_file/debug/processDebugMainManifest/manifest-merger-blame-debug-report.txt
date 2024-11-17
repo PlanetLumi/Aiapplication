@@ -24,7 +24,7 @@
 17-->[androidx.core:core:1.13.0] C:\Users\Lumie123\.gradle\caches\8.9\transforms\f7c98bee6fbc8e820a40d4ce126cade0\transformed\core-1.13.0\AndroidManifest.xml:26:22-94
 18
 19    <application
-19-->C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:4:5-35:19
+19-->C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:4:5-34:23
 20        android:allowBackup="true"
 20-->C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:5:9-35
 21        android:appComponentFactory="androidx.core.app.CoreComponentFactory"

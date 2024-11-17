@@ -22,10 +22,15 @@ public class HunterGenCall {
             public void onResponse(Call<DomainSearchResponse> call, Response<DomainSearchResponse> response) {
             if (response.isSuccessful()) {
                 DomainSearchResponse domainSearchResponse = response.body();
-                String email = domainSearchResponse.getData().getEmails().get(0).getValue();
-                callback.onSuccess(email);
+                if (domainSearchResponse.getData().getEmails().isEmpty()) {
+                    callback.onE("No email found");
+                    return;
+                } else{
+                    String email = domainSearchResponse.getData().getEmails().get(0).getValue();
+                    callback.onSuccess(email);
+                }
             } else {
-                callback.onE("Error");
+                callback.onE("Could not grab");
             }
         };
             @Override

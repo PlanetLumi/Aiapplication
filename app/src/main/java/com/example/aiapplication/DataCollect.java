@@ -32,7 +32,7 @@ public class DataCollect extends AppCompatActivity {
             return insets;
         });
 
-        saveButtonFunc.saveBtn(DataCollect.this, DataCollect.this, new String[]{"FName", "SName", "age", "Region"}, "data.txt");
+        saveButtonFunc.saveBtn(DataCollect.this, DataCollect.this, new String[]{"FName", "SName", "age", "Region"}, "userData.txt");
         ExitButtonFunc.exitBtn(DataCollect.this, MainActivity.class);
 
     }

@@ -23,18 +23,8 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        final Button button1 = findViewById(R.id.takeTo);
-        button1.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, DataCollect.class));
-            }
-        });
-        final Button button2 = findViewById(R.id.takeToRequest);
-        button2.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v){
-                startActivity(new Intent(MainActivity.this,GenerationArea.class));
-            }
-        });
-
+        takeButtonFunc.takeBtn(MainActivity.this, DataCollect.class, R.id.takeTo);
+        takeButtonFunc.takeBtn(MainActivity.this, RequestPage.class, R.id.takeToRequest);
+        takeButtonFunc.takeBtn(MainActivity.this, SettingsPage.class, R.id.takeToSettings);
     }
 }

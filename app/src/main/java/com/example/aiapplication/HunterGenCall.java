@@ -8,7 +8,7 @@ import retrofit2.Response;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class HunterGenCall {
-    String domain = "TooGoodToGo.com";
+    String domain = "HyperXgaming.com";
     String apiKey = "d52f75345524c888b7a60263cd7fd9de6ca7dbe5";
     String department = "support";
     public interface EmailResultCallBack{

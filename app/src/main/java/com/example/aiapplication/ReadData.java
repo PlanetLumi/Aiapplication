@@ -11,7 +11,6 @@ public class ReadData {
             while ((character = fileInput.read()) != -1) {
                 stringBuilder.append((char) character);
             }
-            stringBuilder.append("1");
             return stringBuilder.toString();
         } catch (IOException e) {
             throw new RuntimeException(e);

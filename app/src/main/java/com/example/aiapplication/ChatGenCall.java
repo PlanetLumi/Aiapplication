@@ -17,9 +17,9 @@ public class ChatGenCall {
         void onE(String errorMessage);
     }
 
-    public void generateRequest(Context context, generateRequestCallBack callback){
+    public void generateRequest(Context context, String preprompt, generateRequestCallBack callback){
         List<ChatRequest.Message> messages = new ArrayList<>();
-        messages.add(new ChatRequest.Message("user", "You are a helpful assistant."));
+        messages.add(new ChatRequest.Message("system", preprompt));
         ChatRequest chatRequest = new ChatRequest("gpt-3.5-turbo", messages);
         Call<ChatResponse> call = ChatGPTAPIService.getApi().getChatResponse(chatRequest);
         call.enqueue(new Callback<ChatResponse>() {

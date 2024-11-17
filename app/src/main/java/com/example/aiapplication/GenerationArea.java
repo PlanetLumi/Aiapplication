@@ -37,9 +37,12 @@ public class GenerationArea extends AppCompatActivity {
                 grabbedEmail.setText("Error");
             }
         });
+        String preprompt = "You are speaking as our user, on behalf of them. They are looking for a refund fromm a company. You will to scrape the TOS of the company they are sending the request to,and must be as concise with the information as possible.";
+        ReadData readData = new ReadData();
+        preprompt = preprompt + "The users name, Region and DOB is" + readData.returnData(this, "userData.txt");
         TextView generationBox = findViewById(R.id.GenerationBox);
         ChatGenCall chatGenCall = new ChatGenCall();
-        chatGenCall.generateRequest(this, new ChatGenCall.generateRequestCallBack() {
+        chatGenCall.generateRequest(this, preprompt, new ChatGenCall.generateRequestCallBack() {
             @Override
             public void onSuccess(String request) {
                 generationBox.setText(request);

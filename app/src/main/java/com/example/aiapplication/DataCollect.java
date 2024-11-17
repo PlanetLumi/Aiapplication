@@ -32,28 +32,9 @@ public class DataCollect extends AppCompatActivity {
             return insets;
         });
 
-        Button save = findViewById(R.id.Save);
-        save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                 SaveData saveData = new SaveData();
-            try {
-               saveData.FileSave(DataCollect.this, DataGrab.gatherData(DataCollect.this, new String[]{"FName","SName","age","Region"}), "userData.txt");
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-            ReadData readData = new ReadData();
-            TextView testDisplay = findViewById(R.id.test);
-            testDisplay.setText(readData.returnData(DataCollect.this, "userData.txt"));
-          }
-        });
+        saveButtonFunc.SaveBtn(DataCollect.this, DataCollect.this, MainActivity.class, new String[]{"FName", "SName", "age", "Region"}, "data.txt");
 
-        Button exit = findViewById(R.id.Exit);
-        exit.setOnClickListener(new View.OnClickListener(){
-                @Override
-                public void onClick (View v){
-                    startActivity(new Intent(DataCollect.this,MainActivity.class));
-            }
-        });
+        ExitButtonFunc.ExitBtn(DataCollect.this, MainActivity.class);
+
     }
 }

@@ -34,7 +34,7 @@
         android:textSize="15sp" />
 
     <Button
-        android:id="@+id/fillButton"
+        android:id="@+id/saveButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/infoBox"
@@ -44,7 +44,7 @@
         android:id="@+id/exitButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/fillButton"
+        android:layout_below="@id/saveButton"
         android:layout_marginTop="10dp"
         android:text="Exit" />
 

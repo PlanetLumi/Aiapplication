@@ -64,13 +64,13 @@
         android:layout_alignParentLeft="true"
         android:text="Save Data"
         android:textSize="30dp"
-        android:id="@+id/Save"/>
+        android:id="@+id/saveButton"/>
 
     <Button
         android:id="@+id/exitButton"
         android:layout_width="500dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/Save"
+        android:layout_below="@id/saveButton"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="11dp"
@@ -78,7 +78,7 @@
         android:textSize="30dp" />
 
     <TextView
-        android:id="@+id/test"
+        android:id="@+id/testView"
         android:layout_width="323dp"
         android:layout_height="310dp"
         android:layout_below="@id/exitButton"

@@ -22,8 +22,10 @@
         android:layout_height="34dp"
         android:layout_below="@id/title"
         android:layout_alignParentLeft="true"
-        android:layout_marginTop="10dp"
-        android:prompt="@string/style_palette_prompt" />
+        android:layout_marginLeft="-3dp"
+        android:layout_marginTop="16dp"
+        android:prompt="@string/style_palette_prompt"
+        />
 
     <Switch
         android:id="@+id/permissions"

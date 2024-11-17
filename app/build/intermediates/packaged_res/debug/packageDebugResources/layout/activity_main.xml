@@ -40,13 +40,19 @@
         android:layout_alignParentRight="true"
         android:layout_marginTop="18dp"
         android:layout_marginRight="269dp"
-        android:text="dhbwsyghg" />
+        android:text="Account Details" />
 
     <Button
         android:layout_width="96dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/takeTo"
-        android:text="dawdwadwadwad"
+        android:text="Request"
         android:id="@+id/takeToRequest"/>
+    <Button
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/takeToRequest"
+        android:text="Settings"
+        android:id="@+id/takeToSettings"/>
 
 </RelativeLayout>

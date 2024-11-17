@@ -1,12 +1,10 @@
 <resources>
     <string name="app_name">Aiapplication</string>
-    <resources>
-        <string-array name = "style_palette">
-            <item>Default</item>
-            <item>Sunny</item>
-            <item>Robotic</item>
-            <item>Dark</item>
-        </string-array>
-        <string name="style_palette_prompt">Select a palette</string>
-    </resources>>
+    <string name="style_palette_prompt">Select a palette</string>
+    <string-array name = "style_palette">
+        <item>Default</item>
+        <item>Sunny</item>
+        <item>Robotic</item>
+        <item>Dark</item>
+    </string-array>
 </resources>

@@ -1,5 +1,6 @@
 R_DEF: Internal format may change without notice
 local
+array style_palette
 color black
 color white
 drawable ic_launcher_background
@@ -20,13 +21,18 @@ id grabbedEmail
 id infoBox
 id main
 id name
+id notifications
+id permissions
 id reqDomain
 id requestButton
 id requestPage
 id requestTitle
 id saveButton
+id settings
+id stylePalette
 id takeTo
 id takeToRequest
+id takeToSettings
 id testView
 id times
 id title
@@ -35,9 +41,11 @@ layout data_collect
 layout fillrequest
 layout generation_area
 layout requestpage
+layout settingspage
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name
+string style_palette_prompt
 style Base.Theme.Aiapplication
 style Theme.Aiapplication
 xml backup_rules

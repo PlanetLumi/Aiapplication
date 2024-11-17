@@ -31,6 +31,8 @@
         <activity
             android:name=".GenerationArea"
             android:exported="true" />
-        </application>
-
+        <activity
+            android:name=".SettingsPage"
+            android:exported="true" />
+    </application>
 </manifest>

@@ -49,6 +49,9 @@
         <activity
             android:name="com.example.aiapplication.GenerationArea"
             android:exported="true" />
+        <activity
+            android:name="com.example.aiapplication.SettingsPage"
+            android:exported="true" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"

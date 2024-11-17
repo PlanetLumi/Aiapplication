@@ -1,5 +1,6 @@
 package com.example.aiapplication;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -13,9 +14,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class GenerationArea extends AppCompatActivity {
-    String domain  = "TooGoodToGo.com";
-    String apiKey = "d52f75345524c888b7a60263cd7fd9de6ca7dbe5";
-    String department = "support";
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
@@ -25,22 +24,30 @@ public class GenerationArea extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        HunterApiService hunterApiService = HunterAPI.getClient().create(HunterApiService.class);
-        Call<DomainSearchResponse> call = hunterApiService.getDomainSearch(domain, apiKey, department);
-        call.enqueue(new Callback<DomainSearchResponse>() {
-            final TextView grabbedEmail = findViewById(R.id.grabbedEmail);
+        TextView grabbedEmail = findViewById(R.id.grabbedEmail);
+        HunterGenCall hunterGenCall = new HunterGenCall();
+        hunterGenCall.fetchEmail(this, new HunterGenCall.EmailResultCallBack() {
             @Override
-            public void onResponse(Call<DomainSearchResponse> call, Response<DomainSearchResponse> response) {
-                if (response.isSuccessful()) {
-                    DomainSearchResponse domainSearchResponse = response.body();
-                    grabbedEmail.setText(domainSearchResponse.getData().getEmails().get(0).getValue());
-                } else {
-                    grabbedEmail.setText("Error");
-                }
+            public void onSuccess(String email) {
+                grabbedEmail.setText(email);
             }
+
             @Override
-            public void onFailure(Call<DomainSearchResponse> call, Throwable t) {
+            public void onE(String errorMessage) {
                 grabbedEmail.setText("Error");
+            }
+        });
+        TextView generationBox = findViewById(R.id.GenerationBox);
+        ChatGenCall chatGenCall = new ChatGenCall();
+        chatGenCall.generateRequest(this, new ChatGenCall.generateRequestCallBack() {
+            @Override
+            public void onSuccess(String request) {
+                generationBox.setText(request);
+            }
+
+            @Override
+            public void onE(String errorMessage) {
+                generationBox.setText("Error");
             }
         });
     }

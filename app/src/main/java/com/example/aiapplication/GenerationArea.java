@@ -26,7 +26,7 @@ public class GenerationArea extends AppCompatActivity {
         });
         TextView grabbedEmail = findViewById(R.id.grabbedEmail);
         HunterGenCall hunterGenCall = new HunterGenCall();
-        hunterGenCall.fetchEmail(this, new HunterGenCall.EmailResultCallBack() {
+        hunterGenCall.fetchEmail(this, "Google.com", new HunterGenCall.EmailResultCallBack() {
             @Override
             public void onSuccess(String email) {
                 grabbedEmail.setText(email);
@@ -37,7 +37,7 @@ public class GenerationArea extends AppCompatActivity {
                 grabbedEmail.setText("Error");
             }
         });
-        String preprompt = "You are speaking as our user, on behalf of them. They are looking for a refund fromm a company. You will to scrape the TOS of the company they are sending the request to,and must be as concise with the information as possible.";
+        String preprompt = "You are speaking as our user, on behalf of them. They are You will to scrape the TOS of the company they are sending the request to,and must be as concise with the information as possible.";
         ReadData readData = new ReadData();
         preprompt = preprompt + "The users name, Region and DOB is" + readData.returnData(this, "userData.txt");
         TextView generationBox = findViewById(R.id.GenerationBox);

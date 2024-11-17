@@ -8,14 +8,13 @@ import retrofit2.Response;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class HunterGenCall {
-    String domain = "HyperXgaming.com";
     String apiKey = "d52f75345524c888b7a60263cd7fd9de6ca7dbe5";
     String department = "support";
     public interface EmailResultCallBack{
         void onSuccess(String email);
         void onE(String errorMessage);
     }
-    public void fetchEmail(Context context, EmailResultCallBack callback){
+    public void fetchEmail(Context context,  String domain, EmailResultCallBack callback){
         HunterApiService hunterApiService = HunterAPI.getClient().create(HunterApiService.class);
         Call<DomainSearchResponse> call = hunterApiService.getDomainSearch(domain, apiKey, department);
         call.enqueue(new Callback<DomainSearchResponse>() {

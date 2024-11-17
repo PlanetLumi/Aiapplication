@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -22,22 +24,34 @@ import java.util.List;
 
 public class DataGrab extends AppCompatActivity {
 
-    public static Collection<Integer> fillDataGrabs(Context context, String[] idNames){
+    public static Collection<Integer> fillDataGrabs(Context context, String[] idNames) {
         List<Integer> dataPoints = new ArrayList<>();
-        for(int i = 0; i < idNames.length; i++) {
+        for (int i = 0; i < idNames.length; i++) {
             int resourceId = context.getResources().getIdentifier(idNames[i], "id", context.getPackageName());
             dataPoints.add(resourceId);
         }
         return dataPoints;
     }
 
-    public static String gatherData(Context context, String[] idNames){
+    public static String gatherData(Context context, String[] idNames) {
         List<Integer> dataPoints = (List<Integer>) fillDataGrabs(context, idNames);
         List<Object> userData = new ArrayList<>();
-        for(int i = 0; i < dataPoints.size(); i++) {
-            EditText current = (EditText) ((AppCompatActivity) context).findViewById(dataPoints.get(i));
-            userData.add(current.getText().toString());
+        for (int i = 0; i < dataPoints.size(); i++) {
+            View current = ((AppCompatActivity) context).findViewById(dataPoints.get(i));
+            if (current instanceof EditText) {
+                String data = "EditText," + (((EditText) current).getText().toString());
+                userData.add(data);
+            }
+            if (current instanceof Spinner) {
+                String data = "Spinner," + (((Spinner) current).getSelectedItem().toString());
+                userData.add(data);
+            }
+            if (current instanceof Switch) {
+                String data = "Switch," + (((Switch) current).isChecked());
+                userData.add(data);
+            }
         }
         return userData.toString();
     }
 }
+

@@ -18,7 +18,8 @@ public class SettingsPage extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        spinnerFunc.setSpinner(SettingsPage.this, R.id.stylePalette, R.array.style_palette);
+        ReadData readData = new ReadData();
+        spinnerFunc.setSpinner(SettingsPage.this, R.id.stylePalette, R.array.style_palette,"settings.txt");
         saveButtonFunc.saveBtn(SettingsPage.this, SettingsPage.this, new String[]{"stylePalette", "permissions", "notifications"}, "settings.txt");
         ExitButtonFunc.exitBtn(SettingsPage.this, MainActivity.class);
     }

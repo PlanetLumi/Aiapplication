@@ -23,9 +23,6 @@ public class saveButtonFunc{
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-                    ReadData readData = new ReadData();
-                    TextView testDisplay = activity.findViewById(R.id.testView);
-                    testDisplay.setText(readData.returnData(context, fileName));
                 }
             });
         }

@@ -6,6 +6,7 @@ drawable ic_launcher_background
 drawable ic_launcher_foreground
 id Exit
 id FName
+id GenerationBox
 id Region
 id SName
 id Save
@@ -15,6 +16,8 @@ id datacollect
 id dates
 id detailsInp
 id exitButton
+id generationArea
+id grabbedEmail
 id main
 id name
 id requestButton
@@ -28,6 +31,7 @@ id times
 id title
 layout activity_main
 layout data_collect
+layout generation_area
 layout requestpage
 mipmap ic_launcher
 mipmap ic_launcher_round

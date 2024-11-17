@@ -5,8 +5,10 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="24"
-        android:targetSdkVersion="34" />
+        android:minSdkVersion="32"
+        android:targetSdkVersion="32" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <permission
         android:name="com.example.aiapplication.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
@@ -43,6 +45,9 @@
             android:exported="true" />
         <activity
             android:name="com.example.aiapplication.RequestPage"
+            android:exported="true" />
+        <activity
+            android:name="com.example.aiapplication.GenerationArea"
             android:exported="true" />
 
         <provider

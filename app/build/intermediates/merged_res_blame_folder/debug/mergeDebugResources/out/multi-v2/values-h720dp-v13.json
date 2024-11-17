@@ -4,7 +4,7 @@
             "outputFile": "com.example.aiapplication.app-mergeDebugResources-29:/values-h720dp-v13/values-h720dp-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Lumie123\\.gradle\\caches\\8.9\\transforms\\7fe4d8a515c4adf090866823b63f5530\\transformed\\appcompat-1.7.0\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
+                    "source": "C:\\Users\\Lumie123\\.gradle\\caches\\8.9\\transforms\\f419a11b12e66387d89f721a2efd0249\\transformed\\appcompat-1.7.0\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

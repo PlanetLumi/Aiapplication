@@ -7,6 +7,7 @@ android {
     compileSdk = 34
     defaultConfig {
         applicationId = "com.example.aiapplication"
+        minSdk = 32
         versionCode = 1
         versionName = "1.0"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
@@ -18,6 +19,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+        isDebuggable = true
         }
     }
     compileOptions {

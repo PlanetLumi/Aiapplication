@@ -40,11 +40,11 @@ public class RequestPage extends AppCompatActivity {
                 startActivity(new Intent(RequestPage.this, GenerationArea.class));
             }
         });
-            final Button exitBtn = findViewById(R.id.exitButton);
-            exitBtn.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v){
-                    startActivity(new Intent(RequestPage.this,MainActivity.class));
-                }
-            });
+        final Button exitBtn = findViewById(R.id.exitButton);
+        exitBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                startActivity(new Intent(RequestPage.this, MainActivity.class));
+            }
+        });
     }
 }

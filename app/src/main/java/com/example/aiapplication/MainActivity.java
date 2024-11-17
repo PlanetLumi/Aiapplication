@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         final Button button2 = findViewById(R.id.takeToRequest);
         button2.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
-                startActivity(new Intent(MainActivity.this,RequestPage.class));
+                startActivity(new Intent(MainActivity.this,GenerationArea.class));
             }
         });
 

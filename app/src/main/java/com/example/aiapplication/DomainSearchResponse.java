@@ -18,17 +18,20 @@ public class DomainSearchResponse {
         public List<Email> getEmails(){
             return emails;
         }
-        public static class Email{
+        public static class Email {
             private String value;
             private String type;
             private int confidence;
-            public String getValue(){
+
+            public String getValue() {
                 return value;
             }
-            public String getType(){
+
+            public String getType() {
                 return type;
             }
-            public int getConfidence(){
+
+            public int getConfidence() {
                 return confidence;
             }
         }

@@ -15,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class GenerationArea extends AppCompatActivity {
     String domain  = "TooGoodToGo.com";
     String apiKey = "d52f75345524c888b7a60263cd7fd9de6ca7dbe5";
+    String department = "support";
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
@@ -25,7 +26,7 @@ public class GenerationArea extends AppCompatActivity {
             return insets;
         });
         HunterApiService hunterApiService = HunterAPI.getClient().create(HunterApiService.class);
-        Call<DomainSearchResponse> call = hunterApiService.getDomainSearch(domain, apiKey);
+        Call<DomainSearchResponse> call = hunterApiService.getDomainSearch(domain, apiKey, department);
         call.enqueue(new Callback<DomainSearchResponse>() {
             final TextView grabbedEmail = findViewById(R.id.grabbedEmail);
             @Override

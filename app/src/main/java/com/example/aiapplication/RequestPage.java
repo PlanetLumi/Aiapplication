@@ -27,18 +27,6 @@ public class RequestPage extends AppCompatActivity {
         });
         saveButtonFunc.saveBtn(RequestPage.this,RequestPage.this, new String[]{"reqDomain", "infoBox"}, "userRequestInput.txt");
         takeButtonFunc.takeBtn(RequestPage.this, GenerationArea.class, R.id.saveButton);
-        TextView testView = findViewById(R.id.testView);
-        String fileContent = ReadData.returnData(RequestPage.this, "userRequestInput.txt");
-        if (fileContent.isEmpty()) {
-            testView.setText("No data available");
-        } else {
-            String[] split = fileContent.split(",");
-            if (split.length >= 2) {
-                testView.setText(split[0] + " " + split[1]);
-            } else {
-                testView.setText("Incomplete data");
-            }
-        }
         ExitButtonFunc.exitBtn(RequestPage.this, MainActivity.class);
     }
 }

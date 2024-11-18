@@ -6,53 +6,46 @@
     android:paddingRight="16dp"
     android:id="@+id/main">
 
-    <EditText
-        android:id="@+id/name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="dhbwsyghaadwg" />
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="394dp"
+        android:layout_height="49dp"
+        android:gravity = "center"
+        android:text="Main Menu"
+        android:textSize="24sp" />
 
-    <Spinner
-        android:id="@+id/dates"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/name"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="19dp"
-        android:layout_marginRight="0dp"
-        android:layout_toLeftOf="@+id/times" />
 
-    <Spinner
-        android:id="@+id/times"
-        android:layout_width="96dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/name"
-        android:layout_alignParentRight="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="12dp" />
+    <TextView
+        android:id="@+id/placeholder"
+        android:layout_width="381dp"
+        android:layout_height="162dp"
+        android:layout_below="@id/title"
+        android:text="ROBOT IMAGE GOES HERE" />
 
     <Button
         android:id="@+id/takeTo"
-        android:layout_width="126dp"
-        android:layout_height="111dp"
-        android:layout_below="@id/times"
+        android:layout_width="392dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="18dp"
-        android:layout_marginRight="269dp"
+        android:layout_marginTop="190dp"
+        android:layout_marginRight="3dp"
         android:text="Account Details" />
 
     <Button
-        android:layout_width="96dp"
+        android:id="@+id/takeToRequest"
+        android:layout_width="382dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/takeTo"
-        android:text="Request"
-        android:id="@+id/takeToRequest"/>
+        android:layout_marginTop="4dp"
+        android:text="Request" />
+
     <Button
-        android:layout_width="96dp"
+        android:id="@+id/takeToSettings"
+        android:layout_width="390dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/takeToRequest"
-        android:text="Settings"
-        android:id="@+id/takeToSettings"/>
+        android:layout_marginTop="7dp"
+        android:text="Settings" />
 
 </RelativeLayout>

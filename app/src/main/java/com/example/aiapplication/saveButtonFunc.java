@@ -20,11 +20,16 @@ public class saveButtonFunc{
                     SaveData saveData = new SaveData();
                     try {
                         saveData.FileSave(context, DataGrab.gatherData(context, fields), fileName);
+                        ReadData readData = new ReadData();
+                        String data = readData.returnData(context, fileName);
+                        TextView testView = activity.findViewById(R.id.test);
+                        testView.setText(data);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
                 }
             });
+
         }
     }
 }

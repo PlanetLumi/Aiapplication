@@ -39,15 +39,15 @@ public class DataGrab extends AppCompatActivity {
         for (int i = 0; i < dataPoints.size(); i++) {
             View current = ((AppCompatActivity) context).findViewById(dataPoints.get(i));
             if (current instanceof EditText) {
-                String data = "EditText," + (((EditText) current).getText().toString());
+                String data = idNames[i] + "," +  (((EditText) current).getText().toString());
                 userData.add(data);
             }
             if (current instanceof Spinner) {
-                String data = "Spinner," + (((Spinner) current).getSelectedItem().toString());
+                String data = idNames[i] + "," + (((Spinner) current).getSelectedItem().toString());
                 userData.add(data);
             }
             if (current instanceof Switch) {
-                String data = "Switch," + (((Switch) current).isChecked());
+                String data = idNames[i] + "," +  (((Switch) current).isChecked());
                 userData.add(data);
             }
         }

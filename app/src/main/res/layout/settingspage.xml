@@ -63,5 +63,16 @@
         android:text="Exit"
         android:textSize="30dp" />
 
+    <TextView
+        android:id="@+id/test"
+        android:layout_width="388dp"
+        android:layout_height="438dp"
+        android:layout_below="@id/exitButton"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="7dp"
+        android:text="Test"
+        android:textSize="15dp" />
+
 
 </RelativeLayout>

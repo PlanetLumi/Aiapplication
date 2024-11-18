@@ -33,6 +33,7 @@ id stylePalette
 id takeTo
 id takeToRequest
 id takeToSettings
+id test
 id testView
 id times
 id title

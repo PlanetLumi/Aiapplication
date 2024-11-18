@@ -12,7 +12,6 @@ id SName
 id age
 id companyInp
 id datacollect
-id dates
 id detailsInp
 id exitButton
 id fillRequest
@@ -20,9 +19,9 @@ id generationArea
 id grabbedEmail
 id infoBox
 id main
-id name
 id notifications
 id permissions
+id placeholder
 id reqDomain
 id requestButton
 id requestPage
@@ -35,7 +34,6 @@ id takeToRequest
 id takeToSettings
 id test
 id testView
-id times
 id title
 layout activity_main
 layout data_collect

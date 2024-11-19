@@ -7,6 +7,8 @@ drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_marketing
 drawable ic_uiux_design
+drawable refundbutton
+drawable settings
 id FName
 id GenerationBox
 id Region
@@ -25,10 +27,10 @@ id notifications
 id permissions
 id placeholder
 id reqDomain
-id requestButton
 id requestPage
 id requestTitle
 id saveButton
+id sendEmail
 id settings
 id stylePalette
 id takeTo

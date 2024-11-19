@@ -4,6 +4,7 @@ import static android.text.TextUtils.replace;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 
 import retrofit2.Call;
@@ -40,11 +41,7 @@ public class GenerationArea extends AppCompatActivity {
                 grabbedEmail.setText("Error");
             }
         });
-        String preprompt = "You are speaking as our user. Please use first person. You will operate under the usual TOS standard of customer service, such as refunds,and must be as concise with the information as possible. Please build customer service email requests on our user behalf";
-        ReadData readData = new ReadData();
-        preprompt = preprompt + "The users data is" + readData.returnData(this, "userData.txt") + "please only give this information if deemed nessecary.";
-        preprompt = preprompt + "The user is requesting a refund from" + requestSplit[0].replace("[", "");
-        preprompt = preprompt + "Please use your understanding of the given company to accurately build a customer service request.";
+        String preprompt = prePromptArea.prePromptRefund(GenerationArea.this);
         TextView generationBox = findViewById(R.id.GenerationBox);
         ChatGenCall chatGenCall = new ChatGenCall();
         chatGenCall.generateRequest(this, preprompt,requestSplit[1].replace("]" , ""), new ChatGenCall.generateRequestCallBack() {
@@ -58,6 +55,10 @@ public class GenerationArea extends AppCompatActivity {
                 generationBox.setText("Error");
             }
         });
+        Button sendEmail = this.findViewById(R.id.sendEmail);
+        sendEmail.setOnClickListener(v -> {
+                     emailFunc.sendEmail(grabbedEmail.getText().toString(), "Request", generationBox.getText().toString());
+                });
         ExitButtonFunc.exitBtn(GenerationArea.this, MainActivity.class);
     }
 }

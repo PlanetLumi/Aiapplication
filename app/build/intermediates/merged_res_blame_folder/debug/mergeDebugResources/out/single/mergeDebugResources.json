@@ -88,11 +88,19 @@
         "source": "com.example.aiapplication.app-main-33:/xml/backup_rules.xml"
     },
     {
+        "merged": "com.example.aiapplication.app-debug-31:/drawable_refundbutton.png.flat",
+        "source": "com.example.aiapplication.app-main-33:/drawable/refundbutton.png"
+    },
+    {
         "merged": "com.example.aiapplication.app-debug-31:/mipmap-xxhdpi_ic_launcher.webp.flat",
         "source": "com.example.aiapplication.app-main-33:/mipmap-xxhdpi/ic_launcher.webp"
     },
     {
         "merged": "com.example.aiapplication.app-debug-31:/xml_data_extraction_rules.xml.flat",
         "source": "com.example.aiapplication.app-main-33:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "com.example.aiapplication.app-debug-31:/drawable_settings.png.flat",
+        "source": "com.example.aiapplication.app-main-33:/drawable/settings.png"
     }
 ]

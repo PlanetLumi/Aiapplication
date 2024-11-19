@@ -34,17 +34,17 @@
         android:textSize="15sp" />
 
     <Button
-        android:id="@+id/requestButton"
+        android:id="@+id/sendEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/GenerationBox"
         android:layout_marginTop="10dp"
-        android:text="Generate Request" />
+        android:text="Send Email" />
     <Button
         android:id="@+id/exitButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/requestButton"
+        android:layout_below="@id/sendEmail"
         android:layout_marginTop="10dp"
         android:text="Exit" />
 

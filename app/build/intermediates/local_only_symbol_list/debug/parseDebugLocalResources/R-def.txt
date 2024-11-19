@@ -5,6 +5,8 @@ color black
 color white
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable ic_marketing
+drawable ic_uiux_design
 id FName
 id GenerationBox
 id Region

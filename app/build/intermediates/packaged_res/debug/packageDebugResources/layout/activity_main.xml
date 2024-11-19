@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
     android:id="@+id/main">
 
+
     <TextView
         android:id="@+id/title"
         android:layout_width="394dp"
         android:layout_height="49dp"
-        android:gravity = "center"
+        android:gravity="center"
         android:text="Main Menu"
         android:textSize="24sp" />
-
 
     <TextView
         android:id="@+id/placeholder"
         android:layout_width="381dp"
         android:layout_height="162dp"
         android:layout_below="@id/title"
-        android:text="ROBOT IMAGE GOES HERE" />
+        android:text="ROBOT IMAGE GOES HERE"
+        tools:layout_editor_absoluteX="14dp"
+        tools:layout_editor_absoluteY="64dp" />
 
     <Button
         android:id="@+id/takeTo"
@@ -28,29 +32,30 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/title"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="190dp"
-        android:layout_marginRight="3dp"
-        android:text="Account Details" />
+        android:layout_marginTop="250dp"
+        android:layout_marginRight="13dp"
+        android:text="Account Details"
+        tools:layout_editor_absoluteX="3dp"
+        tools:layout_editor_absoluteY="367dp" />
 
-    <Button
+    <ImageButton
         android:id="@+id/takeToRequest"
-        android:layout_width="382dp"
-        android:layout_height="wrap_content"
+        android:layout_width="187dp"
+        android:layout_height="182dp"
         android:layout_below="@id/takeTo"
-        android:layout_marginTop="4dp"
-        android:text="Request" />
+        android:layout_marginTop="51dp"
+        android:contentDescription="Test"
+        android:src="@drawable/ic_marketing"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="512dp" />
 
     <Button
         android:id="@+id/takeToSettings"
         android:layout_width="390dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/takeToRequest"
-        android:layout_marginTop="7dp"
-        android:text="Settings" />
-
-    <androidx.cardview.widget.CardView
-        android:layout_width="166dp"
-        android:layout_height="271dp"
-        android:layout_below="@id/takeToSettings"/>
+        android:text="Settings"
+        tools:layout_editor_absoluteX="5dp"
+        tools:layout_editor_absoluteY="427dp" />
 
 </RelativeLayout>

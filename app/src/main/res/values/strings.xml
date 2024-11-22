@@ -6,4 +6,5 @@
         <item>Sunny</item>
         <item>Dark</item>
     </string-array>
+    <color name="greybase">#EDF4F8</color>
 </resources>

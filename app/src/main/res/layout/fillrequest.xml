@@ -9,7 +9,7 @@
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
-        android:layout_height="66dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Please input your request"
         android:textSize="45sp" />
@@ -26,10 +26,10 @@
 
     <EditText
         android:id="@+id/infoBox"
-        android:layout_width="392dp"
-        android:layout_height="269dp"
+        android:layout_width="wrap_content"
+        android:layout_height="267dp"
         android:layout_below="@id/reqDomain"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="17dp"
         android:hint="Please input any useful information, such as payment, product etc"
         android:textSize="15sp" />
 

@@ -12,7 +12,7 @@ import java.io.IOException;
 public class saveButtonFunc{
 
     public static void saveBtn  (Context context, Activity activity, String[] fields, String fileName) {
-        final Button saveBtn = activity.findViewById(R.id.saveButton);
+        View saveBtn = activity.findViewById(R.id.saveButton);
         if (saveBtn != null) {
             saveBtn.setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -5,7 +5,6 @@ import android.content.Context;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +12,7 @@ import java.util.List;
 public class ChatGenCall {
 
     public interface generateRequestCallBack{
-        void onSuccess(String request);
+        String onSuccess(String request);
         void onE(String errorMessage);
     }
 

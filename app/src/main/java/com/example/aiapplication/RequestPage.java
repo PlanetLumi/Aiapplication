@@ -25,8 +25,7 @@ public class RequestPage extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        saveButtonFunc.saveBtn(RequestPage.this,RequestPage.this, new String[]{"reqDomain", "infoBox"}, "userRequestInput.txt");
-        takeButtonFunc.takeBtn(RequestPage.this, GenerationArea.class, R.id.saveButton);
+        saveButtonFunc.funcSaveBtn(RequestPage.this,RequestPage.this, new String[]{"reqDomain", "infoBox"}, "userRequestInput.txt", GenerationArea.class);
         ExitButtonFunc.exitBtn(RequestPage.this, MainActivity.class);
     }
 }

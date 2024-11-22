@@ -48,6 +48,22 @@
         android:layout_marginTop="10dp"
         android:text="Exit" />
 
+    <TextView
+        android:id="@+id/testView"
+        android:layout_width="372dp"
+        android:layout_height="108dp"
+        android:layout_below="@id/exitButton"
+        android:layout_marginTop="6dp"
+        android:text="Yes"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/testButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/testView"
+        android:layout_marginTop="21dp"
+        android:text="Test" />
 
 
 </RelativeLayout>

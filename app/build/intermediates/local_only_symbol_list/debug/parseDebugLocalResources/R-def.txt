@@ -39,6 +39,7 @@ id takeTo
 id takeToRequest
 id takeToSettings
 id test
+id testButton
 id testView
 id title
 layout activity_main

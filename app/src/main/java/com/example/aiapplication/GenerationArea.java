@@ -1,15 +1,9 @@
 package com.example.aiapplication;
 
-import static android.text.TextUtils.replace;
-
-import android.content.Context;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -46,8 +40,16 @@ public class GenerationArea extends AppCompatActivity {
         ChatGenCall chatGenCall = new ChatGenCall();
         chatGenCall.generateRequest(this, preprompt,requestSplit[1].replace("]" , ""), new ChatGenCall.generateRequestCallBack() {
             @Override
-            public void onSuccess(String request) {
+            public String onSuccess(String request) { //Code has to be placed into this function becuase it takes too long to receive an answer comparatively
                 generationBox.setText(request);
+                Button sendEmail = findViewById(R.id.sendEmail);
+                String subject = findElements.findSubject(request);
+                request = request.replace(subject, "");
+                String finalRequest = request;
+                sendEmail.setOnClickListener(v -> {
+                    emailFunc.sendEmail(GenerationArea.this,grabbedEmail.getText().toString(), subject, finalRequest);
+                });
+                return request;
             }
 
             @Override
@@ -55,10 +57,7 @@ public class GenerationArea extends AppCompatActivity {
                 generationBox.setText("Error");
             }
         });
-        Button sendEmail = this.findViewById(R.id.sendEmail);
-        sendEmail.setOnClickListener(v -> {
-                     emailFunc.sendEmail(grabbedEmail.getText().toString(), "Request", generationBox.getText().toString());
-                });
+
         ExitButtonFunc.exitBtn(GenerationArea.this, MainActivity.class);
     }
 }

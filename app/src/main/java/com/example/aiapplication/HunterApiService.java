@@ -10,6 +10,7 @@ public interface HunterApiService {
    Call<DomainSearchResponse> getDomainSearch(
            @Query("domain") String domain,
            @Query("api_key") String apiKey,
-           @Query("department") String department
+           @Query("department") String department,
+           @Query("type") String type
    );
 }

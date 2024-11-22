@@ -16,10 +16,6 @@
         "source": "C:\\Users\\Lumie123\\.gradle\\daemon\\8.9\\com.example.aiapplication.app-main-33:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.aiapplication.app-debug-31:/layout_activity_main.xml.flat",
-        "source": "com.example.aiapplication.app-main-33:/layout/activity_main.xml"
-    },
-    {
         "merged": "C:\\Users\\Lumie123\\.gradle\\daemon\\8.9\\com.example.aiapplication.app-debug-31:\\drawable_ic_launcher_foreground.xml.flat",
         "source": "C:\\Users\\Lumie123\\.gradle\\daemon\\8.9\\com.example.aiapplication.app-main-33:\\drawable\\ic_launcher_foreground.xml"
     },
@@ -50,6 +46,10 @@
     {
         "merged": "C:\\Users\\Lumie123\\.gradle\\daemon\\8.9\\com.example.aiapplication.app-debug-31:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
         "source": "C:\\Users\\Lumie123\\.gradle\\daemon\\8.9\\com.example.aiapplication.app-main-33:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.aiapplication.app-debug-31:/layout_generation_area.xml.flat",
+        "source": "com.example.aiapplication.app-main-33:/layout/generation_area.xml"
     },
     {
         "merged": "C:\\Users\\Lumie123\\.gradle\\daemon\\8.9\\com.example.aiapplication.app-debug-31:\\layout_settingspage.xml.flat",

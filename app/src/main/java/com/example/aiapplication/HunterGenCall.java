@@ -10,13 +10,23 @@ import androidx.appcompat.app.AppCompatActivity;
 public class HunterGenCall {
     String apiKey = "d52f75345524c888b7a60263cd7fd9de6ca7dbe5";
     String department = "support";
+    String type = "generic";
     public interface EmailResultCallBack{
         void onSuccess(String email);
         void onE(String errorMessage);
     }
     public void fetchEmail(Context context,  String domain, EmailResultCallBack callback){
+        boolean check = true;
         HunterApiService hunterApiService = HunterAPI.getClient().create(HunterApiService.class);
-        Call<DomainSearchResponse> call = hunterApiService.getDomainSearch(domain, apiKey, department);
+        domain = domain.replace("www.", "");
+        if(!domain.contains(".com") || !domain.contains(".net") || !domain.contains(".org")){
+            check = checkDomain.checkSuffix(context, domain);
+            if(!check){
+                callback.onE("Not a valid domain");
+                return;
+            }
+        }
+        Call<DomainSearchResponse> call = hunterApiService.getDomainSearch(domain, apiKey, department, type);
         call.enqueue(new Callback<DomainSearchResponse>() {
             @Override
             public void onResponse(Call<DomainSearchResponse> call, Response<DomainSearchResponse> response) {
@@ -24,7 +34,6 @@ public class HunterGenCall {
                 DomainSearchResponse domainSearchResponse = response.body();
                 if (domainSearchResponse.getData().getEmails().isEmpty()) {
                     callback.onE("No email found");
-                    return;
                 } else{
                     String email = domainSearchResponse.getData().getEmails().get(0).getValue();
                     callback.onSuccess(email);

@@ -17,12 +17,13 @@
         android:text="Main Menu"
         android:textSize="24sp" />
 
-    <TextView
+    <ImageView
         android:id="@+id/placeholder"
-        android:layout_width="381dp"
-        android:layout_height="162dp"
+        android:layout_width="395dp"
+        android:layout_height="222dp"
         android:layout_below="@id/title"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="19dp"
+        android:src="@drawable/coloured"
         android:text="ROBOT IMAGE GOES HERE"
         tools:layout_editor_absoluteX="14dp"
         tools:layout_editor_absoluteY="64dp" />
@@ -57,6 +58,7 @@
         android:layout_alignRight="@id/title"
         android:layout_marginRight="-15dp"
         android:paddingLeft="20dp"
+        android:text="Settings"
         android:src="@drawable/settings" />
 
 </RelativeLayout>

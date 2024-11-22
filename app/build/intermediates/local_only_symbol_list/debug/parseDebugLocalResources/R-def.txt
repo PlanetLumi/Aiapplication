@@ -3,10 +3,12 @@ local
 array style_palette
 color black
 color white
+drawable coloured
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_marketing
 drawable ic_uiux_design
+drawable noncoloured
 drawable refundbutton
 drawable settings
 id FName

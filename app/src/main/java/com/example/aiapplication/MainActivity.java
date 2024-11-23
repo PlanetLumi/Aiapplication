@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        takeButtonFunc.takeBtn(MainActivity.this, DataCollect.class, R.id.takeTo);
+        takeButtonFunc.takeBtn(MainActivity.this, DataCollect.class, R.id.takeToDataCollect);
         takeButtonFunc.takeBtn(MainActivity.this, RequestPage.class, R.id.takeToRequest);
         takeButtonFunc.takeBtn(MainActivity.this, SettingsPage.class, R.id.takeToSettings);
     }

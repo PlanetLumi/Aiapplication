@@ -2,6 +2,7 @@ package com.example.aiapplication;
 import java.io.FileInputStream;
 import java.io.IOException;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 
 public class ReadData {
     public static String returnData(Context context, String nameOfFile){
@@ -15,5 +16,8 @@ public class ReadData {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+    public static String returnDBUserData(Context context, String dbName){
+        return buildDB.readDB(buildDB.getInstance(context, dbName).getReadableDatabase(),dbName);
     }
 }

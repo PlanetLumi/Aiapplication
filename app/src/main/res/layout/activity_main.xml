@@ -50,5 +50,12 @@
         android:paddingLeft="10dp"
         android:src="@drawable/settings"
         android:text="" />
+    <Button
+        android:id="@+id/takeToDataCollect"
+        android:layout_width="210dp"
+        android:layout_height="356dp"
+        android:layout_below="@id/greetingsRobot"
+        android:layout_marginTop="43dp"
+        />
 
 </RelativeLayout>

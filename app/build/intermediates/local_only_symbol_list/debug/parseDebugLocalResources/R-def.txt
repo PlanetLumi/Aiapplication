@@ -4,6 +4,7 @@ array style_palette
 color black
 color greybase
 color white
+drawable complaintsbutton
 drawable greetinggrey
 drawable ic_launcher_background
 drawable ic_launcher_foreground
@@ -33,6 +34,7 @@ id saveButton
 id sendEmail
 id settings
 id stylePalette
+id takeToComplaints
 id takeToDataCollect
 id takeToRequest
 id takeToSettings

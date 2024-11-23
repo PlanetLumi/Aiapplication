@@ -11,13 +11,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class buildDB extends SQLiteOpenHelper {
-    public static final int DATABASE_VERSION = 5;
+    public static final int DATABASE_VERSION = 7;
     private static buildDB instance;
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE UserDetails (" +
                     defineDB.FeedEntry._ID + " INTEGER PRIMARY KEY," +
                     defineDB.FeedEntry.COLUMN_NAME_TITLE + " TEXT," +
-                    defineDB.FeedEntry.COLUMN_NAME_ID + " TEXT," +
                     defineDB.FeedEntry.COLUMN_NAME_FNAME + " TEXT," +
                     defineDB.FeedEntry.COLUMN_NAME_SNAME + " TEXT," +
                     defineDB.FeedEntry.COLUMN_NAME_PHONE + " TEXT," +

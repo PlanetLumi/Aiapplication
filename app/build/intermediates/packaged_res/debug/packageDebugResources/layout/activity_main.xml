@@ -31,10 +31,10 @@
 
     <ImageButton
         android:id="@+id/takeToRequest"
-        android:layout_width="210dp"
-        android:layout_height="356dp"
+        android:layout_width="188dp"
+        android:layout_height="331dp"
         android:layout_below="@id/greetingsRobot"
-        android:layout_marginTop="43dp"
+        android:layout_marginTop="26dp"
         android:background="?android:attr/selectableItemBackground"
         android:contentDescription=""
         android:src="@drawable/refundbuttongrey"
@@ -42,20 +42,33 @@
         tools:layout_editor_absoluteY="512dp" />
 
     <ImageButton
+        android:id="@+id/takeToComplaints"
+        android:layout_width="188dp"
+        android:layout_height="331dp"
+        android:layout_below="@id/greetingsRobot"
+        android:layout_marginLeft="18dp"
+        android:layout_marginTop="28dp"
+        android:layout_toRightOf="@id/takeToRequest"
+        android:background="?android:attr/selectableItemBackground"
+        android:contentDescription=""
+        android:src="@drawable/complaintsbutton" />
+
+    <ImageButton
         android:id="@+id/takeToSettings"
-        android:layout_width="50dp"
-        android:layout_height="44dp"
+        android:layout_width="93dp"
+        android:layout_height="123dp"
         android:layout_alignRight="@id/title"
+        android:layout_marginRight="-16dp"
         android:background="?android:attr/selectableItemBackground"
         android:paddingLeft="10dp"
         android:src="@drawable/settings"
         android:text="" />
+
     <Button
         android:id="@+id/takeToDataCollect"
-        android:layout_width="210dp"
-        android:layout_height="356dp"
+        android:layout_width="70dp"
+        android:layout_height="116dp"
         android:layout_below="@id/greetingsRobot"
-        android:layout_marginTop="43dp"
-        />
+        android:layout_marginTop="-55dp" />
 
 </RelativeLayout>

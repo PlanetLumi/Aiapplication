@@ -6,6 +6,7 @@
         <item>Dark</item>
     </string-array>
     <color name="black">#FF000000</color>
+    <color name="greybase">#EDF4F8</color>
     <color name="white">#FFFFFFFF</color>
     <string name="app_name">Aiapplication</string>
     <string name="style_palette_prompt">Select a palette</string>

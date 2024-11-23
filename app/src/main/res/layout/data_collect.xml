@@ -35,32 +35,32 @@
         android:layout_marginLeft="6dp"
         android:layout_marginTop="23dp"
         android:layout_marginRight="22dp"
-        android:layout_toLeftOf="@+id/age"
+        android:layout_toLeftOf="@+id/PNumber"
         android:hint="First Name" />
 
     <EditText
-        android:id="@+id/age"
+        android:id="@+id/PNumber"
         android:layout_width="166dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/title"
         android:layout_alignParentRight="true"
         android:layout_marginTop="27dp"
         android:layout_marginRight="0dp"
-        android:hint="Date Of Birth"
-        android:inputType="date" />
+        android:hint="Phone Number"
+         />
 
     <EditText
-        android:id="@+id/Region"
+        android:id="@+id/Address"
         android:layout_width="211dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/SName"
         android:layout_marginTop="12dp"
         android:layout_marginRight="41dp"
-        android:hint="Region" />
+        android:hint="Address" />
     <Button
         android:layout_width="500dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/Region"
+        android:layout_below="@id/Address"
         android:layout_alignParentLeft="true"
         android:text="Save Data"
         android:textSize="30dp"

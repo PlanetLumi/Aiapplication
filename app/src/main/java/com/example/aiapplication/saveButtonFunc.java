@@ -67,7 +67,7 @@ public class saveButtonFunc{
                 @Override
                 public void onClick(View v) {
                     SaveData saveData = new SaveData();
-                    if (!buildDB.checkUser(buildDB.getInstance(context, "userData").getReadableDatabase(),DataGrab.gatherData(context, fields))) {
+                    if (!buildDB.checkUser(buildDB.getInstance(context).getReadableDatabase(),DataGrab.gatherData(context, fields))) {
                         try {
                             saveData.saveUserDb(context, DataGrab.gatherData(context, fields));
                         } catch (IOException e) {

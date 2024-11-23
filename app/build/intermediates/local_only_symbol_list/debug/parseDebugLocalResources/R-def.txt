@@ -2,20 +2,18 @@ R_DEF: Internal format may change without notice
 local
 array style_palette
 color black
+color greybase
 color white
-drawable coloured
+drawable greetinggrey
 drawable ic_launcher_background
 drawable ic_launcher_foreground
-drawable ic_marketing
-drawable ic_uiux_design
-drawable noncoloured
-drawable refundbutton
+drawable refundbuttongrey
 drawable settings
+id Address
 id FName
 id GenerationBox
-id Region
+id PNumber
 id SName
-id age
 id companyInp
 id datacollect
 id detailsInp
@@ -23,11 +21,11 @@ id exitButton
 id fillRequest
 id generationArea
 id grabbedEmail
+id greetingsRobot
 id infoBox
 id main
 id notifications
 id permissions
-id placeholder
 id reqDomain
 id requestPage
 id requestTitle
@@ -35,7 +33,7 @@ id saveButton
 id sendEmail
 id settings
 id stylePalette
-id takeTo
+id takeToDataCollect
 id takeToRequest
 id takeToSettings
 id test

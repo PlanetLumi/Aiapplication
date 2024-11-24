@@ -58,12 +58,11 @@ public class buildDB extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void populateDB(Context context, String userID, String DATABASE_NAME) {
+    public void populateDB(Context context, String DATABASE_NAME) {
         SQLiteDatabase db = (buildDB.getInstance(context, DATABASE_NAME).getWritableDatabase());
         ContentValues values = new ContentValues();
 
         // Populate the ContentValues with column data
-        values.put(defineDB.FeedEntry._ID, userID);
         values.put(defineDB.FeedEntry.COLUMN_NAME_TITLE, "");
         values.put(defineDB.FeedEntry.COLUMN_NAME_FNAME, "");
         values.put(defineDB.FeedEntry.COLUMN_NAME_SNAME, "");
@@ -78,11 +77,11 @@ public class buildDB extends SQLiteOpenHelper {
     public void populateCredentialDB(Context context, String[] userData, String DATABASE_NAME) {
         SQLiteDatabase db = (buildDB.getInstance(context, DATABASE_NAME).getWritableDatabase());
         ContentValues values = new ContentValues();
-        values.put("username", userData[0]);
+        values.put("username", userData[0].replace(",", ""));
         values.put("passwordHash", hashingAlg.saltHash(userData[1], hashingAlg.saltGen()));
         long newRowId = db.insert(DATABASE_NAME, null, values);
         db.close();
-        populateDB(context, userData, DATABASE_NAME);
+        populateDB(context,"UserDetails.db");
     }
 
     public static String readDB(SQLiteDatabase db, String DATABASE_NAME, String[] list, String UserID) {
@@ -142,8 +141,10 @@ public class buildDB extends SQLiteOpenHelper {
                 selection,
                 null);
     }
-    public boolean loginUser(String username, String password) {
-        SQLiteDatabase db = this.getReadableDatabase();
+    public static boolean loginUser(SQLiteDatabase db, String username, String password) {
+        username = username.replace(",", "");
+        password = password.replace(",", "");
+
 
         String selection = "username = ? AND passwordHash = ?";
         String[] selectionArgs = {username, hashingAlg.saltHash(password, hashingAlg.saltGen())};

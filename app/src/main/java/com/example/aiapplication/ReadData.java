@@ -17,7 +17,4 @@ public class ReadData {
             throw new RuntimeException(e);
         }
     }
-    public static String returnDBUserData(Context context, String DATABASE_NAME){
-        return buildDB.readDB(buildDB.getInstance(context, DATABASE_NAME), DATABASE_NAME).getReadableDatabase());
-    }
 }

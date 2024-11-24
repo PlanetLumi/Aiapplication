@@ -1,8 +1,12 @@
 package com.example.aiapplication;
 
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +15,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import java.io.File;
+import java.io.IOException;
 
 public class LoginPage extends AppCompatActivity {
 
@@ -24,6 +29,18 @@ public class LoginPage extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
+        Button loginButton = findViewById(R.id.loginButton);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String details = DataGrab.gatherUserData(getApplicationContext(), new String[]{"userName", "Password"});
+                String[] detailsArray = details.split(",");
+                if(buildDB.loginUser(buildDB.getInstance(getApplicationContext(), "UserCredentials.db").getReadableDatabase(),detailsArray[0], detailsArray[1])){
+                    Intent intent = new Intent(LoginPage.this, MainMenu.class);
+                    startActivity(intent);
+                }
+            }
+        });
     }
 }
+

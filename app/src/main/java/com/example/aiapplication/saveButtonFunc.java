@@ -60,25 +60,17 @@ public class saveButtonFunc{
 
         }
     }
-    public static void saveDbBtn (Context context, Activity activity, String[] fields, Class<?> targetActivity) {
+    public static void saveDbBtn (Context context, Activity activity, String[] fields, Class<?> targetActivity, String UserID) {
         View saveBtn = activity.findViewById(R.id.saveButton);
         if (saveBtn != null) {
             saveBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     SaveData saveData = new SaveData();
-                    if (!buildDB.checkUser(buildDB.getInstance(context, "UserDetails.db").getReadableDatabase(),DataGrab.gatherData(context, fields))) {
                         try {
-                            saveData.saveUserDb(context, DataGrab.gatherData(context, fields));
+                            saveData.updateUserDb(context, DataGrab.gatherData(context, fields), UserID);
                         } catch (IOException e) {
                             throw new RuntimeException(e);
-                        }
-                    } else {
-                        try {
-                            saveData.updateUserDb(context, DataGrab.gatherData(context, fields));
-                        } catch (IOException e) {
-                            throw new RuntimeException(e);
-                        }
                     }
                     if (targetActivity != null) {
                         Intent intent = new Intent(activity, targetActivity);
@@ -87,6 +79,5 @@ public class saveButtonFunc{
                 }
             });
         }
-
     }
 }

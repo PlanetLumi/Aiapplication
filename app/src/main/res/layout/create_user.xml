@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/newUser">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="394dp"
+        android:layout_height="88dp"
+        android:gravity="center"
+        android:text="Login"
+        android:textSize="24sp"/>
+
+    <EditText
+        android:id="@+id/userName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:layout_marginTop="190dp"
+        android:gravity="center"
+        android:hint="User Name" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/userName"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:id="@+id/Password"
+        android:hint="Password" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Password"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:id="@+id/verifyPassword"
+        android:hint="Verify Password" />
+
+    <Button
+        android:id="@+id/createButton"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:layout_below="@id/verifyPassword"
+        android:layout_marginTop="73dp"
+        android:gravity="center"
+        android:text="Create Account" />
+
+    <Button
+        android:id="@+id/goBack"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:layout_below="@id/createButton"
+        android:layout_marginTop="13dp"
+        android:gravity="center"
+        android:text="Go Back" />
+
+</RelativeLayout>

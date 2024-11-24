@@ -14,7 +14,7 @@
 
         <!-- Launcher activity -->
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginPage"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

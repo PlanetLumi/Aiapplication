@@ -20,13 +20,13 @@ public class SaveData{
         }
     public void saveUserDb(Context context, String userData) throws IOException {
         String[] userDataArray = userData.split(",");
-        buildDB db = new buildDB(context, "UserDetails", null, 1);
+        buildDB db = new buildDB(context);
         db.populateDB(context, userDataArray);
     }
     public void updateUserDb(Context context, String userData) throws IOException {
         String[] userDataArray = userData.split(",");
         String title = userDataArray[0] + userDataArray[1];
-        buildDB db = new buildDB(context, "UserDetails", null, 1);
-        db.updateDB(title, userDataArray);
+        buildDB db = new buildDB(context);
+        db.updateDB(title, userDataArray, "UserDetails.db");
     }
 }

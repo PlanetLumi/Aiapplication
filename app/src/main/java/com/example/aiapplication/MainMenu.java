@@ -1,26 +1,18 @@
 package com.example.aiapplication;
 
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import java.io.File;
 
-public class MainActivity extends AppCompatActivity {
+public class MainMenu extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +24,12 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        File dbFile = this.getDatabasePath("YourDatabaseName");
+        File dbFile = this.getDatabasePath("UserDetails");
         if (!dbFile.exists() || !dbFile.canRead()) {
             Log.e("APP_DEBUG", "Database file is missing or not accessible: " + dbFile.getAbsolutePath());
         }
-        takeButtonFunc.takeBtn(MainActivity.this, DataCollect.class, R.id.takeToDataCollect);
-        takeButtonFunc.takeBtn(MainActivity.this, RequestPage.class, R.id.takeToRequest);
-        takeButtonFunc.takeBtn(MainActivity.this, SettingsPage.class, R.id.takeToSettings);
+        takeButtonFunc.takeBtn(MainMenu.this, DataCollect.class, R.id.takeToDataCollect);
+        takeButtonFunc.takeBtn(MainMenu.this, RequestPage.class, R.id.takeToRequest);
+        takeButtonFunc.takeBtn(MainMenu.this, SettingsPage.class, R.id.takeToSettings);
     }
 }

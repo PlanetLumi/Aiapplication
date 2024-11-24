@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
+    android:paddingLeft="4dp"
+    android:paddingRight="4dp"
     android:background="@color/greybase"
     android:id="@+id/main">
 
@@ -31,10 +31,10 @@
 
     <ImageButton
         android:id="@+id/takeToRequest"
-        android:layout_width="188dp"
-        android:layout_height="331dp"
+        android:layout_width="181dp"
+        android:layout_height="326dp"
         android:layout_below="@id/greetingsRobot"
-        android:layout_marginTop="26dp"
+        android:layout_marginTop="54dp"
         android:background="?android:attr/selectableItemBackground"
         android:contentDescription=""
         android:src="@drawable/refundbuttongrey"
@@ -43,22 +43,22 @@
 
     <ImageButton
         android:id="@+id/takeToComplaints"
-        android:layout_width="188dp"
-        android:layout_height="331dp"
+        android:layout_width="207dp"
+        android:layout_height="wrap_content"
         android:layout_below="@id/greetingsRobot"
-        android:layout_marginLeft="18dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginLeft="27dp"
+        android:layout_marginTop="18dp"
         android:layout_toRightOf="@id/takeToRequest"
         android:background="?android:attr/selectableItemBackground"
         android:contentDescription=""
-        android:src="@drawable/complaintsbutton" />
+        android:src="@drawable/complaintsgrey" />
 
     <ImageButton
         android:id="@+id/takeToSettings"
-        android:layout_width="93dp"
-        android:layout_height="123dp"
+        android:layout_width="65dp"
+        android:layout_height="61dp"
         android:layout_alignRight="@id/title"
-        android:layout_marginRight="-16dp"
+        android:layout_marginRight="2dp"
         android:background="?android:attr/selectableItemBackground"
         android:paddingLeft="10dp"
         android:src="@drawable/settings"
@@ -69,6 +69,6 @@
         android:layout_width="70dp"
         android:layout_height="116dp"
         android:layout_below="@id/greetingsRobot"
-        android:layout_marginTop="-55dp" />
+        android:layout_marginTop="-63dp" />
 
 </RelativeLayout>

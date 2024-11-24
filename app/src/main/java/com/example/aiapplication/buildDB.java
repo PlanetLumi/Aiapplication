@@ -10,9 +10,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.Arrays;
+
+import okhttp3.EventListener;
+
 public class buildDB extends SQLiteOpenHelper {
-    public static final int DATABASE_VERSION = 7;
+    public static final int DATABASE_VERSION = 8; //
     private static buildDB instance;
+
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE UserDetails (" +
                     defineDB.FeedEntry._ID + " INTEGER PRIMARY KEY," +
@@ -22,17 +27,22 @@ public class buildDB extends SQLiteOpenHelper {
                     defineDB.FeedEntry.COLUMN_NAME_PHONE + " TEXT," +
                     defineDB.FeedEntry.COLUMN_NAME_ADDRESS + " TEXT)";
 
+    private static final String SQL_CREATE_USER_CREDENTIALS  =
+            "CREATE TABLE UserCredentials (" +
+                    "userID INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    "username TEXT UNIQUE," +
+                    "passwordHash TEXT)";
+
 
     private static final String SQL_DELETE_ENTRIES =
-            "DROP TABLE IF EXISTS " + defineDB.FeedEntry.TABLE_NAME;
-
-    public buildDB(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+            "DROP TABLE IF EXISTS DATABASE_NAME";
+    buildDB(@Nullable Context context, String DATABASE_NAME) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    static synchronized buildDB getInstance(Context context) {
+    static synchronized buildDB getInstance(Context context, String DATABASE_NAME) {
         if (instance == null) {
-            instance = new buildDB(context.getApplicationContext(), null, null, DATABASE_VERSION);
+            instance = new buildDB(context.getApplicationContext(), DATABASE_NAME);
         }
         return instance;
     }
@@ -40,54 +50,51 @@ public class buildDB extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_ENTRIES);
-
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS UserDetails");
+        db.execSQL(SQL_DELETE_ENTRIES);
         onCreate(db);
     }
 
-    public void populateDB(Context context, String[] userData) {
-        String title = userData[0] + userData[1]; // Combine first and last name to generate the title
-        SQLiteDatabase db = (buildDB.getInstance(context).getWritableDatabase());
+    public void populateDB(Context context, String userID, String DATABASE_NAME) {
+        SQLiteDatabase db = (buildDB.getInstance(context, DATABASE_NAME).getWritableDatabase());
         ContentValues values = new ContentValues();
 
         // Populate the ContentValues with column data
-        values.put(defineDB.FeedEntry.COLUMN_NAME_TITLE, title);
-        values.put(defineDB.FeedEntry.COLUMN_NAME_FNAME, userData[0]);
-        values.put(defineDB.FeedEntry.COLUMN_NAME_SNAME, userData[1]);
-        values.put(defineDB.FeedEntry.COLUMN_NAME_PHONE, userData[2]);
-        values.put(defineDB.FeedEntry.COLUMN_NAME_ADDRESS, userData[3]);
-        System.out.println("Inserting title: " + title);
-
+        values.put(defineDB.FeedEntry._ID, userID);
+        values.put(defineDB.FeedEntry.COLUMN_NAME_TITLE, "");
+        values.put(defineDB.FeedEntry.COLUMN_NAME_FNAME, "");
+        values.put(defineDB.FeedEntry.COLUMN_NAME_SNAME, "");
+        values.put(defineDB.FeedEntry.COLUMN_NAME_PHONE, "");
+        values.put(defineDB.FeedEntry.COLUMN_NAME_ADDRESS, "");
 
         // Insert the populated ContentValues into the database
-        long newRowId = db.insert("UserDetails", null, values);
-        if (newRowId == -1) {
-            System.err.println("Error inserting data into UserDetails");
-        } else {
-            System.out.println("Data inserted with title: " + title);
-        }
+        long newRowId = db.insert(DATABASE_NAME, null, values);
         db.close();
     }
 
-    public static String readDB(SQLiteDatabase db) {
-        String[] projection = {
-                defineDB.FeedEntry._ID,
-                defineDB.FeedEntry.COLUMN_NAME_TITLE,
-                defineDB.FeedEntry.COLUMN_NAME_FNAME,
-                defineDB.FeedEntry.COLUMN_NAME_SNAME,
-                defineDB.FeedEntry.COLUMN_NAME_PHONE,
-                defineDB.FeedEntry.COLUMN_NAME_ADDRESS
-        };
+    public void populateCredentialDB(Context context, String[] userData, String DATABASE_NAME) {
+        SQLiteDatabase db = (buildDB.getInstance(context, DATABASE_NAME).getWritableDatabase());
+        ContentValues values = new ContentValues();
+        values.put("username", userData[0]);
+        values.put("passwordHash", hashingAlg.saltHash(userData[1], hashingAlg.saltGen()));
+        long newRowId = db.insert(DATABASE_NAME, null, values);
+        db.close();
+        populateDB(context, userData, DATABASE_NAME);
+    }
+
+    public static String readDB(SQLiteDatabase db, String DATABASE_NAME, String[] list, String UserID) {
+        String[] projection = list;
+        String selection = defineDB.FeedEntry._ID + " = ?";
+        String[] selectionArgs = {UserID};
 
         Cursor cursor = db.query(
-                "UserDetails",
+                DATABASE_NAME,
                 projection,
-                null,
-                null,
+                selection,
+                selectionArgs,
                 null,
                 null,
                 defineDB.FeedEntry._ID + " DESC"
@@ -95,16 +102,11 @@ public class buildDB extends SQLiteOpenHelper {
         StringBuilder result = new StringBuilder();
         if (cursor.moveToFirst()) {
             do {
-                String titleValue = cursor.getString(cursor.getColumnIndexOrThrow(defineDB.FeedEntry.COLUMN_NAME_TITLE));
-                String fName = cursor.getString(cursor.getColumnIndexOrThrow(defineDB.FeedEntry.COLUMN_NAME_FNAME));
-                String sName = cursor.getString(cursor.getColumnIndexOrThrow(defineDB.FeedEntry.COLUMN_NAME_SNAME));
-                String phone = cursor.getString(cursor.getColumnIndexOrThrow(defineDB.FeedEntry.COLUMN_NAME_PHONE));
-                String address = cursor.getString(cursor.getColumnIndexOrThrow(defineDB.FeedEntry.COLUMN_NAME_ADDRESS));
-                result.append(titleValue).append(",")
-                        .append(fName).append(",")
-                        .append(sName).append(",")
-                        .append(phone).append(",")
-                        .append(address).append(",");
+               for(String s : list){
+                   String value = cursor.getString(cursor.getColumnIndexOrThrow(s));
+                   result.append(value).append(",");
+               }
+                result.append("\\n");
             } while (cursor.moveToNext());
         } else {
             result.append("No data found");
@@ -112,30 +114,42 @@ public class buildDB extends SQLiteOpenHelper {
         cursor.close();
         return result.toString();
     }
-    public void updateDB(String title, String[] newData){
-        String newTitle = newData[0] + newData[1];
+    public void updateDB(String[] newData, String UserID){
+        String pastTitle = returnPastTitle(UserID);
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(defineDB.FeedEntry.COLUMN_NAME_TITLE, newTitle);
-        values.put(defineDB.FeedEntry.COLUMN_NAME_FNAME, newData[1]);
-        values.put(defineDB.FeedEntry.COLUMN_NAME_SNAME, newData[2]);
-        values.put(defineDB.FeedEntry.COLUMN_NAME_PHONE, newData[3]);
-        values.put(defineDB.FeedEntry.COLUMN_NAME_ADDRESS, newData[4]);
-        String selection = defineDB.FeedEntry.COLUMN_NAME_TITLE + " = ?";
-        String[] selectionArgs = {title};
+        String[] pastTitleEl = (pastTitle.split(","));
+        String title = pastTitleEl[0];
+        if (!newData[0].isEmpty()){
+            title = title.replace(pastTitleEl[1], newData[0]);
+            values.put(defineDB.FeedEntry.COLUMN_NAME_FNAME, newData[0]);
+        }
+        if (!newData[1].isEmpty()){
+            title = title.replace(pastTitleEl[2], newData[1]);
+            values.put(defineDB.FeedEntry.COLUMN_NAME_SNAME, newData[1]);
+        }
+        values.put(defineDB.FeedEntry.COLUMN_NAME_TITLE, title);
+        if(!newData[2].isEmpty()){
+            values.put(defineDB.FeedEntry.COLUMN_NAME_PHONE, newData[2]);
+        }
+        if(!newData[3].isEmpty()){
+            values.put(defineDB.FeedEntry.COLUMN_NAME_ADDRESS, newData[3]);
+        }
+        String selection = defineDB.FeedEntry._ID + " = ?";
         db.update(
-                "UserDetails",
+                "UserDetails.db",
                 values,
                 selection,
-                selectionArgs);
+                null);
     }
-    public static boolean checkUser(SQLiteDatabase db, String userData){
-        String[] userDataArray = userData.split(",");
-        String title = userDataArray[0] + userDataArray[1];
-        String selection = defineDB.FeedEntry.COLUMN_NAME_TITLE + " = ?";
-        String[] selectionArgs = {title};
+    public boolean loginUser(String username, String password) {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String selection = "username = ? AND passwordHash = ?";
+        String[] selectionArgs = {username, hashingAlg.saltHash(password, hashingAlg.saltGen())};
+
         Cursor cursor = db.query(
-                "UserDetails",
+                "UserCredentials",
                 null,
                 selection,
                 selectionArgs,
@@ -143,6 +157,14 @@ public class buildDB extends SQLiteOpenHelper {
                 null,
                 null
         );
-        return cursor.getCount() > 0;
+
+        boolean userExists = cursor.getCount() > 0;
+        cursor.close();
+        db.close();
+
+        return userExists;
+    }
+    public String returnPastTitle(String UserId){
+        return buildDB.readDB(this.getReadableDatabase(), "UserDetails", new String[]{"Title","FName","SName"}, UserId);
     }
 }

@@ -21,6 +21,6 @@ public class SettingsPage extends AppCompatActivity {
         spinnerFunc.setSpinners(SettingsPage.this, new String[]{"stylePalette"}, new int[] {R.array.style_palette},"settings.txt");
         switchFunc.setSwitches(SettingsPage.this, new String[] {"permissions","notifications"}, "settings.txt");
         saveButtonFunc.userSaveBtn(SettingsPage.this, SettingsPage.this, new String[]{"stylePalette", "permissions", "notifications"}, "settings.txt", null);
-        ExitButtonFunc.exitBtn(SettingsPage.this, MainActivity.class);
+        ExitButtonFunc.exitBtn(SettingsPage.this, LoginPage.class);
     }
 }

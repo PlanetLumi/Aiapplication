@@ -58,6 +58,6 @@ public class GenerationArea extends AppCompatActivity {
             }
         });
 
-        ExitButtonFunc.exitBtn(GenerationArea.this, MainActivity.class);
+        ExitButtonFunc.exitBtn(GenerationArea.this, LoginPage.class);
     }
 }

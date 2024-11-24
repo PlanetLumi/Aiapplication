@@ -1,6 +1,8 @@
 package com.example.aiapplication;
 
+
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,18 +10,20 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class RequestPage extends AppCompatActivity {
+import java.io.File;
+
+public class LoginPage extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.fillrequest);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.fillRequest), (v, insets) -> {
+        setContentView(R.layout.login_page);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.loginpage), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        saveButtonFunc.funcSaveBtn(RequestPage.this,RequestPage.this, new String[]{"reqDomain", "infoBox"}, "userRequestInput.txt", GenerationArea.class);
-        ExitButtonFunc.exitBtn(RequestPage.this, LoginPage.class);
+
     }
 }

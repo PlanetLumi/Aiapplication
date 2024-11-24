@@ -19,7 +19,7 @@ public class saveButtonFunc{
                 public void onClick(View v) {
                     SaveData saveData = new SaveData();
                     try {
-                        saveData.FileSave(context, DataGrab.gatherData(context, fields), fileName);
+                        saveData.FileSave(context, DataGrab.gatherUserData(context, fields), fileName);
                         String data = ReadData.returnData(context, fileName);
                         TextView testView = activity.findViewById(R.id.testView);
                         testView.setText(data);
@@ -43,7 +43,7 @@ public class saveButtonFunc{
                 public void onClick(View v) {
                     SaveData saveData = new SaveData();
                     try {
-                        saveData.FileSave(context, DataGrab.gatherUserData(context, fields), fileName);
+                        saveData.FileSave(context, DataGrab.gatherUserData(context,fields), fileName);
                         ReadData readData = new ReadData();
                         String data = readData.returnData(context, fileName);
                         TextView testView = activity.findViewById(R.id.test);

@@ -33,9 +33,9 @@ public class createUser extends AppCompatActivity {
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (verifyPassword.verify(DataGrab.gatherUserData(getApplicationContext(), new String[]{"Password","verifyPassword"}))) {
+                if (verifyPassword.verify(DataGrab.gatherData(createUser.this, new String[]{"Password","verifyPassword"}))) {
                     try {
-                        SaveData.saveUserDb(getApplicationContext(), DataGrab.gatherUserData(getApplicationContext(), new String[]{"userName", "Password"}));
+                        SaveData.saveUserDb(createUser.this, DataGrab.gatherUserData(createUser.this, new String[]{"userName", "Password"}));
                         Intent intent = new Intent(createUser.this, LoginPage.class);
                         startActivity(intent);
                     } catch (IOException e) {

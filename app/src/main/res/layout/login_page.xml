@@ -39,5 +39,14 @@
         android:gravity="center"
         android:paddingStart="100dp"
         android:text="Login" />
+    <Button
+        android:id="@+id/takeToCreate"
+        android:layout_width="wrap_content"
+        android:layout_height="77dp"
+        android:layout_below="@id/loginButton"
+        android:layout_marginTop="62dp"
+        android:gravity="center"
+        android:paddingStart="100dp"
+        android:text="Create Account" />
 
 </RelativeLayout>

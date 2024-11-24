@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class buildDB extends SQLiteOpenHelper {
-    public static final int DATABASE_VERSION = 8; //
+    public static final int DATABASE_VERSION = 9; //
     private static buildDB instance;
 
     private static final String SQL_CREATE_ENTRIES =
@@ -72,7 +72,7 @@ public class buildDB extends SQLiteOpenHelper {
     public static long populateCredentialDB(Context context, String[] userData) {
         SQLiteDatabase db = (buildDB.getInstance(context, "UserCredentials.db").getWritableDatabase());
         ContentValues values = new ContentValues();
-        values.put("username", userData[0].replace(",", ""));
+        values.put("username", (userData[0].replace(",", "").toLowerCase()));
         values.put("passwordHash", hashingAlg.saltHash(userData[1], hashingAlg.saltGen()));
         long newRowId = db.insert("UserCredentials.db", null, values);
         db.close();
@@ -152,7 +152,7 @@ public class buildDB extends SQLiteOpenHelper {
                 null);
     }
     public static long loginUser(SQLiteDatabase db, String username, String password) {
-        username = username.replace(",", "");
+        username = (username.replace(",", "")).toLowerCase();
         password = password.replace(",", "");
 
 

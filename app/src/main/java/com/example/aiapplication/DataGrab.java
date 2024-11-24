@@ -41,15 +41,21 @@ public class DataGrab extends AppCompatActivity {
         }
         return dataPoints;
     }
-    public static String gatherData(Context context, String[] idNames) {
+    public static String[] gatherData(Context context, String[] idNames) {
         List<Integer> dataPoints = (List<Integer>) fillDataGrabs(context, idNames);
-        List<Object> userData = new ArrayList<>();
+        List<String> userData = new ArrayList<>();
         Activity activity = (Activity) context;
+
         for (int i = 0; i < dataPoints.size(); i++) {
-            View current = (TextView) activity.findViewById(dataPoints.get(i));
-            userData.add((((TextView) current).getText().toString()));
+            View current = activity.findViewById(dataPoints.get(i));
+            if (current instanceof EditText) {
+                // Get text from EditText and add to list
+                String text = ((EditText) current).getText().toString();
+                userData.add(text);
+            }
         }
-        return userData.toString();
+
+        return userData.toArray(new String[0]); // Return as a String array
     }
     public static String gatherUserData(Context context, String[] idNames) {
         List<Integer> dataPoints = (List<Integer>) fillDataGrabs(context, idNames);

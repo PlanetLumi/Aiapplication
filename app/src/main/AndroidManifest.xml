@@ -21,6 +21,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".createUser"
+            android:exported="true" />
+        <activity
+            android:name=".MainMenu"
+            android:exported="true" />
 
         <!-- Data collection activity -->
         <activity

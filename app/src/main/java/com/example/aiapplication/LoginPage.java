@@ -33,11 +33,11 @@ public class LoginPage extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String details = DataGrab.gatherUserData(getApplicationContext(), new String[]{"userName", "Password"});
+                String details = DataGrab.gatherUserData(LoginPage.this, new String[]{"userName", "Password"});
                 String[] detailsArray = details.split(",");
-                long user = buildDB.loginUser(buildDB.getInstance(getApplicationContext(), "UserCredentials.db").getReadableDatabase(),detailsArray[0], detailsArray[1]);
+                long user = buildDB.loginUser(buildDB.getInstance(LoginPage.this, "UserCredentials.db").getReadableDatabase(),detailsArray[0], detailsArray[1]);
                 if (user != 1){
-                    saveUserID.saveID(getApplicationContext(), user);
+                    saveUserID.saveID(LoginPage.this, user);
                     Intent intent = new Intent(LoginPage.this, MainMenu.class);
                     startActivity(intent);
                 } else{
@@ -45,6 +45,7 @@ public class LoginPage extends AppCompatActivity {
                 }
             }
         });
+        takeButtonFunc.takeBtn(this, createUser.class, R.id.takeToCreate);
     }
 }
 

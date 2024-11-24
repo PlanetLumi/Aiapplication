@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:1:1-39:12
-INJECTED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:1:1-39:12
-INJECTED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:1:1-39:12
-INJECTED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:1:1-39:12
+ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:1:1-45:12
+INJECTED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:1:1-45:12
+INJECTED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:1:1-45:12
+INJECTED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:1:1-45:12
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\Lumie123\.gradle\caches\8.9\transforms\f4fb994489ddeb5de3a0203257953846\transformed\material-1.12.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.0] C:\Users\Lumie123\.gradle\caches\8.9\transforms\c32661aa6c1d0e315bb5ae9383f0a637\transformed\constraintlayout-2.2.0\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.appcompat:appcompat-resources:1.7.0] C:\Users\Lumie123\.gradle\caches\8.9\transforms\dcae443b153c7d42709b3f19009513d0\transformed\appcompat-resources-1.7.0\AndroidManifest.xml:2:1-7:12
@@ -60,8 +60,8 @@ ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\An
 	android:name
 		ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:3:22-64
 application
-ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:5:5-38:19
-INJECTED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:5:5-38:19
+ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:5:5-44:19
+INJECTED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:5:5-44:19
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\Lumie123\.gradle\caches\8.9\transforms\f4fb994489ddeb5de3a0203257953846\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\Lumie123\.gradle\caches\8.9\transforms\f4fb994489ddeb5de3a0203257953846\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.0] C:\Users\Lumie123\.gradle\caches\8.9\transforms\c32661aa6c1d0e315bb5ae9383f0a637\transformed\constraintlayout-2.2.0\AndroidManifest.xml:7:5-20
@@ -110,30 +110,42 @@ category#android.intent.category.LAUNCHER
 ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:21:17-77
 	android:name
 		ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:21:27-74
+activity#com.example.aiapplication.createUser
+ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:24:9-26:39
+	android:exported
+		ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:26:13-36
+	android:name
+		ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:25:13-39
+activity#com.example.aiapplication.MainMenu
+ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:27:9-29:39
+	android:exported
+		ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:29:13-36
+	android:name
+		ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:28:13-37
 activity#com.example.aiapplication.DataCollect
-ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:26:9-28:39
-	android:exported
-		ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:28:13-36
-	android:name
-		ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:27:13-40
-activity#com.example.aiapplication.RequestPage
-ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:29:9-31:39
-	android:exported
-		ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:31:13-36
-	android:name
-		ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:30:13-40
-activity#com.example.aiapplication.GenerationArea
 ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:32:9-34:39
 	android:exported
 		ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:34:13-36
 	android:name
-		ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:33:13-43
-activity#com.example.aiapplication.SettingsPage
+		ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:33:13-40
+activity#com.example.aiapplication.RequestPage
 ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:35:9-37:39
 	android:exported
 		ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:37:13-36
 	android:name
-		ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:36:13-41
+		ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:36:13-40
+activity#com.example.aiapplication.GenerationArea
+ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:38:9-40:39
+	android:exported
+		ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:40:13-36
+	android:name
+		ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:39:13-43
+activity#com.example.aiapplication.SettingsPage
+ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:41:9-43:39
+	android:exported
+		ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:43:13-36
+	android:name
+		ADDED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:42:13-41
 uses-sdk
 INJECTED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml

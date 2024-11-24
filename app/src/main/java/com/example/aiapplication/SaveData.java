@@ -10,6 +10,7 @@ import android.net.Uri;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.util.Arrays;
 
 public class SaveData{
     public void FileSave(Context context, String userData,String fileName) throws IOException {
@@ -23,9 +24,8 @@ public class SaveData{
         buildDB db = new buildDB(context, "UserCredentials.db");
         saveUserID.saveID(context,db.populateCredentialDB(context, userDataArray));
     }
-    public void updateUserDb(Context context, String userData) throws IOException {
-        String[] userDataArray = userData.split(",");
+    public void updateUserDb(Context context, String[] userData) throws IOException {
         buildDB db = new buildDB(context, "UserDetails.db");
-        db.updateDB(context, userDataArray);
+        db.updateDB(context, userData);
     }
 }

@@ -41,6 +41,7 @@ id sendEmail
 id settings
 id stylePalette
 id takeToComplaints
+id takeToCreate
 id takeToDataCollect
 id takeToRequest
 id takeToSettings

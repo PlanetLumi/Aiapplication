@@ -19,13 +19,12 @@ public class SaveData{
         outputWriter.write(userData);
         outputWriter.close();
         }
-    public static void saveUserDb(Context context, String userData) throws IOException {
-        String[] userDataArray = userData.split(",");
-        buildDB db = new buildDB(context, "UserCredentials.db");
-        saveUserID.saveID(context,db.populateCredentialDB(context, userDataArray));
+    public static void saveUserDb(Context context, String[] userData) throws IOException {
+        buildDB db = new buildDB(context);
+        saveUserID.saveID(context,db.populateCredentialDB(context, userData));
     }
     public void updateUserDb(Context context, String[] userData) throws IOException {
-        buildDB db = new buildDB(context, "UserDetails.db");
+        buildDB db = new buildDB(context);
         db.updateDB(context, userData);
     }
 }

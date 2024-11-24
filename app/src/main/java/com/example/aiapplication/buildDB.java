@@ -9,7 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class buildDB extends SQLiteOpenHelper {
-    public static final int DATABASE_VERSION = 9; //
+    public static final int DATABASE_VERSION = 10; //
+    public static final String DATABASE_NAME = "UserDetails.db";
     private static buildDB instance;
 
     private static final String SQL_CREATE_ENTRIES =
@@ -30,30 +31,32 @@ public class buildDB extends SQLiteOpenHelper {
 
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS DATABASE_NAME";
-    buildDB(@Nullable Context context, String dbName) {
-        super(context, dbName, null, DATABASE_VERSION);
+    buildDB(@Nullable Context context) {
+        super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    static synchronized buildDB getInstance(Context context, String dbName) {
+    static synchronized buildDB getInstance(Context context) {
         if (instance == null) {
-            instance = new buildDB(context.getApplicationContext(), dbName);
+            instance = new buildDB(context);
         }
         return instance;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        db.execSQL(SQL_CREATE_USER_CREDENTIALS);
         db.execSQL(SQL_CREATE_ENTRIES);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(SQL_DELETE_ENTRIES);
+        db.execSQL("DROP TABLE IF EXISTS UserCredentials");
+        db.execSQL("DROP TABLE IF EXISTS UserDetails");
         onCreate(db);
     }
 
-    public static void populateDB(Context context, String UserID) {
-        SQLiteDatabase db = (buildDB.getInstance(context, "UserDetails.db").getWritableDatabase());
+    public static void populateDB(Context context, long UserID) {
+        SQLiteDatabase db = (buildDB.getInstance(context).getWritableDatabase());
         ContentValues values = new ContentValues();
 
         // Populate the ContentValues with column data
@@ -65,18 +68,18 @@ public class buildDB extends SQLiteOpenHelper {
         values.put(defineDB.FeedEntry.COLUMN_NAME_ADDRESS, "");
 
         // Insert the populated ContentValues into the database
-        long newRowId = db.insert("UserDetails.db", null, values);
+        long newRowId = db.insert("UserDetails", null, values);
         db.close();
     }
 
     public static long populateCredentialDB(Context context, String[] userData) {
-        SQLiteDatabase db = (buildDB.getInstance(context, "UserCredentials.db").getWritableDatabase());
+        SQLiteDatabase db = (buildDB.getInstance(context).getWritableDatabase());
         ContentValues values = new ContentValues();
         values.put("username", (userData[0].replace(",", "").toLowerCase()));
         values.put("passwordHash", hashingAlg.saltHash(userData[1], hashingAlg.saltGen()));
-        long newRowId = db.insert("UserCredentials.db", null, values);
+        long newRowId = db.insert("UserCredentials", null, values);
         db.close();
-        populateDB(context, "UserDetails.db");
+        populateDB(context, newRowId);
         return newRowId;
     }
     public static long readID(SQLiteDatabase db, String userName){
@@ -146,7 +149,7 @@ public class buildDB extends SQLiteOpenHelper {
         }
         String selection = defineDB.FeedEntry._ID + " = ?";
         db.update(
-                "UserDetails.db",
+                "UserDetails",
                 values,
                 selection,
                 null);

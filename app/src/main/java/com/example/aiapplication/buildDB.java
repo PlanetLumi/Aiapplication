@@ -185,4 +185,23 @@ public class buildDB extends SQLiteOpenHelper {
     public String returnPastTitle(long UserId){
         return buildDB.readDB(this.getReadableDatabase(), "UserDetails", new String[]{"Title","FName","SName"}, UserId);
     }
+
+    public static boolean checkIfUserExists(SQLiteDatabase db, String username){
+        username = (username.replace(",", ""));
+        String selection = "username = ? COLLATE NOCASE";
+        String[] selectionArgs = {username};
+        Cursor cursor = db.query(
+                "UserCredentials",
+                null,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+        boolean userExists = cursor.getCount() > 0;
+        cursor.close();
+        db.close();
+        return userExists;
+    }
 }

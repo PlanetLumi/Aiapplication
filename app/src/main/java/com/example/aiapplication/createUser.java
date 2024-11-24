@@ -33,18 +33,38 @@ public class createUser extends AppCompatActivity {
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (verifyPassword.verify(DataGrab.gatherData(createUser.this, new String[]{"Password","verifyPassword"}))) {
-                    try {
-                        SaveData.saveUserDb(createUser.this, DataGrab.gatherData(createUser.this, new String[]{"userName", "Password"}));
-                        Intent intent = new Intent(createUser.this, LoginPage.class);
-                        startActivity(intent);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
+                boolean verified = true;
+                if (DataGrab.gatherData(createUser.this, new String[]{"userName", "Password"}).length != 2) {
+                    Log.d("Error", "Not enough data");
+                }
+                    if(!buildDB.checkIfUserExists(buildDB.getInstance(createUser.this).getReadableDatabase(), DataGrab.gatherData(createUser.this, new String[]{"userName"})[0])) {
+                        if (verifyPassword.verifyMatch(DataGrab.gatherData(createUser.this, new String[]{"Password", "verifyPassword"}))) {
+                            for (String flag : verifyPassword.allFlags(DataGrab.gatherData(createUser.this, new String[]{"Password"})[0])) {
+                                if (!flag.equals("True")) {
+                                    Log.d("Flag False", flag);
+                                    verified = false;
+                                }
+                            }
+                            if (verified) {
+                                try {
+                                    SaveData.saveUserDb(createUser.this, DataGrab.gatherData(createUser.this, new String[]{"userName", "Password"}));
+                                    Intent intent = new Intent(createUser.this, LoginPage.class);
+                                    startActivity(intent);
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            } else {
+                                Log.d("Error", "Password does not meet requirements");
+                            }
+                        } else {
+                            Log.d("Error", "Passwords do not match");
+                        }
+                    }else{
+                        Log.d("Error", "Username already exists, choose a new username or login!");
                     }
-                }else{
-                        Log.d("Error", "Passwords do not match");
-                    }
+
             }
         });
+        takeButtonFunc.takeBtn(createUser.this, LoginPage.class, R.id.takeToLogin);
     }
 }

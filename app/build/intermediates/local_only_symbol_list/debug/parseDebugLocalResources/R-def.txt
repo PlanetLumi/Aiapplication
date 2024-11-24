@@ -23,7 +23,6 @@ id detailsInp
 id exitButton
 id fillRequest
 id generationArea
-id goBack
 id grabbedEmail
 id greetingsRobot
 id infoBox
@@ -43,6 +42,7 @@ id stylePalette
 id takeToComplaints
 id takeToCreate
 id takeToDataCollect
+id takeToLogin
 id takeToRequest
 id takeToSettings
 id test

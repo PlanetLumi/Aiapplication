@@ -22,9 +22,7 @@ public class DataCollect extends AppCompatActivity {
             return insets;
         });
 
-        saveButtonFunc.saveDbBtn(DataCollect.this, DataCollect.this, new String[]{"FName", "SName", "PNumber", "Address"}, null,);
-        TextView test = findViewById(R.id.testView);
-        test.setText(ReadData.returnDBUserData(DataCollect.this, "UserDetails.db"));
+        saveButtonFunc.saveDbBtn(DataCollect.this, DataCollect.this, new String[]{"FName", "SName", "PNumber", "Address"}, null);
         ExitButtonFunc.exitBtn(DataCollect.this, LoginPage.class);
 
     }

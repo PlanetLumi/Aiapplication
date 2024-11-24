@@ -60,7 +60,7 @@ public class saveButtonFunc{
 
         }
     }
-    public static void saveDbBtn (Context context, Activity activity, String[] fields, Class<?> targetActivity, String UserID) {
+    public static void saveDbBtn (Context context, Activity activity, String[] fields, Class<?> targetActivity) {
         View saveBtn = activity.findViewById(R.id.saveButton);
         if (saveBtn != null) {
             saveBtn.setOnClickListener(new View.OnClickListener() {
@@ -68,7 +68,7 @@ public class saveButtonFunc{
                 public void onClick(View v) {
                     SaveData saveData = new SaveData();
                         try {
-                            saveData.updateUserDb(context, DataGrab.gatherData(context, fields), UserID);
+                            saveData.updateUserDb(context, DataGrab.gatherData(context, fields));
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                     }

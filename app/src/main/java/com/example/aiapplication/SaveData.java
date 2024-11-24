@@ -23,9 +23,9 @@ public class SaveData{
         buildDB db = new buildDB(context, "UserCredentials.db");
         saveUserID.saveID(context,db.populateCredentialDB(context, userDataArray));
     }
-    public void updateUserDb(Context context, String userData, String UserID) throws IOException {
+    public void updateUserDb(Context context, String userData) throws IOException {
         String[] userDataArray = userData.split(",");
         buildDB db = new buildDB(context, "UserDetails.db");
-        db.updateDB(userDataArray,UserID);
+        db.updateDB(context, userDataArray);
     }
 }

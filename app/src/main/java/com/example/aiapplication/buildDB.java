@@ -94,10 +94,10 @@ public class buildDB extends SQLiteOpenHelper {
         );
         return cursor.getColumnIndexOrThrow("_ID");
 }
-    public static String readDB(SQLiteDatabase db, String DATABASE_NAME, String[] list, String UserID) {
+    public static String readDB(SQLiteDatabase db, String DATABASE_NAME, String[] list, long UserID) {
         String[] projection = list;
         String selection = defineDB.FeedEntry._ID + " = ?";
-        String[] selectionArgs = {UserID};
+        String[] selectionArgs = {String.valueOf(UserID)};
 
         Cursor cursor = db.query(
                 DATABASE_NAME,
@@ -123,8 +123,8 @@ public class buildDB extends SQLiteOpenHelper {
         cursor.close();
         return result.toString();
     }
-    public void updateDB(String[] newData, String UserID){
-        String pastTitle = returnPastTitle(UserID);
+    public void updateDB(Context context, String[] newData){
+        String pastTitle = returnPastTitle(saveUserID.grabID(context));
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         String[] pastTitleEl = (pastTitle.split(","));
@@ -179,7 +179,7 @@ public class buildDB extends SQLiteOpenHelper {
         }
     }
 
-    public String returnPastTitle(String UserId){
+    public String returnPastTitle(long UserId){
         return buildDB.readDB(this.getReadableDatabase(), "UserDetails", new String[]{"Title","FName","SName"}, UserId);
     }
 }

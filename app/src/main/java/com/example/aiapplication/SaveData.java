@@ -21,7 +21,7 @@ public class SaveData{
     public static void saveUserDb(Context context, String userData) throws IOException {
         String[] userDataArray = userData.split(",");
         buildDB db = new buildDB(context, "UserCredentials.db");
-        db.populateCredentialDB(context, userDataArray, "UserCredentials.db");
+        saveUserID.saveID(context,db.populateCredentialDB(context, userDataArray));
     }
     public void updateUserDb(Context context, String userData, String UserID) throws IOException {
         String[] userDataArray = userData.split(",");

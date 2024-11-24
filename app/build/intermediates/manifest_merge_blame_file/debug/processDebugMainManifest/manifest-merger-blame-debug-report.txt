@@ -46,8 +46,8 @@
 31        <!-- Launcher activity -->
 32        <activity
 32-->C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:16:9-23:20
-33            android:name="com.example.aiapplication.MainActivity"
-33-->C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:17:13-41
+33            android:name="com.example.aiapplication.LoginPage"
+33-->C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:17:13-38
 34            android:exported="true" >
 34-->C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\src\main\AndroidManifest.xml:18:13-36
 35            <intent-filter>

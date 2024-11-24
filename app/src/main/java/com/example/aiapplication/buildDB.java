@@ -1,7 +1,5 @@
 package com.example.aiapplication;
 
-import static okhttp3.internal.Internal.instance;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -9,10 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
-
-import java.util.Arrays;
-
-import okhttp3.EventListener;
 
 public class buildDB extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 8; //
@@ -36,13 +30,13 @@ public class buildDB extends SQLiteOpenHelper {
 
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS DATABASE_NAME";
-    buildDB(@Nullable Context context, String DATABASE_NAME) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    buildDB(@Nullable Context context, String dbName) {
+        super(context, dbName, null, DATABASE_VERSION);
     }
 
-    static synchronized buildDB getInstance(Context context, String DATABASE_NAME) {
+    static synchronized buildDB getInstance(Context context, String dbName) {
         if (instance == null) {
-            instance = new buildDB(context.getApplicationContext(), DATABASE_NAME);
+            instance = new buildDB(context.getApplicationContext(), dbName);
         }
         return instance;
     }
@@ -58,11 +52,12 @@ public class buildDB extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void populateDB(Context context, String DATABASE_NAME) {
-        SQLiteDatabase db = (buildDB.getInstance(context, DATABASE_NAME).getWritableDatabase());
+    public static void populateDB(Context context, String UserID) {
+        SQLiteDatabase db = (buildDB.getInstance(context, "UserDetails.db").getWritableDatabase());
         ContentValues values = new ContentValues();
 
         // Populate the ContentValues with column data
+        values.put(defineDB.FeedEntry._ID, UserID);
         values.put(defineDB.FeedEntry.COLUMN_NAME_TITLE, "");
         values.put(defineDB.FeedEntry.COLUMN_NAME_FNAME, "");
         values.put(defineDB.FeedEntry.COLUMN_NAME_SNAME, "");
@@ -70,20 +65,35 @@ public class buildDB extends SQLiteOpenHelper {
         values.put(defineDB.FeedEntry.COLUMN_NAME_ADDRESS, "");
 
         // Insert the populated ContentValues into the database
-        long newRowId = db.insert(DATABASE_NAME, null, values);
+        long newRowId = db.insert("UserDetails.db", null, values);
         db.close();
     }
 
-    public void populateCredentialDB(Context context, String[] userData, String DATABASE_NAME) {
-        SQLiteDatabase db = (buildDB.getInstance(context, DATABASE_NAME).getWritableDatabase());
+    public static long populateCredentialDB(Context context, String[] userData) {
+        SQLiteDatabase db = (buildDB.getInstance(context, "UserCredentials.db").getWritableDatabase());
         ContentValues values = new ContentValues();
         values.put("username", userData[0].replace(",", ""));
         values.put("passwordHash", hashingAlg.saltHash(userData[1], hashingAlg.saltGen()));
-        long newRowId = db.insert(DATABASE_NAME, null, values);
+        long newRowId = db.insert("UserCredentials.db", null, values);
         db.close();
-        populateDB(context,"UserDetails.db");
+        populateDB(context, "UserDetails.db");
+        return newRowId;
     }
-
+    public static long readID(SQLiteDatabase db, String userName){
+        String[] projection = {"_ID"};
+        String selection = "username = ?";
+        String[] selectionArgs = {userName};
+        Cursor cursor = db.query(
+                "UserCredentials",
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+        return cursor.getColumnIndexOrThrow("_ID");
+}
     public static String readDB(SQLiteDatabase db, String DATABASE_NAME, String[] list, String UserID) {
         String[] projection = list;
         String selection = defineDB.FeedEntry._ID + " = ?";
@@ -141,7 +151,7 @@ public class buildDB extends SQLiteOpenHelper {
                 selection,
                 null);
     }
-    public static boolean loginUser(SQLiteDatabase db, String username, String password) {
+    public static long loginUser(SQLiteDatabase db, String username, String password) {
         username = username.replace(",", "");
         password = password.replace(",", "");
 
@@ -162,9 +172,13 @@ public class buildDB extends SQLiteOpenHelper {
         boolean userExists = cursor.getCount() > 0;
         cursor.close();
         db.close();
-
-        return userExists;
+        if (userExists) {
+            return readID(db, username);
+        } else{
+            return 1;
+        }
     }
+
     public String returnPastTitle(String UserId){
         return buildDB.readDB(this.getReadableDatabase(), "UserDetails", new String[]{"Title","FName","SName"}, UserId);
     }

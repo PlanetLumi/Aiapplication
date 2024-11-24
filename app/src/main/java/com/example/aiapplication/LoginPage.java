@@ -35,9 +35,13 @@ public class LoginPage extends AppCompatActivity {
             public void onClick(View v) {
                 String details = DataGrab.gatherUserData(getApplicationContext(), new String[]{"userName", "Password"});
                 String[] detailsArray = details.split(",");
-                if(buildDB.loginUser(buildDB.getInstance(getApplicationContext(), "UserCredentials.db").getReadableDatabase(),detailsArray[0], detailsArray[1])){
+                long user = buildDB.loginUser(buildDB.getInstance(getApplicationContext(), "UserCredentials.db").getReadableDatabase(),detailsArray[0], detailsArray[1]);
+                if (user != 1){
+                    saveUserID.saveID(getApplicationContext(), user);
                     Intent intent = new Intent(LoginPage.this, MainMenu.class);
                     startActivity(intent);
+                } else{
+                    Log.d("Login", "Login failed");
                 }
             }
         });

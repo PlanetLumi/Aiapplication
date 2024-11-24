@@ -30,7 +30,7 @@
 
         <!-- Launcher activity -->
         <activity
-            android:name="com.example.aiapplication.MainActivity"
+            android:name="com.example.aiapplication.LoginPage"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

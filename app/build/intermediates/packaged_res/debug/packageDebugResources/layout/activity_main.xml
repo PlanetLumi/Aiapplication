@@ -31,10 +31,10 @@
 
     <ImageButton
         android:id="@+id/takeToRequest"
-        android:layout_width="181dp"
-        android:layout_height="326dp"
+        android:layout_width="200dp"
+        android:layout_height="324dp"
         android:layout_below="@id/greetingsRobot"
-        android:layout_marginTop="54dp"
+        android:layout_marginTop="49dp"
         android:background="?android:attr/selectableItemBackground"
         android:contentDescription=""
         android:src="@drawable/refundbuttongrey"
@@ -43,11 +43,11 @@
 
     <ImageButton
         android:id="@+id/takeToComplaints"
-        android:layout_width="207dp"
-        android:layout_height="wrap_content"
+        android:layout_width="200dp"
+        android:layout_height="324dp"
         android:layout_below="@id/greetingsRobot"
-        android:layout_marginLeft="27dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginLeft="-3dp"
+        android:layout_marginTop="49dp"
         android:layout_toRightOf="@id/takeToRequest"
         android:background="?android:attr/selectableItemBackground"
         android:contentDescription=""
@@ -55,20 +55,13 @@
 
     <ImageButton
         android:id="@+id/takeToSettings"
-        android:layout_width="65dp"
-        android:layout_height="61dp"
+        android:layout_width="117dp"
+        android:layout_height="95dp"
         android:layout_alignRight="@id/title"
-        android:layout_marginRight="2dp"
+        android:layout_marginRight="-3dp"
         android:background="?android:attr/selectableItemBackground"
         android:paddingLeft="10dp"
         android:src="@drawable/settings"
         android:text="" />
-
-    <Button
-        android:id="@+id/takeToDataCollect"
-        android:layout_width="70dp"
-        android:layout_height="116dp"
-        android:layout_below="@id/greetingsRobot"
-        android:layout_marginTop="-63dp" />
 
 </RelativeLayout>

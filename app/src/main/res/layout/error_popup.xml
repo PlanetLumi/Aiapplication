@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:elevation="6dp"
+    android:background="@drawable/popup_round"
+    android:id="@+id/error">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="148dp"
+        android:layout_centerInParent="true"
+        android:id="@+id/errorImage"
+        android:layout_gravity="center"
+        android:src="@drawable/errorgrey"
+/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_margin="30dp"
+        android:layout_gravity="center"
+        android:textSize="22sp"
+        android:id="@+id/errorTitle"
+        android:text="Woopsies!"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Something went wrong."
+        android:textSize="22sp"
+        android:id="@+id/errorText"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text=""
+        android:textSize="22sp"
+        android:id="@+id/errorText2"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"/>
+</LinearLayout>

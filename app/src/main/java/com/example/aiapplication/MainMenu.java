@@ -28,7 +28,7 @@ public class MainMenu extends AppCompatActivity {
         if (!dbFile.exists() || !dbFile.canRead()) {
             Log.e("APP_DEBUG", "Database file is missing or not accessible: " + dbFile.getAbsolutePath());
         }
-        takeButtonFunc.takeBtn(MainMenu.this, DataCollect.class, R.id.takeToDataCollect);
+        takeButtonFunc.takeBtn(MainMenu.this, DataCollect.class, R.id.takeToSettings);
         takeButtonFunc.takeBtn(MainMenu.this, RequestPage.class, R.id.takeToRequest);
         takeButtonFunc.takeBtn(MainMenu.this, SettingsPage.class, R.id.takeToSettings);
     }

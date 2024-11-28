@@ -41,7 +41,7 @@ public class createUser extends AppCompatActivity {
                         if (verifyPassword.verifyMatch(DataGrab.gatherData(createUser.this, new String[]{"Password", "verifyPassword"}))) {
                             for (String flag : verifyPassword.allFlags(DataGrab.gatherData(createUser.this, new String[]{"Password"})[0])) {
                                 if (!flag.equals("True")) {
-                                    Log.d("Flag False", flag);
+                                    errorPopup.showError(createUser.this, "Password does not meet requirements", flag);
                                     verified = false;
                                 }
                             }
@@ -57,10 +57,10 @@ public class createUser extends AppCompatActivity {
                                 Log.d("Error", "Password does not meet requirements");
                             }
                         } else {
-                            Log.d("Error", "Passwords do not match");
+                            errorPopup.showError(createUser.this, "Passwords do not match!",null);
                         }
                     }else{
-                        Log.d("Error", "Username already exists, choose a new username or login!");
+                        errorPopup.showError(createUser.this, "Username already exists!",null);
                     }
 
             }

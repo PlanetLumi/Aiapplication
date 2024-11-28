@@ -2,13 +2,21 @@ R_DEF: Internal format may change without notice
 local
 array style_palette
 color black
+color buttongrey
 color greybase
+color outline
 color white
 drawable complaintsgrey
+drawable complaintsmoody
+drawable complaintssunny
+drawable errorgrey
 drawable greetinggrey
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable popup_round
 drawable refundbuttongrey
+drawable refundbuttonmoody
+drawable refundbuttonsunny
 drawable settings
 id Address
 id FName
@@ -20,6 +28,11 @@ id companyInp
 id createButton
 id datacollect
 id detailsInp
+id error
+id errorImage
+id errorText
+id errorText2
+id errorTitle
 id exitButton
 id fillRequest
 id generationArea
@@ -41,7 +54,6 @@ id settings
 id stylePalette
 id takeToComplaints
 id takeToCreate
-id takeToDataCollect
 id takeToLogin
 id takeToRequest
 id takeToSettings
@@ -54,6 +66,7 @@ id verifyPassword
 layout activity_main
 layout create_user
 layout data_collect
+layout error_popup
 layout fillrequest
 layout generation_area
 layout login_page

@@ -5,11 +5,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
 public class buildDB extends SQLiteOpenHelper {
-    public static final int DATABASE_VERSION = 13; //
+    public static final int DATABASE_VERSION = 32; //
     public static final String DATABASE_NAME = "UserDetails.db";
     private static buildDB instance;
 
@@ -22,18 +23,20 @@ public class buildDB extends SQLiteOpenHelper {
                     defineDB.FeedEntry.COLUMN_NAME_PHONE + " TEXT," +
                     defineDB.FeedEntry.COLUMN_NAME_ADDRESS + " TEXT)";
 
-    private static final String SQL_CREATE_USER_CREDENTIALS  =
+    private static final String SQL_CREATE_USER_CREDENTIALS =
             "CREATE TABLE UserCredentials (" +
                     "userID INTEGER PRIMARY KEY AUTOINCREMENT," +
                     "username TEXT UNIQUE," +
                     "passwordHash TEXT," +
+                    "salt TEXT," +
                     "locked BOOLEAN DEFAULT 0," +
+                    "lockTime INTEGER DEFAULT 0," +
                     "loginAttempts INTEGER DEFAULT 0)";
-
 
 
     private static final String SQL_DELETE_ENTRIES =
             "DROP TABLE IF EXISTS DATABASE_NAME";
+
     buildDB(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -72,19 +75,28 @@ public class buildDB extends SQLiteOpenHelper {
 
         // Insert the populated ContentValues into the database
         long newRowId = db.insert("UserDetails", null, values);
+        if (newRowId == -1) {
+            Log.e("DatabaseError", "Failed to create account");
+        } else {
+            Log.d("DatabaseInfo", "Account created successfully with ID: " + newRowId);
+        }
     }
 
     public static long populateCredentialDB(Context context, String[] userData) {
         SQLiteDatabase db = (buildDB.getInstance(context).getWritableDatabase());
         ContentValues values = new ContentValues();
-        values.put("username", (userData[0].replace(",", "").toLowerCase()));
-        values.put("passwordHash", hashingAlg.saltHash(userData[1], hashingAlg.saltGen()));
+        values.put("username", (userData[0].toLowerCase()));
+        String salt = hashingAlg.saltGen();
+        values.put("salt", salt);
+        values.put("passwordHash", hashingAlg.saltHash(userData[1], salt));
+
         long newRowId = db.insert("UserCredentials", null, values);
         populateDB(context, newRowId);
         return newRowId;
     }
-    public static long readID(SQLiteDatabase db, String userName){
-        String[] projection = {"_ID"};
+
+    public static long readID(SQLiteDatabase db, String userName) {
+        String[] projection = {"userID"};
         String selection = "username = ?";
         String[] selectionArgs = {userName};
         Cursor cursor = db.query(
@@ -96,9 +108,15 @@ public class buildDB extends SQLiteOpenHelper {
                 null,
                 null
         );
-        return cursor.getLong(cursor.getColumnIndexOrThrow("_ID"));
+        long userId = -1;
+        if (cursor != null && cursor.moveToFirst()) {
+            userId = cursor.getLong(cursor.getColumnIndexOrThrow("userID"));
+            cursor.close();
+        }
+        return userId;
 
-}
+    }
+
     public static String readDB(SQLiteDatabase db, String DATABASE_NAME, String[] list, long UserID) {
         String[] projection = list;
         String selection = defineDB.FeedEntry._ID + " = ?";
@@ -116,10 +134,10 @@ public class buildDB extends SQLiteOpenHelper {
         StringBuilder result = new StringBuilder();
         if (cursor != null && cursor.moveToFirst()) {
             do {
-               for(String s : list){
-                   String value = cursor.getString(cursor.getColumnIndexOrThrow(s));
-                   result.append(value).append(",");
-               }
+                for (String s : list) {
+                    String value = cursor.getString(cursor.getColumnIndexOrThrow(s));
+                    result.append(value).append(",");
+                }
                 result.append("\\n");
             } while (cursor.moveToNext());
         } else {
@@ -128,25 +146,26 @@ public class buildDB extends SQLiteOpenHelper {
         cursor.close();
         return result.toString();
     }
-    public void updateDB(Context context, String[] newData){
+
+    public void updateDB(Context context, String[] newData) {
         String pastTitle = returnPastTitle(saveUserID.grabID(context));
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         String[] pastTitleEl = (pastTitle.split(","));
         String title = pastTitleEl[0];
-        if (!newData[0].isEmpty()){
+        if (!newData[0].isEmpty()) {
             title = title.replace(pastTitleEl[1], newData[0]);
             values.put(defineDB.FeedEntry.COLUMN_NAME_FNAME, newData[0]);
         }
-        if (!newData[1].isEmpty()){
+        if (!newData[1].isEmpty()) {
             title = title.replace(pastTitleEl[2], newData[1]);
             values.put(defineDB.FeedEntry.COLUMN_NAME_SNAME, newData[1]);
         }
         values.put(defineDB.FeedEntry.COLUMN_NAME_TITLE, title);
-        if(!newData[2].isEmpty()){
+        if (!newData[2].isEmpty()) {
             values.put(defineDB.FeedEntry.COLUMN_NAME_PHONE, newData[2]);
         }
-        if(!newData[3].isEmpty()){
+        if (!newData[3].isEmpty()) {
             values.put(defineDB.FeedEntry.COLUMN_NAME_ADDRESS, newData[3]);
         }
         String selection = defineDB.FeedEntry._ID + " = ?";
@@ -156,93 +175,10 @@ public class buildDB extends SQLiteOpenHelper {
                 selection,
                 null);
     }
+
     public static long loginUser(SQLiteDatabase db, String username, String password) {
-        username = (username.replace(",", "")).toLowerCase();
-        password = password.replace(",", "");
-
-
-        String selection = "username = ? AND passwordHash = ?";
-        String[] selectionArgs = {username, hashingAlg.saltHash(password, hashingAlg.saltGen())};
-
-        Cursor cursor = db.query(
-                "UserCredentials",
-                null,
-                selection,
-                selectionArgs,
-                null,
-                null,
-                null
-        );
-
-        boolean userExists = cursor.getCount() > 0;
-        cursor.close();
-        if (userExists) {
-            return readID(db, username);
-        } else{
-            return 1;
-        }
-    }
-
-    public String returnPastTitle(long UserId){
-        return buildDB.readDB(this.getReadableDatabase(), "UserDetails", new String[]{"Title","FName","SName"}, UserId);
-    }
-
-    public static boolean checkIfUserExists(SQLiteDatabase db, String username){
-        username = (username.replace(",", ""));
-        String selection = "username = ?";
-        String[] selectionArgs = {username};
-        Cursor cursor = db.query(
-                "UserCredentials",
-                null,
-                selection,
-                selectionArgs,
-                null,
-                null,
-                null
-        );
-        boolean userExists = cursor.getCount() > 0;
-        cursor.close();
-        return userExists;
-    }
-    public static void lockUser(SQLiteDatabase db, String username) {
-        username = (username.replace(",", ""));
-        ContentValues values = new ContentValues();
-        values.put("locked", 1);
-        String selection = "username = ?";
-        String[] selectionArgs = {username};
-        int rowsUpdated = db.update(
-                "UserCredentials",
-                values,
-                selection,
-                selectionArgs);
-        if (rowsUpdated == 0) {
-            throw new IllegalStateException("No rows were updated");
-        }
-    }
-    public static boolean checkUserLocked(SQLiteDatabase db, String username){
-        username = (username.replace(",", ""));
-        String selection = "username = ?";
-        String[] selectionArgs = {username};
-        Cursor cursor = db.query(
-                "UserCredentials",
-                new String[]{"locked"},
-                selection,
-                selectionArgs,
-                null,
-                null,
-                null
-        );
-        boolean isLocked = false;
-        if (cursor != null && cursor.moveToFirst()) {
-            isLocked = cursor.getInt(cursor.getColumnIndexOrThrow("locked")) == 1;
-        }
-        cursor.close();
-        return isLocked;
-    }
-
-    public static int getLoginAttempts(SQLiteDatabase db, String username) {
-        username = (username.replace(",", ""));
-        String[] projection = {"loginAttempts"};
+        username = (username).toLowerCase();
+        String[] projection = {"passwordHash", "salt"};
         String selection = "username = ?";
         String[] selectionArgs = {username};
 
@@ -255,18 +191,158 @@ public class buildDB extends SQLiteOpenHelper {
                 null,
                 null
         );
-        int loginAttempts = 0;
         if (cursor != null && cursor.moveToFirst()) {
-            loginAttempts = cursor.getInt(cursor.getColumnIndexOrThrow("loginAttempts"));
+            String storedPasswordHash = cursor.getString(cursor.getColumnIndexOrThrow("passwordHash"));
+            String storedSalt = cursor.getString(cursor.getColumnIndexOrThrow("salt"));
+            cursor.close();
+            String inputPasswordHash = hashingAlg.saltHash(password, storedSalt);
+            if (storedPasswordHash.equals(inputPasswordHash)) {
+                return readID(db, username);
+            }
         }
+        if (cursor != null) {
+            cursor.close();
+        }
+        return -1;
+    }
+
+    public String returnPastTitle(long UserId) {
+        return buildDB.readDB(this.getReadableDatabase(), "UserDetails", new String[]{"Title", "FName", "SName"}, UserId);
+    }
+
+    public static boolean checkIfUserExists(SQLiteDatabase db, String username) {
+        username = (username.toLowerCase());
+        String selection = "username = ?";
+        String[] selectionArgs = {username};
+        Cursor cursor = db.query(
+                "UserCredentials",
+                null,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+        boolean userExists = cursor.getCount() > 0;
+        Log.d("UserExists", "User exists: " + userExists);
         cursor.close();
-        return loginAttempts;
+        return userExists;
+    }
+
+    public static void lockUser(SQLiteDatabase db, String username) {
+        username = (username).toLowerCase();
+        ContentValues values = new ContentValues();
+        values.put("locked", 1);
+        values.put("lockTime", System.currentTimeMillis());
+        String selection = "username = ?";
+        String[] selectionArgs = {username};
+        int rowsUpdated = db.update(
+                "UserCredentials",
+                values,
+                selection,
+                selectionArgs);
+        if (rowsUpdated == 0) {
+            throw new IllegalStateException("No rows were updated");
+        }
+    }
+
+    public static boolean checkUserLockedTime(SQLiteDatabase db, String username) {
+        username = (username).toLowerCase();
+        String selection = "username = ?";
+        String[] selectionArgs = {username};
+        String[] projection = {"locked", "lockTime"};
+        Cursor cursor = db.query(
+                "UserCredentials",
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+        boolean isLocked = false;
+        if (cursor != null && cursor.moveToFirst()) {
+            int locked = cursor.getInt(cursor.getColumnIndexOrThrow("locked"));
+            Log.d("Locked", "Locked: " + locked);
+            long lockTime = cursor.getLong(cursor.getColumnIndexOrThrow("lockTime"));
+            Log.d("LockTime", "LockTime: " + lockTime);
+            if (locked == 1) {
+                long currentTime = System.currentTimeMillis();
+                Log.d("CurrentTime", "Current Time: " + currentTime);
+                long lockDuration = findLockDuration(db, username);
+                Log.d("LockDuration", "LockDuration: " + lockDuration);
+                if(lockDuration > 100000){
+                    isLocked = true;
+                } else {
+                    if (currentTime - lockTime >= lockDuration) {
+                        Log.d("UserUnlocked", "User unlocked");
+                        userUnlocked(db, username);
+                    } else {
+                        isLocked = true;
+                    }
+                }
+            }
+            cursor.close();
+        }
+        return isLocked;
+    }
+        public static int getLoginAttempts (SQLiteDatabase db, String username){
+            username = (username).toLowerCase();
+            String[] projection = {"loginAttempts"};
+            String selection = "username = ?";
+            String[] selectionArgs = {username};
+
+            Cursor cursor = db.query(
+                    "UserCredentials",
+                    projection,
+                    selection,
+                    selectionArgs,
+                    null,
+                    null,
+                    null
+            );
+            int loginAttempts = 0;
+            if (cursor != null && cursor.moveToFirst()) {
+                loginAttempts = cursor.getInt(cursor.getColumnIndexOrThrow("loginAttempts"));
+            }
+            cursor.close();
+            return loginAttempts;
+        }
+
+    public static long findLockDuration(SQLiteDatabase db, String username) {
+        return  getLoginAttempts(db, username) * 600000L;
+
+    }
+    public static long findCurrentDuration(SQLiteDatabase db, String username){
+        Log.d("FindCurrentDuration", "findCurrentDuration called");
+        long duration = findLockDuration(db, username);
+        String selection = "username = ?";
+        String[] selectionArgs = {username};
+        String[] projection = {"lockTime"};
+        Cursor cursor = db.query(
+                "UserCredentials",
+                projection,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+        cursor.moveToFirst();
+        long lockTime = cursor.getLong(cursor.getColumnIndexOrThrow("lockTime"));
+        long currentTime = System.currentTimeMillis();
+        long elapsed = currentTime - lockTime;
+        cursor.close();
+        Log.d("CurrentTime", "Current Time: " + currentTime);
+        Log.d("Duration", "Duration: " + duration);
+        Log.d("Remaining", "Remaining: " + (duration - (currentTime - System.currentTimeMillis())));
+        return (duration - elapsed) / 60000;
     }
     public static void userUnlocked(SQLiteDatabase db, String username) {
-        username = (username.replace(",", ""));
+        username = (username).toLowerCase();
         ContentValues values = new ContentValues();
         values.put("locked", 0);
-        values.put("loginAttempts", 0);
+        values.put("lockTime", 0);
         String selection = "username = ?";
         String[] selectionArgs = {username};
         db.update(
@@ -277,7 +353,7 @@ public class buildDB extends SQLiteOpenHelper {
     }
     public static void incrementLoginAttempts(SQLiteDatabase db, String username) {
         int amountAttempts = getLoginAttempts(db, username);
-        username = (username.replace(",", ""));
+        username = (username).toLowerCase();
         ContentValues values = new ContentValues();
         values.put("loginAttempts", amountAttempts + 1);
         String selection = "username = ?";
@@ -291,9 +367,10 @@ public class buildDB extends SQLiteOpenHelper {
     }
 
     public static void resetLoginAttempts(SQLiteDatabase db, String username) {
-        username = (username.replace(",", ""));
+        username = (username).toLowerCase();
         ContentValues values = new ContentValues();
         values.put("loginAttempts", 0);
+        values.put("lockTime", 0);
         String selection = "username = ?";
         String[] selectionArgs = {username};
         db.update(
@@ -302,5 +379,20 @@ public class buildDB extends SQLiteOpenHelper {
                 selection,
                 selectionArgs);
     }
+    public static boolean checkSpam(SQLiteDatabase db, String tableName){
+        int count = 0;
+        try{
+            Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + tableName, null);
+            if (cursor.moveToFirst()) {
+            count = cursor.getInt(0);
+            }
+            cursor.close();
+            return count > 10;
+            } catch (Exception e){
+                e.printStackTrace();
+        }
+        return count > 10;
 
+
+    }
 }

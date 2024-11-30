@@ -1,5 +1,7 @@
 package com.example.aiapplication;
 
+import android.util.Log;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;

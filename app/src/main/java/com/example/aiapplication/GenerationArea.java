@@ -21,6 +21,7 @@ public class GenerationArea extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
         TextView grabbedEmail = findViewById(R.id.grabbedEmail);
         String[] requestSplit = ReadData.returnData(GenerationArea.this,"userRequestInput.txt").split(",");
         HunterGenCall hunterGenCall = new HunterGenCall();

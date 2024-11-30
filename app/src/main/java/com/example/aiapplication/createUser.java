@@ -15,8 +15,10 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.io.File;
 import java.io.IOException;
+import android.os.Handler;
 
 public class createUser extends AppCompatActivity {
+    private boolean buttonActive = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +35,16 @@ public class createUser extends AppCompatActivity {
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean verified = true;
-                if (DataGrab.gatherData(createUser.this, new String[]{"userName", "Password"}).length != 2) {
-                    Log.d("Error", "Not enough data");
-                }
-                    if(!buildDB.checkIfUserExists(buildDB.getInstance(createUser.this).getReadableDatabase(), DataGrab.gatherData(createUser.this, new String[]{"userName"})[0])) {
+                if (DataGrab.gatherData(createUser.this, new String[]{"userName", "Password"})[0].isEmpty() || DataGrab.gatherData(createUser.this, new String[]{"userName", "Password"})[1].isEmpty()) {
+                    errorPopup.showError(createUser.this, "Please fill in all fields!", null);
+                    return;
+                }else {
+                    if (buildDB.checkSpam((buildDB.getInstance(createUser.this).getReadableDatabase()), "UserCredentials")){
+                        errorPopup.showError(createUser.this, "You have made too many accounts!", "Please contact an administrator");
+                        return;
+                    }
+                    boolean verified = true;
+                    if (!buildDB.checkIfUserExists(buildDB.getInstance(createUser.this).getReadableDatabase(), DataGrab.gatherData(createUser.this, new String[]{"userName"})[0])) {
                         if (verifyPassword.verifyMatch(DataGrab.gatherData(createUser.this, new String[]{"Password", "verifyPassword"}))) {
                             for (String flag : verifyPassword.allFlags(DataGrab.gatherData(createUser.this, new String[]{"Password"})[0])) {
                                 if (!flag.equals("True")) {
@@ -57,11 +64,12 @@ public class createUser extends AppCompatActivity {
                                 Log.d("Error", "Password does not meet requirements");
                             }
                         } else {
-                            errorPopup.showError(createUser.this, "Passwords do not match!",null);
+                            errorPopup.showError(createUser.this, "Passwords do not match!", null);
                         }
-                    }else{
-                        errorPopup.showError(createUser.this, "Username already exists!",null);
+                    } else {
+                        errorPopup.showError(createUser.this, "Username already exists!", "Try another name or log-in!");
                     }
+                }
 
             }
         });

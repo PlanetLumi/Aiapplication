@@ -13,7 +13,7 @@ import java.io.OutputStreamWriter;
 import java.util.Arrays;
 
 public class SaveData{
-    public void FileSave(Context context, String userData,String fileName) throws IOException {
+    public static void FileSave(Context context, String userData, String fileName) throws IOException {
         FileOutputStream fileOutput = context.openFileOutput(fileName, MODE_PRIVATE);
         OutputStreamWriter outputWriter = new OutputStreamWriter(fileOutput);
         outputWriter.write(userData);

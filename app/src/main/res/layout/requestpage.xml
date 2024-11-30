@@ -31,20 +31,29 @@
         android:layout_below="@id/companyInp"
         android:layout_marginTop="6dp"
         android:hint="List of Details e.g Price list, Employee name, Price of item etc." />
-c
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/detailsInp"
+        android:text="Fill with saved personal data"
+        android:id="@+id/usePersonalData"
+        android:textSize="15dp"/>
+
     <Button
         android:id="@+id/saveButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/detailsInp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="74dp"
         android:text="Generate Request" />
+
     <Button
         android:id="@+id/exitButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/saveButton"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="58dp"
         android:text="Exit" />
 
     <TextView
@@ -55,11 +64,12 @@ c
         android:layout_marginTop="6dp"
         android:text="Yes"
         android:textSize="15sp" />
+
     <Button
         android:id="@+id/testButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/testView"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="82dp"
         android:text="Test" />
 </RelativeLayout>

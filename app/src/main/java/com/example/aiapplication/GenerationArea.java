@@ -21,7 +21,7 @@ public class GenerationArea extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
+        String preprompt;
         TextView grabbedEmail = findViewById(R.id.grabbedEmail);
         String[] requestSplit = ReadData.returnData(GenerationArea.this,"userRequestInput.txt").split(",");
         HunterGenCall hunterGenCall = new HunterGenCall();
@@ -34,9 +34,16 @@ public class GenerationArea extends AppCompatActivity {
             @Override
             public void onE(String errorMessage) {
                 grabbedEmail.setText("Error");
+                errorPopup.showError(GenerationArea.this, "This domain's email could not be found!", "Please make sure you have used the full domain name!");
             }
         });
-        String preprompt = prePromptArea.prePromptRefund(GenerationArea.this);
+        String generationType = ReadData.returnData(GenerationArea.this,"userChoice.txt");
+
+        if (generationType.equals("1")){
+            preprompt = prePromptArea.prePromptRefund(GenerationArea.this);
+        } else{
+            preprompt = prePromptArea.prePromptComplaints(GenerationArea.this);
+        }
         TextView generationBox = findViewById(R.id.GenerationBox);
         ChatGenCall chatGenCall = new ChatGenCall();
         chatGenCall.generateRequest(this, preprompt,requestSplit[1].replace("]" , ""), new ChatGenCall.generateRequestCallBack() {
@@ -56,6 +63,7 @@ public class GenerationArea extends AppCompatActivity {
             @Override
             public void onE(String errorMessage) {
                 generationBox.setText("Error");
+                errorPopup.showError(GenerationArea.this, "Generation failed!", "Please try again.");
             }
         });
 

@@ -1,8 +1,11 @@
 package com.example.aiapplication;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,6 +14,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import java.io.File;
+import java.io.IOException;
 
 public class MainMenu extends AppCompatActivity {
 
@@ -29,7 +33,25 @@ public class MainMenu extends AppCompatActivity {
             Log.e("APP_DEBUG", "Database file is missing or not accessible: " + dbFile.getAbsolutePath());
         }
         takeButtonFunc.takeBtn(MainMenu.this, DataCollect.class, R.id.takeToSettings);
-        takeButtonFunc.takeBtn(MainMenu.this, RequestPage.class, R.id.takeToRequest);
+        ImageButton takeToRequest = findViewById(R.id.takeToRequest);
+        takeToRequest.setOnClickListener(v -> {
+            try {
+                SaveData.FileSave(MainMenu.this, "1", "userChoice.txt");
+                takeButtonFunc.takeBtn(MainMenu.this, RequestPage.class, R.id.takeToRequest);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+        });
+        ImageButton takeToComplaints = findViewById(R.id.takeToComplaints);
+        takeToComplaints.setOnClickListener(v -> {
+            try {
+                SaveData.FileSave(MainMenu.this, "2", "userChoice.txt");
+                takeButtonFunc.takeBtn(MainMenu.this, RequestPage.class, R.id.takeToRequest);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
         takeButtonFunc.takeBtn(MainMenu.this, SettingsPage.class, R.id.takeToSettings);
     }
 }

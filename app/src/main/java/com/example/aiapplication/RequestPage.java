@@ -19,7 +19,7 @@ public class RequestPage extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        saveButtonFunc.funcSaveBtn(RequestPage.this,RequestPage.this, new String[]{"reqDomain", "infoBox"}, "userRequestInput.txt", GenerationArea.class);
+        saveButtonFunc.funcSaveBtn(RequestPage.this,RequestPage.this, new String[]{"reqDomain", "infoBox","usePersonalData"}, "userRequestInput.txt", GenerationArea.class);
         ExitButtonFunc.exitBtn(RequestPage.this, LoginPage.class);
     }
 }

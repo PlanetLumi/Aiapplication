@@ -16,15 +16,11 @@ public class HunterGenCall {
         void onE(String errorMessage);
     }
     public void fetchEmail(Context context,  String domain, EmailResultCallBack callback){
-        boolean check = true;
         HunterApiService hunterApiService = HunterAPI.getClient().create(HunterApiService.class);
         domain = domain.replace("www.", "");
         if(!domain.contains(".com") || !domain.contains(".net") || !domain.contains(".org")){
-            check = checkDomain.checkSuffix(context, domain);
-            if(!check){
                 callback.onE("Not a valid domain");
                 return;
-            }
         }
         Call<DomainSearchResponse> call = hunterApiService.getDomainSearch(domain, apiKey, department, type);
         call.enqueue(new Callback<DomainSearchResponse>() {

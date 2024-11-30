@@ -22,6 +22,7 @@ public class DataCollect extends AppCompatActivity {
             return insets;
         });
 
+        setBoxFunc.setBoxes(DataCollect.this, new String[]{"FName", "SName", "PNumber", "Address"});
         saveButtonFunc.saveDbBtn(DataCollect.this, DataCollect.this, new String[]{"FName", "SName", "PNumber", "Address"}, null);
         ExitButtonFunc.exitBtn(DataCollect.this, LoginPage.class);
 

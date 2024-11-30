@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
@@ -72,6 +73,10 @@ public class DataGrab extends AppCompatActivity {
             }
             if (current instanceof Switch) {
                 String data = idNames[i] + "," +  (((Switch) current).isChecked());
+                userData.add(data);
+            }
+            if (current instanceof CheckBox) {
+                String data = idNames[i] + "," +  (((CheckBox) current).isChecked());
                 userData.add(data);
             }
         }

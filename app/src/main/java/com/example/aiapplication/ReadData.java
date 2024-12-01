@@ -3,6 +3,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 public class ReadData {
     public static String returnData(Context context, String nameOfFile){
@@ -14,6 +15,7 @@ public class ReadData {
             }
             return stringBuilder.toString();
         } catch (IOException e) {
+            Log.d("FIle Read Error", "Error reading file");
             throw new RuntimeException(e);
         }
     }

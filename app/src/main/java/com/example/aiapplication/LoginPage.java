@@ -65,7 +65,9 @@ public class LoginPage extends AppCompatActivity {
                    saveUserID.saveID(LoginPage.this, user);
                    buildDB.resetLoginAttempts(buildDB.getInstance(LoginPage.this).getWritableDatabase(), normalizedUsername);
                    Intent intent = new Intent(LoginPage.this, MainMenu.class);
+                   intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                    startActivity(intent);
+                   finish();
                 } else {
                     buildDB.incrementLoginAttempts(buildDB.getInstance(LoginPage.this).getWritableDatabase(),normalizedUsername);
                     int attempts = buildDB.getLoginAttempts(buildDB.getInstance(LoginPage.this).getReadableDatabase(), normalizedUsername);

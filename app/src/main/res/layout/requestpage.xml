@@ -25,21 +25,32 @@
         android:hint="Company Name"
         android:textSize="15sp" />
 
-    <EditText
-        android:id="@+id/detailsInp"
-        android:layout_width="match_parent"
-        android:layout_height="236dp"
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="393dp"
+        android:layout_height="251dp"
         android:layout_below="@id/companyInp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/popup_round"
-        android:gravity="center"
-        android:hint="List of Details e.g Price list, Employee name, Price of item etc." />
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="9dp"
+        android:background="@drawable/popup_round">
+
+
+        <EditText
+            android:id="@+id/detailsInp"
+            android:layout_width="match_parent"
+            android:layout_height="236dp"
+            android:layout_marginTop="8dp"
+            android:hint="List of Details e.g Price list, Employee name, Price of item etc."
+            android:scrollbars="vertical" />
+
+    </ScrollView>
 
     <CheckBox
         android:id="@+id/usePersonalData"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/detailsInp"
+        android:layout_below="@id/scrollView"
         android:layout_marginTop="0dp"
         android:text="Fill with saved personal data"
         android:textSize="15dp" />

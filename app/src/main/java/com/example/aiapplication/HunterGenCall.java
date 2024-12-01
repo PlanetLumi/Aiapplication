@@ -18,7 +18,9 @@ public class HunterGenCall {
     public void fetchEmail(Context context,  String domain, EmailResultCallBack callback){
         HunterApiService hunterApiService = HunterAPI.getClient().create(HunterApiService.class);
         domain = domain.replace("www.", "");
-        if(!domain.contains(".com") || !domain.contains(".net") || !domain.contains(".org")){
+        domain = domain.replace("http://", "");
+        domain = domain.trim();
+        if(!domain.contains(".com") && !domain.contains(".net") && !domain.contains(".org")){
                 callback.onE("Not a valid domain");
                 return;
         }
@@ -35,6 +37,7 @@ public class HunterGenCall {
                     callback.onSuccess(email);
                 }
             } else {
+                errorPopup.showError(context, "Error", "Could not grab email");
                 callback.onE("Could not grab");
             }
         };

@@ -7,6 +7,7 @@ import android.content.Context;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -16,13 +17,13 @@ public class errorPopup {
     public static void showError(Context context, String errorMessage, String errorMessage2){
         Activity activity = (Activity) context;
         LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View rootView = activity.getWindow().getDecorView().getRootView(); // Gets the root view of the activity.
         View popupView = inflater.inflate(R.layout.error_popup, null);
         PopupWindow popupWindow = new PopupWindow(popupView,
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 true);
-
-        popupWindow.showAtLocation(activity.getCurrentFocus(), Gravity.CENTER, 0, 0);
+        popupWindow.showAtLocation(rootView, Gravity.CENTER, 0, 0);
         View container = popupWindow.getContentView().getRootView();
         WindowManager wm = (WindowManager) activity.getSystemService(Context.WINDOW_SERVICE);
         WindowManager.LayoutParams params = (WindowManager.LayoutParams) container.getLayoutParams();

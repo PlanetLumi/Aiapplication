@@ -12,7 +12,7 @@ public class ExitButtonFunc{
             exitBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(activity, LoginPage.class);
+                    Intent intent = new Intent(activity, targetActivity);
                     activity.startActivity(intent);
                 }
             });

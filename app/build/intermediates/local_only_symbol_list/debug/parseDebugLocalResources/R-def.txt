@@ -22,6 +22,7 @@ drawable refundbuttongrey
 drawable refundbuttonmoody
 drawable refundbuttonsunny
 drawable savebutton
+drawable sendemail
 drawable settings
 drawable workinghard
 id Address
@@ -40,11 +41,9 @@ id errorText
 id errorText2
 id errorTitle
 id exitButton
-id fillRequest
 id generationArea
 id grabbedEmail
 id greetingsRobot
-id infoBox
 id loginButton
 id loginbot
 id loginpage
@@ -52,10 +51,10 @@ id main
 id newUser
 id notifications
 id permissions
-id reqDomain
 id requestPage
 id requestTitle
 id saveButton
+id scrollView
 id sendEmail
 id settings
 id stylePalette
@@ -65,7 +64,6 @@ id takeToDetails
 id takeToLogin
 id takeToRequest
 id takeToSettings
-id testButton
 id testView
 id title
 id usePersonalData
@@ -76,7 +74,6 @@ layout activity_main
 layout create_user
 layout data_collect
 layout error_popup
-layout fillrequest
 layout generation_area
 layout login_page
 layout requestpage

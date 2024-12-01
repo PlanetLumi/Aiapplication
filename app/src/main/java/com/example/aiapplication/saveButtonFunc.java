@@ -20,9 +20,6 @@ public class saveButtonFunc{
                     SaveData saveData = new SaveData();
                     try {
                         saveData.FileSave(context, DataGrab.gatherUserData(context, fields), fileName);
-                        String data = ReadData.returnData(context, fileName);
-                        TextView testView = activity.findViewById(R.id.testView);
-                        testView.setText(data);
                         if (targetActivity != null) {
                             Intent intent = new Intent(activity, targetActivity);
                             activity.startActivity(intent);
@@ -44,7 +41,6 @@ public class saveButtonFunc{
                     SaveData saveData = new SaveData();
                     try {
                         saveData.FileSave(context, DataGrab.gatherUserData(context,fields), fileName);
-                        ReadData readData = new ReadData();
                         if (targetActivity != null) {
                             Intent intent = new Intent(activity, targetActivity);
                             activity.startActivity(intent);

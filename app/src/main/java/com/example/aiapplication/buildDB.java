@@ -53,18 +53,6 @@ public class buildDB extends SQLiteOpenHelper {
         db.execSQL(SQL_CREATE_USER_CREDENTIALS);
         db.execSQL(SQL_CREATE_ENTRIES);
         Log.d("DatabaseLifecycle", "Tables created successfully.");
-        checkTablesExistence(db); // Check if the tables are created
-    }
-
-    public static void checkTablesExistence(SQLiteDatabase db) {
-        Cursor cursor = db.rawQuery("SELECT name FROM sqlite_master WHERE type='table'", null);
-        if (cursor != null && cursor.moveToFirst()) {
-            do {
-                String tableName = cursor.getString(0);
-                Log.d("DatabaseInfo", "Table found: " + tableName);
-            } while (cursor.moveToNext());
-            cursor.close();
-        }
     }
 
     @Override

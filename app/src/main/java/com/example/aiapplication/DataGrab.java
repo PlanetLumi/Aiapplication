@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -65,6 +66,8 @@ public class DataGrab extends AppCompatActivity {
             View current = ((AppCompatActivity) context).findViewById(dataPoints.get(i));
             if (current instanceof EditText) {
                 String data = idNames[i] + "," +  (((EditText) current).getText().toString());
+                Log.d("Ticket","Text" + i + " " + data);
+
                 userData.add(data);
             }
             if (current instanceof Spinner) {
@@ -73,10 +76,13 @@ public class DataGrab extends AppCompatActivity {
             }
             if (current instanceof Switch) {
                 String data = idNames[i] + "," +  (((Switch) current).isChecked());
+                Log.d("Ticket","Switch" + i + " " + data);
+
                 userData.add(data);
             }
             if (current instanceof CheckBox) {
                 String data = idNames[i] + "," +  (((CheckBox) current).isChecked());
+                Log.d("Ticket","Tick" + i + " " + data);
                 userData.add(data);
             }
         }

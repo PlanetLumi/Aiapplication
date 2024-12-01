@@ -28,10 +28,6 @@ public class MainMenu extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        File dbFile = this.getDatabasePath("UserDetails");
-        if (!dbFile.exists() || !dbFile.canRead()) {
-            Log.e("APP_DEBUG", "Database file is missing or not accessible: " + dbFile.getAbsolutePath());
-        }
         takeButtonFunc.takeBtn(MainMenu.this, DataCollect.class, R.id.takeToSettings);
         ImageButton takeToRequest = findViewById(R.id.takeToRequest);
         takeToRequest.setOnClickListener(v -> {

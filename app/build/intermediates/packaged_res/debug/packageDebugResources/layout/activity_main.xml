@@ -15,7 +15,7 @@
         android:layout_width="430dp"
         android:layout_height="90dp"
         android:gravity="center"
-        android:text="Main Menu"
+        android:text="Help Desk"
         android:textSize="24sp" />
 
     <ImageView
@@ -62,6 +62,19 @@
         android:background="?android:attr/selectableItemBackground"
         android:paddingLeft="10dp"
         android:src="@drawable/settings"
+        android:text="" />
+
+    <ImageButton
+        android:layout_width="117dp"
+        android:layout_height="95dp"
+        android:layout_below="@id/takeToSettings"
+        android:layout_alignRight="@id/title"
+        android:layout_marginTop="-5dp"
+        android:layout_marginRight="-4dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:contentDescription=""
+        android:src="@drawable/details"
+        android:id="@+id/takeToDetails"
         android:text="" />
 
 </RelativeLayout>

@@ -10,14 +10,14 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 public class buildDB extends SQLiteOpenHelper {
-    public static final int DATABASE_VERSION = 32; //
-    public static final String DATABASE_NAME = "UserDetails.db";
+    public static final int DATABASE_VERSION = 53; //
     private static buildDB instance;
+
+
 
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE UserDetails (" +
                     defineDB.FeedEntry._ID + " INTEGER PRIMARY KEY," +
-                    defineDB.FeedEntry.COLUMN_NAME_TITLE + " TEXT," +
                     defineDB.FeedEntry.COLUMN_NAME_FNAME + " TEXT," +
                     defineDB.FeedEntry.COLUMN_NAME_SNAME + " TEXT," +
                     defineDB.FeedEntry.COLUMN_NAME_PHONE + " TEXT," +
@@ -33,32 +33,47 @@ public class buildDB extends SQLiteOpenHelper {
                     "lockTime INTEGER DEFAULT 0," +
                     "loginAttempts INTEGER DEFAULT 0)";
 
-
-    private static final String SQL_DELETE_ENTRIES =
-            "DROP TABLE IF EXISTS DATABASE_NAME";
+    private static final String SQL_DELETE_ENTRIES_USER_DETAILS = "DROP TABLE IF EXISTS UserDetails";
+    private static final String SQL_DELETE_ENTRIES_USER_CREDENTIALS = "DROP TABLE IF EXISTS UserCredentials";
 
     buildDB(@Nullable Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        super(context, "UserDetails.db", null, DATABASE_VERSION);
     }
 
-    static synchronized buildDB getInstance(Context context) {
+    static synchronized buildDB getInstance(Context context)  {
         if (instance == null) {
-            instance = new buildDB(context);
+            instance = new buildDB(context.getApplicationContext());
         }
         return instance;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        Log.d("DatabaseLifecycle", "onCreate() called: Creating tables.");
         db.execSQL(SQL_CREATE_USER_CREDENTIALS);
         db.execSQL(SQL_CREATE_ENTRIES);
+        Log.d("DatabaseLifecycle", "Tables created successfully.");
+        checkTablesExistence(db); // Check if the tables are created
+    }
+
+    public static void checkTablesExistence(SQLiteDatabase db) {
+        Cursor cursor = db.rawQuery("SELECT name FROM sqlite_master WHERE type='table'", null);
+        if (cursor != null && cursor.moveToFirst()) {
+            do {
+                String tableName = cursor.getString(0);
+                Log.d("DatabaseInfo", "Table found: " + tableName);
+            } while (cursor.moveToNext());
+            cursor.close();
+        }
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        Log.d("DatabaseLifecycle", "onUpgrade() called from version " + oldVersion + " to " + newVersion);
         db.execSQL("DROP TABLE IF EXISTS UserCredentials");
         db.execSQL("DROP TABLE IF EXISTS UserDetails");
         onCreate(db);
+        instance = null;
     }
 
     public static void populateDB(Context context, long UserID) {
@@ -67,7 +82,6 @@ public class buildDB extends SQLiteOpenHelper {
 
         // Populate the ContentValues with column data
         values.put(defineDB.FeedEntry._ID, UserID);
-        values.put(defineDB.FeedEntry.COLUMN_NAME_TITLE, "");
         values.put(defineDB.FeedEntry.COLUMN_NAME_FNAME, "");
         values.put(defineDB.FeedEntry.COLUMN_NAME_SNAME, "");
         values.put(defineDB.FeedEntry.COLUMN_NAME_PHONE, "");
@@ -117,63 +131,68 @@ public class buildDB extends SQLiteOpenHelper {
 
     }
 
-    public static String readDB(SQLiteDatabase db, String DATABASE_NAME, String[] list, long UserID) {
-        String[] projection = list;
+    public static String readDB(SQLiteDatabase db, String[] list, long UserID) {
         String selection = defineDB.FeedEntry._ID + " = ?";
-        String[] selectionArgs = {String.valueOf(UserID)};
+
 
         Cursor cursor = db.query(
-                DATABASE_NAME,
-                projection,
+                "UserDetails",
+                list,
                 selection,
-                selectionArgs,
+                new String[]{String.valueOf(UserID)},
                 null,
                 null,
-                defineDB.FeedEntry._ID + " DESC"
+                null
         );
         StringBuilder result = new StringBuilder();
+        int count = 0;
         if (cursor != null && cursor.moveToFirst()) {
             do {
                 for (String s : list) {
                     String value = cursor.getString(cursor.getColumnIndexOrThrow(s));
-                    result.append(value).append(",");
+                    result.append(value);
+                    Log.d("Data", "Read data" + value);
+                    if (count > 0) {
+                        result.append(",");
+                        result.append("\\n");
+                    }
+                    count++;
                 }
-                result.append("\\n");
             } while (cursor.moveToNext());
         } else {
             result.append("No data found");
         }
+        assert cursor != null;
         cursor.close();
         return result.toString();
     }
 
-    public void updateDB(Context context, String[] newData) {
-        String pastTitle = returnPastTitle(saveUserID.grabID(context));
+    public void updateDB(String[] newData, long UserID) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        String[] pastTitleEl = (pastTitle.split(","));
-        String title = pastTitleEl[0];
         if (!newData[0].isEmpty()) {
-            title = title.replace(pastTitleEl[1], newData[0]);
             values.put(defineDB.FeedEntry.COLUMN_NAME_FNAME, newData[0]);
+            Log.d("UpdateDB", "First name updated to: " + newData[0]);
         }
         if (!newData[1].isEmpty()) {
-            title = title.replace(pastTitleEl[2], newData[1]);
             values.put(defineDB.FeedEntry.COLUMN_NAME_SNAME, newData[1]);
+            Log.d("UpdateDB", "Last name updated to: " + newData[1]);
         }
-        values.put(defineDB.FeedEntry.COLUMN_NAME_TITLE, title);
         if (!newData[2].isEmpty()) {
             values.put(defineDB.FeedEntry.COLUMN_NAME_PHONE, newData[2]);
+            Log.d("UpdateDB", "Phone number updated to: " + newData[2]);
         }
         if (!newData[3].isEmpty()) {
             values.put(defineDB.FeedEntry.COLUMN_NAME_ADDRESS, newData[3]);
+            Log.d("UpdateDB", "Address updated to: " + newData[3]);
         }
         String selection = defineDB.FeedEntry._ID + " = ?";
+        Log.d("UpdateDB", "Updating user with ID: " + UserID);
         db.update(
                 "UserDetails",
                 values,
                 selection,
-                null);
+                new String[]{String.valueOf(UserID)});
     }
 
     public static long loginUser(SQLiteDatabase db, String username, String password) {
@@ -204,10 +223,6 @@ public class buildDB extends SQLiteOpenHelper {
             cursor.close();
         }
         return -1;
-    }
-
-    public String returnPastTitle(long UserId) {
-        return buildDB.readDB(this.getReadableDatabase(), "UserDetails", new String[]{"Title", "FName", "SName"}, UserId);
     }
 
     public static boolean checkIfUserExists(SQLiteDatabase db, String username) {

@@ -44,7 +44,7 @@ public class DataGrab extends AppCompatActivity {
     }
     public static String[] gatherData(Context context, String[] idNames) {
         List<Integer> dataPoints = (List<Integer>) fillDataGrabs(context, idNames);
-        List<String> userData = new ArrayList<>();
+        String[] userData = new String[dataPoints.size()];
         Activity activity = (Activity) context;
 
         for (int i = 0; i < dataPoints.size(); i++) {
@@ -52,11 +52,11 @@ public class DataGrab extends AppCompatActivity {
             if (current instanceof EditText) {
                 // Get text from EditText and add to list
                 String text = ((EditText) current).getText().toString();
-                userData.add(text);
+                userData[i] = text;
             }
         }
 
-        return userData.toArray(new String[0]); // Return as a String array
+        return userData; // Return as a String array
     }
     public static String gatherUserData(Context context, String[] idNames) {
         List<Integer> dataPoints = (List<Integer>) fillDataGrabs(context, idNames);

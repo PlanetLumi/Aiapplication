@@ -53,5 +53,6 @@ public class MainMenu extends AppCompatActivity {
             }
         });
         takeButtonFunc.takeBtn(MainMenu.this, SettingsPage.class, R.id.takeToSettings);
+        takeButtonFunc.takeBtn(MainMenu.this, DataCollect.class, R.id.takeToDetails);
     }
 }

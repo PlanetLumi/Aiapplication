@@ -13,7 +13,7 @@ public class prePromptArea {
         preprompt = preprompt + "The user is requesting a refund from" + requestSplit[0].replace("[", "");
         preprompt = preprompt + "Please use your understanding of the given company to accurately build a customer service request. Always place the Subject line at the top, and never make up data that has not been given to you. Do not add order numbers. ";
         if(!Objects.equals(requestSplit[2], "false")){
-            String userData = buildDB.readDB(activity.openOrCreateDatabase("UserDetails", Context.MODE_PRIVATE, null), "UserDetails", new String[]{"Title", "FName", "SName"}, saveUserID.grabID(activity));
+            String userData = buildDB.readDB(buildDB.getInstance(activity).getReadableDatabase(), new String[]{"Title", "FName", "SName"}, saveUserID.grabID(activity));
             preprompt = preprompt + "User data is: " + Arrays.toString(userData.split(","));
         }
         return preprompt;
@@ -24,7 +24,7 @@ public static String prePromptComplaints(Activity activity){
         preprompt = preprompt + "The user is making a complaint for" + requestSplit[0].replace("[", "");
         preprompt = preprompt + "Please use your understanding of the given company to accurately build a complaint service request. Always place the Subject line at the top, and never make up data that has not been given to you. Do not add order numbers. ";
         if(!Objects.equals(requestSplit[2], "false")){
-        String userData = buildDB.readDB(activity.openOrCreateDatabase("UserDetails", Context.MODE_PRIVATE, null), "UserDetails", new String[]{"Title", "FName", "SName"}, saveUserID.grabID(activity));
+        String userData = buildDB.readDB(buildDB.getInstance(activity).getReadableDatabase(), new String[]{"Title", "FName", "SName"}, saveUserID.grabID(activity));
         preprompt = preprompt + "User data is: " + Arrays.toString(userData.split(","));
         }
         return preprompt;

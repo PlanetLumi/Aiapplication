@@ -25,6 +25,6 @@ public class SaveData{
     }
     public void updateUserDb(Context context, String[] userData) throws IOException {
         buildDB db = new buildDB(context);
-        db.updateDB(context, userData);
+        db.updateDB(userData, saveUserID.grabID(context));
     }
 }

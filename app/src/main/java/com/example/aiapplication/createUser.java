@@ -16,6 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 import java.io.File;
 import java.io.IOException;
 import android.os.Handler;
+import android.widget.ImageButton;
 
 public class createUser extends AppCompatActivity {
     private boolean buttonActive = true;
@@ -30,7 +31,7 @@ public class createUser extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        Button createButton = findViewById(R.id.createButton);
+        ImageButton createButton = findViewById(R.id.createButton);
 
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -1,20 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
+    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/greybase"
     android:id="@+id/datacollect">
 
+    <ImageView
+        android:id="@+id/workingHard2"
+        android:layout_width="match_parent"
+        android:layout_height="187dp"
+        android:layout_below="@id/title"
+        android:layout_marginTop="123dp"
+        android:text=""
+        app:srcCompat="@drawable/workinghard"
+        tools:layout_editor_absoluteX="14dp"
+        tools:layout_editor_absoluteY="64dp" />
+
     <EditText
         android:id="@+id/SName"
-        android:layout_width="203dp"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/FName"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="4dp"
+        android:layout_marginLeft="0dp"
+        android:gravity="center"
         android:layout_marginTop="17dp"
+        android:background="@drawable/popup_round"
         android:hint="Surname" />
 
     <TextView
@@ -29,14 +42,16 @@
 
     <EditText
         android:id="@+id/FName"
-        android:layout_width="201dp"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/title"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="6dp"
+        android:layout_marginLeft="0dp"
         android:layout_marginTop="23dp"
-        android:layout_marginRight="22dp"
+        android:layout_marginRight="15dp"
         android:layout_toLeftOf="@+id/PNumber"
+        android:background="@drawable/popup_round"
+        android:gravity="center"
         android:hint="First Name" />
 
     <EditText
@@ -45,47 +60,47 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/title"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="27dp"
-        android:layout_marginRight="0dp"
-        android:hint="Phone Number"
-         />
+        android:layout_marginTop="22dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/popup_round"
+        android:gravity="center"
+        android:hint="Phone Number" />
 
     <EditText
         android:id="@+id/Address"
-        android:layout_width="211dp"
+        android:layout_width="220dp"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:layout_below="@id/SName"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="13dp"
         android:layout_marginRight="41dp"
+        android:background="@drawable/popup_round"
         android:hint="Address" />
-    <Button
-        android:layout_width="500dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/Address"
-        android:layout_alignParentLeft="true"
-        android:text="Save Data"
-        android:textSize="30dp"
-        android:id="@+id/saveButton"/>
 
-    <Button
+    <ImageButton
+        android:id="@+id/saveButton"
+        android:layout_width="200dp"
+        android:layout_height="324dp"
+        android:layout_below="@+id/Address"
+        android:layout_alignEnd="@id/exitButton"
+        android:layout_marginTop="186dp"
+        android:layout_marginEnd="-207dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:src="@drawable/savebutton"
+        android:text="Save Data" />
+
+    <ImageButton
         android:id="@+id/exitButton"
-        android:layout_width="500dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/saveButton"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="11dp"
+        android:layout_width="200dp"
+        android:layout_height="324dp"
+        android:layout_below="@id/Address"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="186dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:src="@drawable/exitbutton"
         android:text="Exit"
-        android:textSize="30dp" />
-
-    <TextView
-        android:id="@+id/testView"
-        android:layout_width="323dp"
-        android:layout_height="310dp"
-        android:layout_below="@id/exitButton"
-        android:layout_marginTop="11dp"
-        android:text="Yes"
-        android:textSize="20dp" />
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="512dp" />
 
 
 </RelativeLayout>

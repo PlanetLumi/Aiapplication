@@ -14,37 +14,37 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Account Settings"
+        android:text="@string/settingsPageTitle"
         android:textSize="40sp" />
 
     <Spinner
         android:id="@+id/stylePalette"
-        android:layout_width="409dp"
+        android:layout_width="408dp"
         android:layout_height="42dp"
         android:layout_below="@id/title"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="-3dp"
         android:layout_marginTop="8dp"
+        android:background="@drawable/popup_round"
         android:prompt="@string/style_palette_prompt" />
 
-    <Switch
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/permissions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/stylePalette"
+        android:layout_marginTop="2dp"
         android:checked="true"
-        android:gravity="right"
-        android:text="Permissions" />
+        android:text="@string/permissionsSwitch" />
 
-    <Switch
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/notifications"
-        android:layout_width="395dp"
+        android:layout_width="147dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/permissions"
-        android:layout_marginTop="-28dp"
+        android:layout_alignEnd="@id/permissions"
+        android:layout_marginTop="-48dp"
+        android:layout_marginEnd="-168dp"
         android:checked="true"
-        android:gravity="right"
-        android:text="Notifications" />
+        android:text="@string/notificationsSwitch" />
 
     <ImageView
         android:id="@+id/workingHard"
@@ -67,7 +67,7 @@
         android:layout_marginEnd="-204dp"
         android:background="?android:attr/selectableItemBackground"
         android:src="@drawable/savebutton"
-        android:text="Save Data" />
+        android:contentDescription="@string/saveButton" />
 
     <ImageButton
         android:id="@+id/exitButton"
@@ -79,7 +79,7 @@
         android:layout_marginBottom="-567dp"
         android:background="?android:attr/selectableItemBackground"
         android:src="@drawable/exitbutton"
-        android:text="Exit"
+        android:contentDescription="@string/takeBackButton"
         tools:layout_editor_absoluteX="30dp"
         tools:layout_editor_absoluteY="512dp" />
 

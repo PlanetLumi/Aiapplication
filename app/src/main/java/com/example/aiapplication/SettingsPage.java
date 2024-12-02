@@ -2,6 +2,7 @@ package com.example.aiapplication;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +35,7 @@ public class SettingsPage extends AppCompatActivity {
         spinnerFunc.setSpinners(SettingsPage.this, new String[]{"stylePalette"}, new int[] {R.array.style_palette},"settings.txt");
         switchFunc.setSwitches(SettingsPage.this, new String[] {"permissions","notifications"}, "settings.txt");
         saveButtonFunc.userSaveBtn(SettingsPage.this, SettingsPage.this, new String[]{"stylePalette", "permissions", "notifications"}, "settings.txt", null);
+        setPopup.setSuccessButton(SettingsPage.this, "greetinggrey", R.id.saveButton, "Settings saved!", null);
         ExitButtonFunc.exitBtn(SettingsPage.this, MainMenu.class);
     }
 }

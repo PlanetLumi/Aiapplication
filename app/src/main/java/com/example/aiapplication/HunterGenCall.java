@@ -5,7 +5,6 @@ import android.content.Context;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import androidx.appcompat.app.AppCompatActivity;
 
 public class HunterGenCall {
     String apiKey = "d52f75345524c888b7a60263cd7fd9de6ca7dbe5";
@@ -37,7 +36,7 @@ public class HunterGenCall {
                     callback.onSuccess(email);
                 }
             } else {
-                errorPopup.showError(context, "Error", "Could not grab email");
+                setPopup.showError(context, "Error", "Could not grab email");
                 callback.onE("Could not grab");
             }
         };

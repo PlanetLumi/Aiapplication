@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Make A Request"
+        android:text="@string/requestPageTitle"
         android:textSize="45sp" />
 
     <EditText
@@ -22,7 +22,7 @@
         android:layout_marginTop="-1dp"
         android:gravity="center"
         android:background="@drawable/popup_round"
-        android:hint="Company Name"
+        android:hint="@string/companyName"
         android:textSize="15sp" />
 
     <ScrollView
@@ -41,7 +41,7 @@
             android:layout_width="match_parent"
             android:layout_height="236dp"
             android:layout_marginTop="8dp"
-            android:hint="List of Details e.g Price list, Employee name, Price of item etc."
+            android:hint="@string/RequestPrompt"
             android:scrollbars="vertical" />
 
     </ScrollView>
@@ -52,8 +52,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/scrollView"
         android:layout_marginTop="0dp"
-        android:text="Fill with saved personal data"
-        android:textSize="15dp" />
+        android:text="@string/personalDataCheckBox"
+        android:textSize="15sp" />
 
     <ImageButton
         android:id="@+id/saveButton"
@@ -65,7 +65,7 @@
         android:layout_marginEnd="-204dp"
         android:background="?android:attr/selectableItemBackground"
         android:src="@drawable/savebutton"
-        android:text="Generate Request" />
+        android:contentDescription="@string/saveButton" />
 
     <ImageButton
         android:id="@+id/exitButton"
@@ -74,7 +74,7 @@
         android:layout_below="@+id/usePersonalData"
         android:layout_marginTop="13dp"
         android:background="?android:attr/selectableItemBackground"
-        android:src="@drawable/exitbutton"
-        android:text="Exit" />
+        android:contentDescription="@string/takeBackButton"
+        android:src="@drawable/exitbutton" />
 
 </RelativeLayout>

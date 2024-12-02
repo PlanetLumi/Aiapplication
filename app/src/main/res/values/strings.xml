@@ -6,4 +6,40 @@
         <item>Sunny</item>
         <item>Dark</item>
     </string-array>
+    <string name="mainMenuTitle">Help Desk</string>"
+    <string name="takeToRequest">Click to go to Refund Requests</string>
+    <string name="takeToComplaints"> Click to go to Complaint Requests</string>
+    <string name="takeToSettings"> Click to go to Settings</string>
+    <string name="takeToDetails"> Click to go to a page that saves your user details</string>"
+    <string name="Username"> Username</string>
+    <string name="Password"> Password</string>">
+    <string name="verifyPassword"> Verify Password</string>
+    <string name="SaveDetails"> Save Details</string>
+    <string name="saveButton"> Click to save details </string>
+    <string name="createUserTitle"> Create User</string>
+    <string name="createUserButton"> Click to create user with these details</string>
+    <string name="loginButton"> Click to Login</string>
+    <string name="takeBackButton"> Click to go back</string>
+    <string name="inputDetailsTitle">Your Info</string>
+    <string name="surname">Surname</string>
+    <string name="first_name">First Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="address">Address</string>
+    <string name="save_data">Save Data</string>
+    <string name="woopsies">Woopsies!</string>
+    <string name="something_went_wrong">Something went wrong.</string>
+    <string name="generationAreaTitle"> Request Generated</string>
+    <string name="send_Email_Button"> Click this button to start the sending email process</string>
+    <string name="loginPageTitle">Welcome Back!</string>
+    <string name="RequestPrompt">List of Details e.g Price list, Employee name, Price of item etc.</string>
+    <string name="personalDataCheckBox">Fill with saved personal data</string>
+    <string name="companyName">Company Name</string>
+    <string name="domainFinderDesc">Please input the name of the companies domain</string>
+    <string name="requestPageTitle">Make A Request</string>
+    <string name="settingsPageTitle">Account Settings</string>
+    <string name="permissionsSwitch">Permissions</string>
+    <string name="notificationsSwitch">Notifications</string>
+    <string name="popUpTitle">Woo Hoo!</string>
+
+
 </resources>

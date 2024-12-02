@@ -8,12 +8,11 @@
     android:id="@+id/error">
 
     <ImageView
+        android:id="@+id/successImage"
         android:layout_width="wrap_content"
-        android:layout_height="148dp"
-        android:id="@+id/errorImage"
+        android:layout_height="151dp"
         android:layout_gravity="center"
-        android:src="@drawable/errorgrey"
-    />
+        android:src="@drawable/successgrey" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,16 +20,16 @@
         android:layout_margin="30dp"
         android:layout_gravity="center"
         android:textSize="22sp"
-        android:id="@+id/errorTitle"
-        android:text="@string/woopsies"/>
+        android:text="@string/popUpTitle"
+        android:id="@+id/successTitle" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/something_went_wrong"
+        android:text=""
         android:textSize="22sp"
-        android:id="@+id/errorText"
+        android:id="@+id/successText"
         android:layout_marginBottom="10dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"/>
@@ -40,7 +39,7 @@
         android:layout_gravity="center"
         android:text=""
         android:textSize="22sp"
-        android:id="@+id/errorText2"
+        android:id="@+id/successText2"
         android:layout_marginBottom="10dp"
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"/>

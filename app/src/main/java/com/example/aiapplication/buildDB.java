@@ -10,7 +10,7 @@ import android.util.Log;
 import androidx.annotation.Nullable;
 
 public class buildDB extends SQLiteOpenHelper {
-    public static final int DATABASE_VERSION = 53; //
+    public static final int DATABASE_VERSION = 54; //
     private static buildDB instance;
 
 

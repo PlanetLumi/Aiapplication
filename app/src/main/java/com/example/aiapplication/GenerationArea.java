@@ -2,7 +2,6 @@ package com.example.aiapplication;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -11,8 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-
-import java.util.Arrays;
 
 public class GenerationArea extends AppCompatActivity {
 
@@ -25,7 +22,6 @@ public class GenerationArea extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        boolean GenFail = false;
         String preprompt;
         TextView grabbedEmail = findViewById(R.id.grabbedEmail);
         String[] requestSplit = ReadData.returnData(GenerationArea.this,"userRequestInput.txt").split(",");
@@ -62,17 +58,17 @@ public class GenerationArea extends AppCompatActivity {
                 String subject = findElements.findSubject(request);
                 request = request.replace(subject, "");
                 String finalRequest = request;
-
                 sendEmail.setOnClickListener(v -> {
                     emailFunc.sendEmail(GenerationArea.this,grabbedEmail.getText().toString(), subject, finalRequest);
                 });
+                setPopup.showSuccess(GenerationArea.this, "successgrey","Request sent!", null);
                 return request;
             }
 
             @Override
             public void onE(String errorMessage) {
                 generationBox.setText("Error");
-                errorPopup.showError(GenerationArea.this, "Generation failed!", "Please try again.");
+                setPopup.showError(GenerationArea.this, "Generation failed!", "Please try again.");
             }
         });
 

@@ -15,7 +15,7 @@
         android:layout_marginEnd="-211dp"
         android:background="?android:attr/selectableItemBackground"
         android:src="@drawable/sendemail"
-        android:text="Generate Request" />
+        android:contentDescription="@string/send_Email_Button" />
 
 
     <ScrollView
@@ -46,16 +46,16 @@
         android:layout_marginTop="10dp"
         android:background="?android:attr/selectableItemBackground"
         android:src="@drawable/exitbutton"
-        android:text="Exit" />
+        android:contentDescription="@string/takeBackButton" />
 
     <TextView
         android:id="@+id/requestTitle"
         android:layout_width="wrap_content"
         android:layout_height="66dp"
-        android:gravity="center"
         android:layout_marginStart="9dp"
         android:layout_marginEnd="9dp"
-        android:text="Generating Request"
+        android:gravity="center"
+        android:text="@string/generationAreaTitle"
         android:textSize="45sp" />
 
     <TextView
@@ -70,7 +70,6 @@
         android:layout_marginEnd="9dp"
         android:background="@drawable/popup_round"
         android:gravity="center"
-        android:text="Email"
         android:textSize="35sp" />
 
 

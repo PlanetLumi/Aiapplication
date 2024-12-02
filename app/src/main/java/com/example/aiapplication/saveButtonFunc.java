@@ -22,7 +22,9 @@ public class saveButtonFunc{
                         saveData.FileSave(context, DataGrab.gatherUserData(context, fields), fileName);
                         if (targetActivity != null) {
                             Intent intent = new Intent(activity, targetActivity);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             activity.startActivity(intent);
+                            activity.finish();
                         }
                     } catch (IOException e) {
                         throw new RuntimeException(e);
@@ -43,7 +45,9 @@ public class saveButtonFunc{
                         saveData.FileSave(context, DataGrab.gatherUserData(context,fields), fileName);
                         if (targetActivity != null) {
                             Intent intent = new Intent(activity, targetActivity);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             activity.startActivity(intent);
+                            activity.finish();
                         }
                     } catch (IOException e) {
                         throw new RuntimeException(e);
@@ -67,7 +71,9 @@ public class saveButtonFunc{
                     }
                     if (targetActivity != null) {
                         Intent intent = new Intent(activity, targetActivity);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         activity.startActivity(intent);
+                        activity.finish();
                     }
                 }
             });

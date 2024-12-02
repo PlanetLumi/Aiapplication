@@ -2,10 +2,9 @@ package com.example.aiapplication;
 
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageButton;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -13,6 +12,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class LoginPage extends AppCompatActivity {
+    private static final int MAX_ATTEMPTS = 10;
+    private static final int WARNING_ATTEMPTS = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,53 +25,48 @@ public class LoginPage extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
+        SQLiteDatabase readableDatabase = buildDB.getInstance(LoginPage.this).getReadableDatabase();
+        SQLiteDatabase writableDatabase = buildDB.getInstance(LoginPage.this).getWritableDatabase();
 
 
         ImageButton loginButton = findViewById(R.id.loginButton);
-        loginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String[] details = DataGrab.gatherData(LoginPage.this, new String[]{"userName", "Password"});
-                String normalizedUsername = details[0].replace(",", "").toLowerCase();
-                if(!buildDB.checkIfUserExists(buildDB.getInstance(LoginPage.this).getReadableDatabase(), normalizedUsername)){
-                    setPopup.showError(LoginPage.this, "Invalid Login", "This account does not exist.");
-                    return;
-                }
-                if(buildDB.checkUserLockedTime(buildDB.getInstance(LoginPage.this).getReadableDatabase(), normalizedUsername)){
-                    if(buildDB.getLoginAttempts(buildDB.getInstance(LoginPage.this).getReadableDatabase(), normalizedUsername) >= 10){
-                        setPopup.showError(LoginPage.this, "ACCOUNT LOCKED!", "This account has been permanently locked, please contact an administrator.");
-                        return;
-                    }
-                    setPopup.showError(LoginPage.this, "Too many attempts!", "This account has been locked, please wait " + buildDB.findCurrentDuration(buildDB.getInstance(LoginPage.this).getReadableDatabase(), normalizedUsername) + " minutes.");
-                    return;
-                }
-                long user = buildDB.loginUser(buildDB.getInstance(LoginPage.this).getReadableDatabase(), normalizedUsername, details[1]);
-                if(user != -1){
-                   saveUserID.saveID(LoginPage.this, user);
-                   buildDB.resetLoginAttempts(buildDB.getInstance(LoginPage.this).getWritableDatabase(), normalizedUsername);
-                   Intent intent = new Intent(LoginPage.this, MainMenu.class);
-                   intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                   startActivity(intent);
-                   finish();
-                } else {
-                    buildDB.incrementLoginAttempts(buildDB.getInstance(LoginPage.this).getWritableDatabase(),normalizedUsername);
-                    int attempts = buildDB.getLoginAttempts(buildDB.getInstance(LoginPage.this).getReadableDatabase(), normalizedUsername);
-                    if (attempts > 3){
-                        if(buildDB.getLoginAttempts(buildDB.getInstance(LoginPage.this).getReadableDatabase(), normalizedUsername) >= 10){
-                            setPopup.showError(LoginPage.this, "ACCOUNT LOCKED!", "This account has been permanently locked, please contact an administrator.");
-                            return;
-                        }
-                        buildDB.lockUser(buildDB.getInstance(LoginPage.this).getWritableDatabase(), normalizedUsername);
-                        setPopup.showError(LoginPage.this, "Too many attempts!", "This account has been locked, please wait " + buildDB.findCurrentDuration(buildDB.getInstance(LoginPage.this).getReadableDatabase(), normalizedUsername) + " minutes.");
-                    }else {
-                        String message2 = "Try again, or create an account! You have " + (3 - attempts) +  " attempt(s) left.";
-                        setPopup.showError(LoginPage.this, "Invalid Login", message2);
-                    }
-                }
+        loginButton.setOnClickListener(v -> {
+            String[] details = DataGrab.gatherData(LoginPage.this, new String[]{"userName", "Password"});
+            String normalizedUsername = details[0].replace(",", "").toLowerCase();
+            if (!buildDB.checkIfUserExists(readableDatabase, normalizedUsername)) {
+                setPopup.showError(LoginPage.this, "Invalid Login", "This account does not exist.");
+                return;
+            }
+            if (buildDB.checkUserLockedTime(readableDatabase, normalizedUsername)) {
+                failedLogin(readableDatabase, writableDatabase, normalizedUsername);
+                return;
+            }
+            long user = buildDB.loginUser(readableDatabase, normalizedUsername, details[1]);
+            if (user != -1) {
+                saveUserID.saveID(LoginPage.this, user);
+                buildDB.resetLoginAttempts(readableDatabase, normalizedUsername);
+                Intent intent = new Intent(LoginPage.this, MainMenu.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+            } else {
+                failedLogin(readableDatabase, writableDatabase, normalizedUsername);
             }
         });
         takeButtonFunc.takeBtn(this, createUser.class, R.id.takeToCreate);
+    }
+
+    private void failedLogin(SQLiteDatabase readableDatabase, SQLiteDatabase writableDatabase, String username) {
+        buildDB.incrementLoginAttempts(writableDatabase, username);
+        int attempts = buildDB.getLoginAttempts(readableDatabase, username);
+        if (attempts >= MAX_ATTEMPTS) {
+            setPopup.showError(LoginPage.this, "ACCOUNT LOCKED", "This account has been permanently locked, please contact an administrator.");
+        } else if (attempts > WARNING_ATTEMPTS) {
+            buildDB.lockUser(writableDatabase, username);
+            setPopup.showError(LoginPage.this, "Too many attempts!", "This account has been locked, please wait " + buildDB.findCurrentDuration(readableDatabase, username) + " minutes.");
+        } else {
+            setPopup.showError(LoginPage.this, "Invalid Login", "Try again, or create an account! You have " + (WARNING_ATTEMPTS - attempts) + " attempt(s) left.");
+        }
     }
 }
 

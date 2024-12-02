@@ -1,9 +1,5 @@
 package com.example.aiapplication;
-
-import static android.content.Context.MODE_PRIVATE;
-
 import android.content.Context;
-
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;

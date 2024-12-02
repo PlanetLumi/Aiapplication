@@ -2,7 +2,6 @@ package com.example.aiapplication;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.ImageButton;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;

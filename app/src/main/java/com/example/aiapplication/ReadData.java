@@ -2,7 +2,6 @@ package com.example.aiapplication;
 import java.io.FileInputStream;
 import java.io.IOException;
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
 public class ReadData {

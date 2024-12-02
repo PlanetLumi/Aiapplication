@@ -2,13 +2,13 @@ package com.example.aiapplication;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
+
 
 public class setBoxFunc{
     public static void setBoxes(Activity activity, String[] idNames){
-        for (int i = 0; i < idNames.length; i++) {
-            int boxGrab = activity.getResources().getIdentifier(idNames[i], "id", activity.getPackageName());
-            setBox(activity, boxGrab, idNames[i]);
+        for (String idName : idNames) {
+            int boxGrab = activity.getResources().getIdentifier(idName, "id", activity.getPackageName());
+            setBox(activity, boxGrab, idName);
         }
 
     }
@@ -17,11 +17,9 @@ public class setBoxFunc{
         Context context = activity.getApplicationContext();
         final android.widget.EditText box = activity.findViewById(boxId);
         if (box == null) {
-            Log.e("setBoxFunc", "EditText with ID " + boxId + " not found.");
             return;
         }
         String data = (buildDB.readDB(buildDB.getInstance(context).getReadableDatabase(), new String[]{boxName}, saveUserID.grabID(context)));
-        Log.d("Data", "Setting data for boxName " + boxName + ": " + data);
         if(data.isEmpty()){
             box.setHint(returnBoxHint(boxName));
         } else {

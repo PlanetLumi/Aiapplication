@@ -1,20 +1,15 @@
 package com.example.aiapplication;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 
 public class buildDB extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 54; //
     private static buildDB instance;
-
-
-
     private static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE UserDetails (" +
                     defineDB.FeedEntry._ID + " INTEGER PRIMARY KEY," +
@@ -32,10 +27,6 @@ public class buildDB extends SQLiteOpenHelper {
                     "locked BOOLEAN DEFAULT 0," +
                     "lockTime INTEGER DEFAULT 0," +
                     "loginAttempts INTEGER DEFAULT 0)";
-
-    private static final String SQL_DELETE_ENTRIES_USER_DETAILS = "DROP TABLE IF EXISTS UserDetails";
-    private static final String SQL_DELETE_ENTRIES_USER_CREDENTIALS = "DROP TABLE IF EXISTS UserCredentials";
-
     buildDB(@Nullable Context context) {
         super(context, "UserDetails.db", null, DATABASE_VERSION);
     }
@@ -49,15 +40,12 @@ public class buildDB extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        Log.d("DatabaseLifecycle", "onCreate() called: Creating tables.");
         db.execSQL(SQL_CREATE_USER_CREDENTIALS);
         db.execSQL(SQL_CREATE_ENTRIES);
-        Log.d("DatabaseLifecycle", "Tables created successfully.");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Log.d("DatabaseLifecycle", "onUpgrade() called from version " + oldVersion + " to " + newVersion);
         db.execSQL("DROP TABLE IF EXISTS UserCredentials");
         db.execSQL("DROP TABLE IF EXISTS UserDetails");
         onCreate(db);
@@ -65,7 +53,6 @@ public class buildDB extends SQLiteOpenHelper {
     }
 
     public static void populateDB(Context context, long UserID) {
-        SQLiteDatabase db = (buildDB.getInstance(context).getWritableDatabase());
         ContentValues values = new ContentValues();
 
         // Populate the ContentValues with column data
@@ -76,23 +63,17 @@ public class buildDB extends SQLiteOpenHelper {
         values.put(defineDB.FeedEntry.COLUMN_NAME_ADDRESS, "");
 
         // Insert the populated ContentValues into the database
-        long newRowId = db.insert("UserDetails", null, values);
-        if (newRowId == -1) {
-            Log.e("DatabaseError", "Failed to create account");
-        } else {
-            Log.d("DatabaseInfo", "Account created successfully with ID: " + newRowId);
-        }
+        buildDB.getInstance(context).getWritableDatabase().insert("UserDetails", null, values);
     }
 
     public static long populateCredentialDB(Context context, String[] userData) {
-        SQLiteDatabase db = (buildDB.getInstance(context).getWritableDatabase());
         ContentValues values = new ContentValues();
         values.put("username", (userData[0].toLowerCase()));
         String salt = hashingAlg.saltGen();
         values.put("salt", salt);
         values.put("passwordHash", hashingAlg.saltHash(userData[1], salt));
 
-        long newRowId = db.insert("UserCredentials", null, values);
+        long newRowId = buildDB.getInstance(context).getWritableDatabase().insert("UserCredentials", null, values);
         populateDB(context, newRowId);
         return newRowId;
     }
@@ -100,7 +81,7 @@ public class buildDB extends SQLiteOpenHelper {
     public static long readID(SQLiteDatabase db, String userName) {
         String[] projection = {"userID"};
         String selection = "username = ?";
-        String[] selectionArgs = {userName};
+        String[] selectionArgs = {userName.toLowerCase()};
         Cursor cursor = db.query(
                 "UserCredentials",
                 projection,
@@ -139,7 +120,6 @@ public class buildDB extends SQLiteOpenHelper {
                 for (String s : list) {
                     String value = cursor.getString(cursor.getColumnIndexOrThrow(s));
                     result.append(value);
-                    Log.d("Data", "Read data" + value);
                     if (count > 0) {
                         result.append(",");
                         result.append("\\n");
@@ -156,27 +136,21 @@ public class buildDB extends SQLiteOpenHelper {
     }
 
     public void updateDB(String[] newData, long UserID) {
-        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         if (!newData[0].isEmpty()) {
             values.put(defineDB.FeedEntry.COLUMN_NAME_FNAME, newData[0]);
-            Log.d("UpdateDB", "First name updated to: " + newData[0]);
         }
         if (!newData[1].isEmpty()) {
             values.put(defineDB.FeedEntry.COLUMN_NAME_SNAME, newData[1]);
-            Log.d("UpdateDB", "Last name updated to: " + newData[1]);
         }
         if (!newData[2].isEmpty()) {
             values.put(defineDB.FeedEntry.COLUMN_NAME_PHONE, newData[2]);
-            Log.d("UpdateDB", "Phone number updated to: " + newData[2]);
         }
         if (!newData[3].isEmpty()) {
             values.put(defineDB.FeedEntry.COLUMN_NAME_ADDRESS, newData[3]);
-            Log.d("UpdateDB", "Address updated to: " + newData[3]);
         }
         String selection = defineDB.FeedEntry._ID + " = ?";
-        Log.d("UpdateDB", "Updating user with ID: " + UserID);
-        db.update(
+        this.getWritableDatabase().update(
                 "UserDetails",
                 values,
                 selection,
@@ -214,9 +188,8 @@ public class buildDB extends SQLiteOpenHelper {
     }
 
     public static boolean checkIfUserExists(SQLiteDatabase db, String username) {
-        username = (username.toLowerCase());
         String selection = "username = ?";
-        String[] selectionArgs = {username};
+        String[] selectionArgs = {username.toLowerCase()};
         Cursor cursor = db.query(
                 "UserCredentials",
                 null,
@@ -227,18 +200,16 @@ public class buildDB extends SQLiteOpenHelper {
                 null
         );
         boolean userExists = cursor.getCount() > 0;
-        Log.d("UserExists", "User exists: " + userExists);
         cursor.close();
         return userExists;
     }
 
     public static void lockUser(SQLiteDatabase db, String username) {
-        username = (username).toLowerCase();
         ContentValues values = new ContentValues();
         values.put("locked", 1);
         values.put("lockTime", System.currentTimeMillis());
         String selection = "username = ?";
-        String[] selectionArgs = {username};
+        String[] selectionArgs = {username.toLowerCase()};
         int rowsUpdated = db.update(
                 "UserCredentials",
                 values,
@@ -265,20 +236,12 @@ public class buildDB extends SQLiteOpenHelper {
         );
         boolean isLocked = false;
         if (cursor != null && cursor.moveToFirst()) {
-            int locked = cursor.getInt(cursor.getColumnIndexOrThrow("locked"));
-            Log.d("Locked", "Locked: " + locked);
-            long lockTime = cursor.getLong(cursor.getColumnIndexOrThrow("lockTime"));
-            Log.d("LockTime", "LockTime: " + lockTime);
-            if (locked == 1) {
-                long currentTime = System.currentTimeMillis();
-                Log.d("CurrentTime", "Current Time: " + currentTime);
+            if (cursor.getInt(cursor.getColumnIndexOrThrow("locked")) == 1) {
                 long lockDuration = findLockDuration(db, username);
-                Log.d("LockDuration", "LockDuration: " + lockDuration);
                 if(lockDuration > 100000){
                     isLocked = true;
                 } else {
-                    if (currentTime - lockTime >= lockDuration) {
-                        Log.d("UserUnlocked", "User unlocked");
+                    if (System.currentTimeMillis() - cursor.getLong(cursor.getColumnIndexOrThrow("lockTime")) >= lockDuration){
                         userUnlocked(db, username);
                     } else {
                         isLocked = true;
@@ -290,10 +253,9 @@ public class buildDB extends SQLiteOpenHelper {
         return isLocked;
     }
         public static int getLoginAttempts (SQLiteDatabase db, String username){
-            username = (username).toLowerCase();
             String[] projection = {"loginAttempts"};
             String selection = "username = ?";
-            String[] selectionArgs = {username};
+            String[] selectionArgs = {username.toLowerCase()};
 
             Cursor cursor = db.query(
                     "UserCredentials",
@@ -317,8 +279,7 @@ public class buildDB extends SQLiteOpenHelper {
 
     }
     public static long findCurrentDuration(SQLiteDatabase db, String username){
-        Log.d("FindCurrentDuration", "findCurrentDuration called");
-        long duration = findLockDuration(db, username);
+        username = (username).toLowerCase();
         String selection = "username = ?";
         String[] selectionArgs = {username};
         String[] projection = {"lockTime"};
@@ -332,22 +293,15 @@ public class buildDB extends SQLiteOpenHelper {
                 null
         );
         cursor.moveToFirst();
-        long lockTime = cursor.getLong(cursor.getColumnIndexOrThrow("lockTime"));
-        long currentTime = System.currentTimeMillis();
-        long elapsed = currentTime - lockTime;
         cursor.close();
-        Log.d("CurrentTime", "Current Time: " + currentTime);
-        Log.d("Duration", "Duration: " + duration);
-        Log.d("Remaining", "Remaining: " + (duration - (currentTime - System.currentTimeMillis())));
-        return (duration - elapsed) / 60000;
+        return (findLockDuration(db, username) - (System.currentTimeMillis() - cursor.getLong(cursor.getColumnIndexOrThrow("lockTime")))) / 60000;
     }
     public static void userUnlocked(SQLiteDatabase db, String username) {
-        username = (username).toLowerCase();
         ContentValues values = new ContentValues();
         values.put("locked", 0);
         values.put("lockTime", 0);
         String selection = "username = ?";
-        String[] selectionArgs = {username};
+        String[] selectionArgs = {username.toLowerCase()};
         db.update(
                 "UserCredentials",
                 values,
@@ -355,10 +309,9 @@ public class buildDB extends SQLiteOpenHelper {
                 selectionArgs);
     }
     public static void incrementLoginAttempts(SQLiteDatabase db, String username) {
-        int amountAttempts = getLoginAttempts(db, username);
         username = (username).toLowerCase();
         ContentValues values = new ContentValues();
-        values.put("loginAttempts", amountAttempts + 1);
+        values.put("loginAttempts", getLoginAttempts(db, username) + 1);
         String selection = "username = ?";
         String[] selectionArgs = {username};
         db.update(
@@ -370,12 +323,11 @@ public class buildDB extends SQLiteOpenHelper {
     }
 
     public static void resetLoginAttempts(SQLiteDatabase db, String username) {
-        username = (username).toLowerCase();
         ContentValues values = new ContentValues();
         values.put("loginAttempts", 0);
         values.put("lockTime", 0);
         String selection = "username = ?";
-        String[] selectionArgs = {username};
+        String[] selectionArgs = {username.toLowerCase()};
         db.update(
                 "UserCredentials",
                 values,

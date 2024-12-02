@@ -11,7 +11,6 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
-import java.io.IOException;
 
 public class setPopup {
     public static void showError(Context context, String errorMessage, String errorMessage2){
@@ -64,12 +63,7 @@ public class setPopup {
         Activity activity = (Activity) context;
         View saveBtn = activity.findViewById(R.id.saveButton);
         if (saveBtn != null) {
-            saveBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    showSuccess(context, imageType, successMessage, successMessage2);
-                }
-            });
+            saveBtn.setOnClickListener(v -> showSuccess(context, imageType, successMessage, successMessage2));
         }
     }
 }

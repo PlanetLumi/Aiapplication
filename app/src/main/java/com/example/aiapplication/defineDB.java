@@ -1,5 +1,4 @@
 package com.example.aiapplication;
-
 import android.provider.BaseColumns;
 
 public class defineDB {

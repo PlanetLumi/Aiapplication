@@ -1,7 +1,4 @@
 package com.example.aiapplication;
-
-import java.util.Locale;
-
 public class verifyPassword {
 
     public static boolean verifyMatch(String[] passwords) {

@@ -13,7 +13,6 @@
         android:layout_height="187dp"
         android:layout_below="@id/title"
         android:layout_marginTop="123dp"
-        android:text=""
         app:srcCompat="@drawable/workinghard"
         tools:layout_editor_absoluteX="14dp"
         tools:layout_editor_absoluteY="64dp" />
@@ -23,12 +22,12 @@
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/FName"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="0dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
         android:gravity="center"
         android:layout_marginTop="17dp"
         android:background="@drawable/popup_round"
-        android:hint="Surname" />
+        android:hint="@string/surname" />
 
     <TextView
         android:id="@+id/title"
@@ -37,7 +36,7 @@
         android:gravity="center"
         android:layout_height="wrap_content"
         android:textSize="40sp"
-        android:text="Your Info" />
+        android:text="@string/inputDetailsTitle" />
 
 
     <EditText
@@ -45,26 +44,26 @@
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/title"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="0dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="23dp"
-        android:layout_marginRight="15dp"
-        android:layout_toLeftOf="@+id/PNumber"
+        android:layout_marginEnd="15dp"
+        android:layout_toStartOf="@+id/PNumber"
         android:background="@drawable/popup_round"
         android:gravity="center"
-        android:hint="First Name" />
+        android:hint="@string/first_name" />
 
     <EditText
         android:id="@+id/PNumber"
         android:layout_width="166dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/title"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginTop="22dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"
         android:background="@drawable/popup_round"
         android:gravity="center"
-        android:hint="Phone Number" />
+        android:hint="@string/phone_number" />
 
     <EditText
         android:id="@+id/Address"
@@ -73,9 +72,9 @@
         android:gravity="center"
         android:layout_below="@id/SName"
         android:layout_marginTop="13dp"
-        android:layout_marginRight="41dp"
+        android:layout_marginEnd="41dp"
         android:background="@drawable/popup_round"
-        android:hint="Address" />
+        android:hint="@string/address" />
 
     <ImageButton
         android:id="@+id/saveButton"
@@ -87,7 +86,8 @@
         android:layout_marginEnd="-207dp"
         android:background="?android:attr/selectableItemBackground"
         android:src="@drawable/savebutton"
-        android:text="Save Data" />
+        android:contentDescription="@string/saveButton"
+        android:text="@string/save_data" />
 
     <ImageButton
         android:id="@+id/exitButton"
@@ -98,7 +98,7 @@
         android:layout_marginTop="186dp"
         android:background="?android:attr/selectableItemBackground"
         android:src="@drawable/exitbutton"
-        android:text="Exit"
+        android:contentDescription="@string/takeBackButton"
         tools:layout_editor_absoluteX="30dp"
         tools:layout_editor_absoluteY="512dp" />
 

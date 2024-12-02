@@ -1,12 +1,6 @@
 package com.example.aiapplication;
-
-import static android.content.Intent.createChooser;
-
-import static androidx.core.content.ContextCompat.startActivity;
-
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 
 
 

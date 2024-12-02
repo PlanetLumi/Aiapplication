@@ -1,10 +1,7 @@
 package com.example.aiapplication;
-
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -22,7 +19,8 @@ public class GenerationArea extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        String preprompt;
+
+        String preprompt = findType();
         TextView grabbedEmail = findViewById(R.id.grabbedEmail);
         String[] requestSplit = ReadData.returnData(GenerationArea.this,"userRequestInput.txt").split(",");
 
@@ -36,33 +34,24 @@ public class GenerationArea extends AppCompatActivity {
             @Override
             public void onE(String errorMessage) {
                 grabbedEmail.setText("Error");
+                setPopup.showError(GenerationArea.this, "Email Grab Failed!", "Please try again.");
             }
         });
-        String generationType = ReadData.returnData(GenerationArea.this,"userChoice.txt");
-        Log.d("generationType", generationType);
 
-        if (generationType.equals("1")){
-            preprompt = prePromptArea.prePromptRefund(GenerationArea.this);
-        } else{
-            preprompt = prePromptArea.prePromptComplaints(GenerationArea.this);
-        }
         TextView generationBox = findViewById(R.id.GenerationBox);
         generationBox.setFocusable(true);
         generationBox.setFocusableInTouchMode(true);
         ChatGenCall chatGenCall = new ChatGenCall();
-        chatGenCall.generateRequest(this, preprompt,requestSplit[3].replace("]" , ""), new ChatGenCall.generateRequestCallBack() {
+        chatGenCall.generateRequest(preprompt,requestSplit[3].replace("]" , ""), new ChatGenCall.generateRequestCallBack() {
             @Override
-            public String onSuccess(String request) { //Code has to be placed into this function becuase it takes too long to receive an answer comparatively
+            public void onSuccess(String request) { //Code has to be placed into this function because it takes too long to receive an answer comparatively
                 generationBox.setText(request);
                 ImageButton sendEmail = findViewById(R.id.sendEmail);
                 String subject = findElements.findSubject(request);
-                request = request.replace(subject, "");
-                String finalRequest = request;
                 sendEmail.setOnClickListener(v -> {
-                    emailFunc.sendEmail(GenerationArea.this,grabbedEmail.getText().toString(), subject, finalRequest);
+                    emailFunc.sendEmail(GenerationArea.this,grabbedEmail.getText().toString(), subject, request.replace(subject, ""));
                 });
                 setPopup.showSuccess(GenerationArea.this, "successgrey","Request sent!", null);
-                return request;
             }
 
             @Override
@@ -74,4 +63,13 @@ public class GenerationArea extends AppCompatActivity {
 
         ExitButtonFunc.exitBtn(GenerationArea.this, RequestPage.class);
     }
+
+    private String findType() {
+        String generationType = ReadData.returnData(GenerationArea.this, "userChoice.txt");
+        if (generationType.equals("1")) {
+            return prePromptArea.prePromptRefund(GenerationArea.this);
+        } else {
+            return prePromptArea.prePromptComplaints(GenerationArea.this);
+    }
+}
 }

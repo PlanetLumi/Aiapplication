@@ -1,17 +1,14 @@
 package com.example.aiapplication;
 
 import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
-import java.util.Arrays;
+import java.util.Objects;
 
 public class spinnerFunc {
     public static void setSpinners (Activity activity, String[] idNames, int[] arrayId,String fileName){
-        ReadData readData = new ReadData();
-        String[] data = (((readData.returnData(activity, fileName)).replace("[", "").replace("]", "")).split(","));
+        String[] data = (((ReadData.returnData(activity, fileName)).replace("[", "").replace("]", "")).split(","));
         for (int i = 0; i < idNames.length; i++) {
             setSpinner(activity, idNames[i], arrayId[i], data);
         }
@@ -31,7 +28,7 @@ public class spinnerFunc {
                 if(data[i].replace(",", "").trim().equals(String.valueOf(spinnerId))){
                     String savedValue = data[i+1];
                     for (int position = 0; position < adapter.getCount(); position++) {
-                        if (adapter.getItem(position).toString().equals(savedValue)) {
+                        if (Objects.requireNonNull(adapter.getItem(position)).toString().equals(savedValue)) {
                             spinner.setSelection(position);
                             break;
                         }

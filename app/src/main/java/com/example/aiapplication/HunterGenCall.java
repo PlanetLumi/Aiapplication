@@ -16,30 +16,29 @@ public class HunterGenCall {
     }
     public void fetchEmail(Context context,  String domain, EmailResultCallBack callback){
         HunterApiService hunterApiService = HunterAPI.getClient().create(HunterApiService.class);
-        domain = domain.replace("www.", "");
-        domain = domain.replace("http://", "");
-        domain = domain.trim();
+        domain = (domain.replace("www.", "")).replace("http://", "").trim();
         if(!domain.contains(".com") && !domain.contains(".net") && !domain.contains(".org")){
                 callback.onE("Not a valid domain");
                 return;
         }
         Call<DomainSearchResponse> call = hunterApiService.getDomainSearch(domain, apiKey, department, type);
-        call.enqueue(new Callback<DomainSearchResponse>() {
+        call.enqueue(new Callback<>() {
             @Override
             public void onResponse(Call<DomainSearchResponse> call, Response<DomainSearchResponse> response) {
-            if (response.isSuccessful()) {
-                DomainSearchResponse domainSearchResponse = response.body();
-                if (domainSearchResponse.getData().getEmails().isEmpty()) {
-                    callback.onE("No email found");
-                } else{
-                    String email = domainSearchResponse.getData().getEmails().get(0).getValue();
-                    callback.onSuccess(email);
+                if (response.isSuccessful()) {
+                    DomainSearchResponse domainSearchResponse = response.body();
+                    if (domainSearchResponse.getData().getEmails().isEmpty()) {
+                        callback.onE("No email found");
+                    } else {
+                        String email = domainSearchResponse.getData().getEmails().get(0).getValue();
+                        callback.onSuccess(email);
+                    }
+                } else {
+                    setPopup.showError(context, "Error", "Could not grab email");
+                    callback.onE("Could not grab");
                 }
-            } else {
-                setPopup.showError(context, "Error", "Could not grab email");
-                callback.onE("Could not grab");
             }
-        };
+
             @Override
             public void onFailure(Call<DomainSearchResponse> call, Throwable t) {
                 callback.onE("Network Failure: " + t.getMessage());

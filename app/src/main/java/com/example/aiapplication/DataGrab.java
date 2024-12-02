@@ -1,26 +1,12 @@
-
 package com.example.aiapplication;
-
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Switch;
-import android.widget.TextView;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -35,14 +21,7 @@ public class DataGrab extends AppCompatActivity {
         }
         return dataPoints;
     }
-    public static Collection<Integer> fillUserDataGrabs(Context context, String[] idNames) {
-        List<Integer> dataPoints = new ArrayList<>();
-        for (int i = 0; i < idNames.length; i++) {
-            int resourceId = context.getResources().getIdentifier(idNames[i], "id", context.getPackageName());
-            dataPoints.add(resourceId);
-        }
-        return dataPoints;
-    }
+
     public static String[] gatherData(Context context, String[] idNames) {
         List<Integer> dataPoints = (List<Integer>) fillDataGrabs(context, idNames);
         String[] userData = new String[dataPoints.size()];
@@ -66,8 +45,6 @@ public class DataGrab extends AppCompatActivity {
             View current = ((AppCompatActivity) context).findViewById(dataPoints.get(i));
             if (current instanceof EditText) {
                 String data = idNames[i] + "," +  (((EditText) current).getText().toString());
-                Log.d("Ticket","Text" + i + " " + data);
-
                 userData.add(data);
             }
             if (current instanceof Spinner) {
@@ -76,13 +53,10 @@ public class DataGrab extends AppCompatActivity {
             }
             if (current instanceof Switch) {
                 String data = idNames[i] + "," +  (((Switch) current).isChecked());
-                Log.d("Ticket","Switch" + i + " " + data);
-
                 userData.add(data);
             }
             if (current instanceof CheckBox) {
                 String data = idNames[i] + "," +  (((CheckBox) current).isChecked());
-                Log.d("Ticket","Tick" + i + " " + data);
                 userData.add(data);
             }
         }

@@ -23,7 +23,7 @@
         android:layout_height="240dp"
         android:layout_below="@id/title"
         android:layout_marginTop="2dp"
-        android:src="@drawable/greetinggrey"
+        android:src="@drawable/greetingsbotmoody"
         android:text=""
         tools:layout_editor_absoluteX="14dp"
         tools:layout_editor_absoluteY="64dp" />
@@ -36,7 +36,7 @@
         android:layout_marginTop="49dp"
         android:background="?android:attr/selectableItemBackground"
         android:contentDescription="@string/takeToRequest"
-        android:src="@drawable/refundbuttongrey"
+        android:src="@drawable/refundbuttonmoody"
         tools:layout_editor_absoluteX="30dp"
         tools:layout_editor_absoluteY="512dp" />
 
@@ -50,7 +50,7 @@
         android:layout_toEndOf="@id/takeToRequest"
         android:background="?android:attr/selectableItemBackground"
         android:contentDescription="@string/takeToComplaints"
-        android:src="@drawable/complaintsgrey" />
+        android:src="@drawable/complaintsmoody" />
 
     <ImageButton
         android:id="@+id/takeToSettings"

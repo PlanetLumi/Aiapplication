@@ -4,5 +4,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="greybase">#EDF4F8</color>
     <color name="buttongrey">#D4DBDF</color>
+    <color name="orangebase">#E47B02</color>
+    <color name="buttonorange">#EFA107</color>
     <color name="outline">#474747</color>
+    <color name="buttonblue">#0101C8</color>
+    <color name="bluebase">#2E8AFF</color>
 </resources>

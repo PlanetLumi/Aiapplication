@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="4dp"
+    android:paddingRight="4dp"
+    android:background="@color/greybase"
+    android:id="@+id/main">
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="430dp"
+        android:layout_height="90dp"
+        android:gravity="center"
+        android:text="@string/mainMenuTitle"
+        android:textSize="24sp" />
+
+    <ImageView
+        android:id="@+id/greetingsRobot"
+        android:layout_width="395dp"
+        android:layout_height="240dp"
+        android:layout_below="@id/title"
+        android:layout_marginTop="2dp"
+        android:src="@drawable/greetingsbot"
+        android:text=""
+        tools:layout_editor_absoluteX="14dp"
+        tools:layout_editor_absoluteY="64dp" />
+
+    <ImageButton
+        android:id="@+id/takeToRequest"
+        android:layout_width="200dp"
+        android:layout_height="324dp"
+        android:layout_below="@id/greetingsRobot"
+        android:layout_marginTop="49dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:contentDescription="@string/takeToRequest"
+        android:src="@drawable/refundbuttongrey"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="512dp" />
+
+    <ImageButton
+        android:id="@+id/takeToComplaints"
+        android:layout_width="200dp"
+        android:layout_height="324dp"
+        android:layout_below="@id/greetingsRobot"
+        android:layout_marginStart="-3dp"
+        android:layout_marginTop="49dp"
+        android:layout_toEndOf="@id/takeToRequest"
+        android:background="?android:attr/selectableItemBackground"
+        android:contentDescription="@string/takeToComplaints"
+        android:src="@drawable/complaintsgrey" />
+
+    <ImageButton
+        android:id="@+id/takeToSettings"
+        android:layout_width="117dp"
+        android:layout_height="95dp"
+        android:layout_alignEnd="@id/title"
+        android:layout_marginEnd="-14dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:contentDescription="@string/takeToSettings"
+        android:src="@drawable/settings"
+        android:text="" />
+
+    <ImageButton
+        android:layout_width="117dp"
+        android:layout_height="95dp"
+        android:layout_below="@id/takeToSettings"
+        android:layout_alignEnd="@id/title"
+        android:layout_marginTop="-5dp"
+        android:layout_marginEnd="-4dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:contentDescription="@string/takeToDetails"
+        android:src="@drawable/details"
+        android:id="@+id/takeToDetails"
+        android:text="" />
+
+</RelativeLayout>

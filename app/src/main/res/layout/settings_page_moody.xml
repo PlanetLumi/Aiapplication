@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="4dp"
+    android:paddingRight="4dp"
+    android:background="@color/greybase"
+    android:id="@+id/settings">
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/settingsPageTitle"
+        android:textSize="40sp" />
+
+    <Spinner
+        android:id="@+id/stylePalette"
+        android:layout_width="408dp"
+        android:layout_height="42dp"
+        android:layout_below="@id/title"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/popup_round_moody"
+        android:prompt="@string/style_palette_prompt" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/permissions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/stylePalette"
+        android:layout_marginTop="2dp"
+        android:checked="true"
+        android:text="@string/permissionsSwitch" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/notifications"
+        android:layout_width="147dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/permissions"
+        android:layout_alignEnd="@id/permissions"
+        android:layout_marginTop="-48dp"
+        android:layout_marginEnd="-168dp"
+        android:checked="true"
+        android:text="@string/notificationsSwitch" />
+
+    <ImageView
+        android:id="@+id/workingHard"
+        android:layout_width="401dp"
+        android:layout_height="209dp"
+        android:layout_below="@id/title"
+        android:layout_marginTop="106dp"
+        android:src="@drawable/detailsbotmoody"
+        android:text=""
+        tools:layout_editor_absoluteX="14dp"
+        tools:layout_editor_absoluteY="64dp" />
+
+    <ImageButton
+        android:id="@+id/saveButton"
+        android:layout_width="200dp"
+        android:layout_height="324dp"
+        android:layout_below="@+id/workingHard"
+        android:layout_alignEnd="@id/exitButton"
+        android:layout_marginTop="33dp"
+        android:layout_marginEnd="-204dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:src="@drawable/savebuttonmoody"
+        android:contentDescription="@string/saveButton" />
+
+    <ImageButton
+        android:id="@+id/exitButton"
+        android:layout_width="200dp"
+        android:layout_height="324dp"
+        android:layout_below="@+id/workingHard"
+        android:layout_marginStart="-3dp"
+        android:layout_marginTop="33dp"
+        android:layout_marginBottom="-567dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:src="@drawable/gobackmoody"
+        android:contentDescription="@string/takeBackButton"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="512dp" />
+
+</RelativeLayout>

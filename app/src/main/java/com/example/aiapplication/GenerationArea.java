@@ -13,7 +13,8 @@ public class GenerationArea extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.generation_area);
+        int layoutId = setPalette.setLayout(GenerationArea.this, "generation_area");
+        setContentView(layoutId);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.generationArea), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -51,7 +52,7 @@ public class GenerationArea extends AppCompatActivity {
                 sendEmail.setOnClickListener(v -> {
                     emailFunc.sendEmail(GenerationArea.this,grabbedEmail.getText().toString(), subject, request.replace(subject, ""));
                 });
-                setPopup.showSuccess(GenerationArea.this, "successgrey","Request sent!", null);
+                setPopup.showSuccess(GenerationArea.this, "successbot","Request sent!", null);
             }
 
             @Override

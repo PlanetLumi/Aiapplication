@@ -2,6 +2,7 @@ package com.example.aiapplication;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,13 +12,16 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 
+import androidx.activity.EdgeToEdge;
+
 
 public class setPopup {
     public static void showError(Context context, String errorMessage, String errorMessage2){
+        int layoutId = setPalette.setLayout(context, "error_popup");
         Activity activity = (Activity) context;
         LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rootView = activity.getWindow().getDecorView().getRootView(); // Gets the root view of the activity.
-        View popupView = inflater.inflate(R.layout.error_popup, null);
+        View popupView = inflater.inflate(layoutId, null);
         PopupWindow popupWindow = new PopupWindow(popupView,
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -35,11 +39,15 @@ public class setPopup {
         errorText2.setText(errorMessage2);
     }
     public static void showSuccess(Context context, String imageType, String successMessage, String sucessMessage2){
+        int layoutId = setPalette.setLayout(context, "sucess_popup");
+        Log.d("showSuccess", "Layout ID: " + layoutId);
+        String popUp = setPalette.findPopUp(context, imageType);
+        imageType = imageType + popUp;
         int drawable = context.getResources().getIdentifier(imageType, "drawable", context.getPackageName());
         Activity activity = (Activity) context;
         LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View rootView = activity.getWindow().getDecorView().getRootView(); // Gets the root view of the activity.
-        View popupView = inflater.inflate(R.layout.sucess_popup, null);
+        View popupView = inflater.inflate(layoutId, null);
         PopupWindow popupWindow = new PopupWindow(popupView,
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -59,7 +67,7 @@ public class setPopup {
         successText2.setText(sucessMessage2);
     }
 
-    public static void setSuccessButton(Context context, String imageType, int buttonId, String successMessage, String successMessage2){
+    public static void setSuccessButton(Context context, String imageType, String successMessage, String successMessage2){
         Activity activity = (Activity) context;
         View saveBtn = activity.findViewById(R.id.saveButton);
         if (saveBtn != null) {

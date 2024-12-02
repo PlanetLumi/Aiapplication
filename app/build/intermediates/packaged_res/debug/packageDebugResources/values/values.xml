@@ -3,11 +3,15 @@
     <string-array name="style_palette">
         <item>Robotic</item>
         <item>Sunny</item>
-        <item>Dark</item>
+        <item>Moody</item>
     </string-array>
     <color name="black">#FF000000</color>
+    <color name="bluebase">#2E8AFF</color>
+    <color name="buttonblue">#0101C8</color>
     <color name="buttongrey">#D4DBDF</color>
+    <color name="buttonorange">#EFA107</color>
     <color name="greybase">#EDF4F8</color>
+    <color name="orangebase">#E47B02</color>
     <color name="outline">#474747</color>
     <color name="white">#FFFFFFFF</color>
     <string name="Password"> Password</string>

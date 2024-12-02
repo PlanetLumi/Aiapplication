@@ -4,6 +4,7 @@ package com.example.aiapplication;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageButton;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,15 +12,19 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+
 public class LoginPage extends AppCompatActivity {
     private static final int MAX_ATTEMPTS = 10;
     private static final int WARNING_ATTEMPTS = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        int layoutId = setPalette.setLayout(LoginPage.this, "login_page");
         super.onCreate(savedInstanceState);
+        setContentView(layoutId);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.login_page);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.loginpage), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);

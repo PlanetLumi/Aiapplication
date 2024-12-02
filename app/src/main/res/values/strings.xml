@@ -4,7 +4,7 @@
     <string-array name = "style_palette">
         <item>Robotic</item>
         <item>Sunny</item>
-        <item>Dark</item>
+        <item>Moody</item>
     </string-array>
     <string name="mainMenuTitle">Help Desk</string>"
     <string name="takeToRequest">Click to go to Refund Requests</string>

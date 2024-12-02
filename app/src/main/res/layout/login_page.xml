@@ -33,6 +33,7 @@
         android:layout_below="@id/title"
         android:layout_marginTop="188dp"
         android:gravity="center"
+        android:background="@drawable/popup_round"
         android:hint="@string/Username" />
 
     <EditText
@@ -42,6 +43,7 @@
         android:layout_below="@id/userName"
         android:layout_marginTop="23dp"
         android:gravity="center"
+        android:background="@drawable/popup_round"
         android:hint="@string/Password"
         android:inputType="textPassword" />
 

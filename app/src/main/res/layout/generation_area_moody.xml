@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/greybase"
+    android:id="@+id/generationArea">
+
+    <ImageButton
+        android:id="@+id/sendEmail"
+        android:layout_width="200dp"
+        android:layout_height="314dp"
+        android:layout_below="@+id/scrollView"
+        android:layout_alignEnd="@+id/exitButton"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="-211dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:src="@drawable/sendemailmoody"
+        android:contentDescription="@string/send_Email_Button" />
+
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="393dp"
+        android:layout_height="251dp"
+        android:layout_below="@id/grabbedEmail"
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="9dp"
+        android:background="@drawable/popup_round_moody">
+
+
+        <TextView
+            android:id="@+id/GenerationBox"
+            android:layout_width="wrap_content"
+            android:layout_height="236dp"
+            android:padding="10dp"
+            android:scrollbars="vertical"
+            android:textSize="15sp" />
+    </ScrollView>
+
+    <ImageButton
+        android:id="@+id/exitButton"
+        android:layout_width="199dp"
+        android:layout_height="315dp"
+        android:layout_below="@+id/scrollView"
+        android:layout_marginTop="10dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:src="@drawable/gobackmoody"
+        android:contentDescription="@string/takeBackButton" />
+
+    <TextView
+        android:id="@+id/requestTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="66dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="9dp"
+        android:gravity="center"
+        android:text="@string/generationAreaTitle"
+        android:textSize="45sp" />
+
+    <TextView
+        android:id="@+id/grabbedEmail"
+        android:layout_width="403dp"
+        android:layout_height="72dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_below="@id/requestTitle"
+        android:layout_marginTop="3dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="9dp"
+        android:background="@drawable/popup_round_moody"
+        android:textColor="#FF000000"
+        android:gravity="center"
+        android:textSize="35sp" />
+
+
+
+
+</RelativeLayout>

@@ -12,7 +12,8 @@ public class DataCollect extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.data_collect);
+        int layoutId = setPalette.setLayout(DataCollect.this, "data_collect");
+        setContentView(layoutId);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.datacollect), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -21,7 +22,7 @@ public class DataCollect extends AppCompatActivity {
 
         setBoxFunc.setBoxes(DataCollect.this, new String[]{"FName", "SName", "PNumber", "Address"});
         saveButtonFunc.saveDbBtn(DataCollect.this, DataCollect.this, new String[]{"FName", "SName", "PNumber", "Address"}, null);
-        setPopup.setSuccessButton(DataCollect.this, "greetinggrey", R.id.saveButton, "Information saved!", null);
+        setPopup.setSuccessButton(DataCollect.this, "greetinggrey", "Information saved!", null);
         ExitButtonFunc.exitBtn(DataCollect.this, MainMenu.class);
 
     }

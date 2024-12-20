@@ -66,4 +66,5 @@ public class setPopup {
         TextView successText2 = popupView.findViewById(R.id.successText2);
         successText2.setText(sucessMessage2);
     }
+
 }

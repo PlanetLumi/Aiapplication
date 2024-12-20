@@ -10,6 +10,7 @@ color greybase
 color orangebase
 color outline
 color white
+drawable camera
 drawable complaintsgrey
 drawable complaintsmoody
 drawable complaintssunny
@@ -23,6 +24,7 @@ drawable errorgrey
 drawable errorsunny
 drawable errorymoody
 drawable exitbutton
+drawable file
 drawable gobackmoody
 drawable gobacksunny
 drawable greetingsbot
@@ -59,6 +61,9 @@ id Password
 id SName
 id attachButton
 id attachText
+id camera
+id cameratxt
+id choice
 id companyInp
 id createButton
 id datacollect
@@ -69,6 +74,8 @@ id errorText
 id errorText2
 id errorTitle
 id exitButton
+id files
+id filetxt
 id generationArea
 id grabbedEmail
 id greetingsRobot
@@ -78,6 +85,7 @@ id loginpage
 id main
 id newUser
 id notifications
+id option
 id permissions
 id requestPage
 id requestTitle
@@ -121,6 +129,9 @@ layout login_page_sunny
 layout main_menu
 layout main_menu_moody
 layout main_menu_sunny
+layout option_picker
+layout option_picker_moody
+layout option_picker_sunny
 layout request_page
 layout request_page_moody
 layout request_page_sunny
@@ -132,6 +143,9 @@ layout sucess_popup_moody
 layout sucess_popup_sunny
 mipmap ic_launcher
 mipmap ic_launcher_round
+string Filebutton
+string OpenCamera
+string OpenFiles
 string Password
 string RequestPrompt
 string SaveDetails
@@ -139,6 +153,8 @@ string Username
 string address
 string app_name
 string attachText
+string camera_button
+string choicetitle
 string companyName
 string createUserButton
 string createUserTitle
@@ -150,6 +166,7 @@ string loginButton
 string loginPageTitle
 string mainMenuTitle
 string notificationsSwitch
+string options_popup
 string permissionsSwitch
 string personalDataCheckBox
 string phone_number

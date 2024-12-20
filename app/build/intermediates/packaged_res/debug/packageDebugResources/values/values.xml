@@ -14,6 +14,9 @@
     <color name="orangebase">#E47B02</color>
     <color name="outline">#474747</color>
     <color name="white">#FFFFFFFF</color>
+    <string name="Filebutton">File button</string>
+    <string name="OpenCamera">Open Camera</string>
+    <string name="OpenFiles">Open Files</string>
     <string name="Password"> Password</string>
     <string name="RequestPrompt">List of Details e.g: \n\nPrice list, \nEmployee name, \nPrice of item etc.</string>
     <string name="SaveDetails"> Save Details</string>
@@ -21,6 +24,8 @@
     <string name="address">Address</string>
     <string name="app_name">Aiapplication</string>
     <string name="attachText">Add Attachments</string>
+    <string name="camera_button">Camera button</string>
+    <string name="choicetitle">Please choose an attachment option, left is files, right is camera.</string>
     <string name="companyName">Company Name</string>
     <string name="createUserButton"> Click to create user with these details</string>
     <string name="createUserTitle"> Create User</string>
@@ -32,6 +37,7 @@
     <string name="loginPageTitle">Welcome Back!</string>
     <string name="mainMenuTitle">Help Desk</string>
     <string name="notificationsSwitch">Notifications</string>
+    <string name="options_popup">What would you like to use?</string>
     <string name="permissionsSwitch">Permissions</string>
     <string name="personalDataCheckBox">Fill with saved personal data</string>
     <string name="phone_number">Phone Number</string>

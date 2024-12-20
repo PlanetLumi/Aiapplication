@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.widget.Toast;
+import android.widget.ListView;
 
 import androidx.core.app.ActivityCompat;
 
@@ -49,17 +50,36 @@ public class Attachments {
         activity.startActivityForResult(Intent.createChooser(intent, "Select File"), REQUEST_SELECT_FILE);
     }
 
+
     public void showOptionDialog(Activity activity) {
-        String[] options = {"Camera", "Library"};
-        new androidx.appcompat.app.AlertDialog.Builder(activity)
-                .setTitle("Choose an option")
-                .setItems(options, (dialog, choose) -> {
-                    if (choose == 0) {
-                        openCamera(activity);
-                    } else if (choose == 1) {
-                        openFilePicker(activity);
-                    }
-                })
-                .show();
+        // Inflate the custom layout
+        android.view.LayoutInflater inflater = activity.getLayoutInflater();
+        android.view.View dialogView = inflater.inflate(setPalette.setLayout(context, "option_picker"), null);
+
+        // Find the buttons in the custom layout
+        android.widget.Button btnCamera = dialogView.findViewById(R.id.camera);
+        android.widget.Button btnLibrary = dialogView.findViewById(R.id.files);
+
+        // Build the dialog
+        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(activity);
+        builder.setView(dialogView); // Set the custom layout as the dialog's content
+
+        // Create the dialog
+        androidx.appcompat.app.AlertDialog dialog = builder.create();
+
+        // Set button click listeners
+        btnCamera.setOnClickListener(v -> {
+            openCamera(activity); // Open the camera
+            dialog.dismiss(); // Close the dialog
+        });
+
+        btnLibrary.setOnClickListener(v -> {
+            openFilePicker(activity); // Open the file picker
+            dialog.dismiss(); // Close the dialog
+        });
+
+        // Show the dialog
+        dialog.show();
     }
+
 }

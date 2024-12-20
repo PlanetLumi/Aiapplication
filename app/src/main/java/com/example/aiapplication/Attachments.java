@@ -56,9 +56,9 @@ public class Attachments {
         android.view.LayoutInflater inflater = activity.getLayoutInflater();
         android.view.View dialogView = inflater.inflate(setPalette.setLayout(context, "option_picker"), null);
 
-        // Find the buttons in the custom layout
-        android.widget.Button btnCamera = dialogView.findViewById(R.id.camera);
-        android.widget.Button btnLibrary = dialogView.findViewById(R.id.files);
+        // Find the buttons in the custom layout as ImageButton
+        android.widget.ImageButton btnCamera = dialogView.findViewById(R.id.camera);
+        android.widget.ImageButton btnLibrary = dialogView.findViewById(R.id.files);
 
         // Build the dialog
         androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(activity);

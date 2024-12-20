@@ -6,83 +6,83 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/popup_round_sunny"
-    android:elevation="6dp">
+    android:padding="16dp"
+    android:elevation="12dp">
 
     <!-- ImageView at the top -->
     <ImageView
         android:id="@+id/successImage"
-        android:layout_width="250dp"
-        android:layout_height="201dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:src="@drawable/detailsbotsunny"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- TextView below the ImageView -->
-
-
-    <!-- ImageButton for Camera -->
-
     <TextView
         android:id="@+id/option"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/choicetitle"
         android:text="@string/options_popup"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="18sp"
         android:textColor="@color/black"
-        app:layout_constraintTop_toBottomOf="@id/successImage" />
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@id/successImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- ImageButtons for Files and Camera -->
     <ImageButton
         android:id="@+id/files"
-        android:layout_width="60dp"
-        android:layout_height="72dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="77dp"
+        android:layout_height="76dp"
+        android:layout_marginTop="16dp"
         android:background="?android:attr/selectableItemBackground"
         android:contentDescription="@string/Filebutton"
         android:src="@drawable/file"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintEnd_toStartOf="@id/camera"
+        app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/option" />
 
+    <!-- TextView for Files -->
     <ImageButton
         android:id="@+id/camera"
-        android:layout_width="110dp"
-        android:layout_height="97dp"
-        android:layout_marginStart="128dp"
+        android:layout_width="87dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:background="?android:attr/selectableItemBackground"
         android:contentDescription="@string/camera_button"
         android:src="@drawable/camera"
-        app:layout_constraintTop_toBottomOf="@id/option"
-        app:layout_constraintStart_toStartOf="@id/files" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/files"
+        app:layout_constraintTop_toBottomOf="@id/option" />
 
     <TextView
         android:id="@+id/filetxt"
-        android:layout_width="82dp"
-        android:layout_height="20dp"
-        android:background="?android:attr/selectableItemBackground"
-        android:contentDescription="@string/camera_button"
-        android:src="@drawable/camera"
-        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="@string/OpenFiles"
+        android:textSize="14sp"
+        android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@id/files"
         app:layout_constraintStart_toStartOf="@id/files"
-/>
+        app:layout_constraintEnd_toEndOf="@id/files" />
 
+    <!-- TextView for Camera -->
     <TextView
         android:id="@+id/cameratxt"
-        android:layout_width="108dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="8dp"
-        android:background="?android:attr/selectableItemBackground"
-        android:contentDescription="@string/camera_button"
-        android:src="@drawable/camera"
-        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="@string/OpenCamera"
-        app:layout_constraintTop_toBottomOf="@id/camera"
-        app:layout_constraintStart_toStartOf="@id/camera" />
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@id/camera"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/camera"
+        app:layout_constraintTop_toBottomOf="@id/camera" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,27 +25,16 @@ public class createUser extends AppCompatActivity {
         });
         ImageButton createButton = findViewById(R.id.createButton);
         createButton.setOnClickListener(v -> createAccount());
-        takeButtonFunc.takeBtn(createUser.this, LoginPage.class, R.id.takeToLogin);
+        takeButtonFunc.takeBtn(createUser.this, LoginPage.class, R.id.takeToLogin, null);
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     private void createAccount() {
         SQLiteDatabase readableDatabase = buildDB.getInstance(createUser.this).getReadableDatabase();
-        String[] userData = DataGrab.gatherData(createUser.this, new String[]{"userName", "Password"});
+        String[] userData = DataGrab.gatherData(createUser.this, new String[]{"userName", "Password", "verifyPassword"});
         String username = userData[0];
         String password = userData[1];
+
         if (username.isEmpty() || password.isEmpty()) {
             setPopup.showError(createUser.this, "Please fill in all fields!", null);
             return;
@@ -59,7 +48,7 @@ public class createUser extends AppCompatActivity {
             setPopup.showError(createUser.this, "Username already exists!", "Try another name or log-in!");
             return;
         }
-        if (verifyPassword.verifyMatch(DataGrab.gatherData(createUser.this, new String[]{"Password", "verifyPassword"}))) {
+        if (!verifyPassword.verifyMatch(DataGrab.gatherData(createUser.this, new String[]{"Password", "verifyPassword"}))) {
             setPopup.showError(createUser.this, "Passwords do not match!", null);
             return;
         }

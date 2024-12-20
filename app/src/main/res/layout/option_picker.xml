@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/choice"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/popup_round"
+    android:elevation="6dp">
+
+    <!-- ImageView at the top -->
+    <ImageView
+        android:id="@+id/successImage"
+        android:layout_width="250dp"
+        android:layout_height="201dp"
+        android:src="@drawable/workinghard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- TextView below the ImageView -->
+    <TextView
+        android:id="@+id/option"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/options_popup"
+        android:textSize="22sp"
+        android:contentDescription="@string/choicetitle"
+        app:layout_constraintTop_toBottomOf="@id/successImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5" />
+
+
+    <!-- ImageButton for Camera -->
+
+    <ImageButton
+        android:id="@+id/files"
+        android:layout_width="60dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="28dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:contentDescription="@string/Filebutton"
+        android:src="@drawable/file"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/option"
+        />
+
+    <ImageButton
+        android:id="@+id/camera"
+        android:layout_width="110dp"
+        android:layout_height="97dp"
+        android:layout_marginStart="128dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:contentDescription="@string/camera_button"
+        android:src="@drawable/camera"
+        app:layout_constraintStart_toBottomOf="@id/option"
+        app:layout_constraintStart_toStartOf="@id/files"
+        tools:layout_editor_absoluteY="234dp" />
+
+    <TextView
+        android:id="@+id/filetxt"
+        android:layout_width="82dp"
+        android:layout_height="20dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:contentDescription="@string/camera_button"
+        android:src="@drawable/camera"
+        android:text="@string/OpenFiles"
+        app:layout_constraintStart_toBottomOf="@id/files"
+        app:layout_constraintStart_toStartOf="@id/files"
+        tools:layout_editor_absoluteX="11dp"
+        tools:layout_editor_absoluteY="331dp"
+        />
+
+    <TextView
+        android:id="@+id/cameratxt"
+        android:layout_width="108dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="8dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:contentDescription="@string/camera_button"
+        android:src="@drawable/camera"
+        android:text="@string/OpenCamera"
+        app:layout_constraintStart_toBottomOf="@id/camera"
+        app:layout_constraintStart_toStartOf="@id/camera"
+        tools:layout_editor_absoluteY="333dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

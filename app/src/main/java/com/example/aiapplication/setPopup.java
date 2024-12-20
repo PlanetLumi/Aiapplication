@@ -41,7 +41,7 @@ public class setPopup {
     public static void showSuccess(Context context, String imageType, String successMessage, String sucessMessage2){
         int layoutId = setPalette.setLayout(context, "sucess_popup");
         Log.d("showSuccess", "Layout ID: " + layoutId);
-        String popUp = setPalette.findPopUp(context, imageType);
+        String popUp = setPalette.findPopUp(context);
         imageType = imageType + popUp;
         int drawable = context.getResources().getIdentifier(imageType, "drawable", context.getPackageName());
         Activity activity = (Activity) context;
@@ -65,13 +65,5 @@ public class setPopup {
         successText.setText(successMessage);
         TextView successText2 = popupView.findViewById(R.id.successText2);
         successText2.setText(sucessMessage2);
-    }
-
-    public static void setSuccessButton(Context context, String imageType, String successMessage, String successMessage2){
-        Activity activity = (Activity) context;
-        View saveBtn = activity.findViewById(R.id.saveButton);
-        if (saveBtn != null) {
-            saveBtn.setOnClickListener(v -> showSuccess(context, imageType, successMessage, successMessage2));
-        }
     }
 }

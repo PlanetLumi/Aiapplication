@@ -4,7 +4,6 @@ package com.example.aiapplication;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ImageButton;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,8 +11,6 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 
 public class LoginPage extends AppCompatActivity {
     private static final int MAX_ATTEMPTS = 10;
@@ -33,11 +30,14 @@ public class LoginPage extends AppCompatActivity {
         SQLiteDatabase readableDatabase = buildDB.getInstance(LoginPage.this).getReadableDatabase();
         SQLiteDatabase writableDatabase = buildDB.getInstance(LoginPage.this).getWritableDatabase();
 
-
         ImageButton loginButton = findViewById(R.id.loginButton);
         loginButton.setOnClickListener(v -> {
             String[] details = DataGrab.gatherData(LoginPage.this, new String[]{"userName", "Password"});
             String normalizedUsername = details[0].replace(",", "").toLowerCase();
+            if (details[0].isEmpty() || details[1].isEmpty()) {
+                setPopup.showError(LoginPage.this, "Invalid Login", "Please enter a username and password.");
+                return;
+            }
             if (!buildDB.checkIfUserExists(readableDatabase, normalizedUsername)) {
                 setPopup.showError(LoginPage.this, "Invalid Login", "This account does not exist.");
                 return;
@@ -49,6 +49,7 @@ public class LoginPage extends AppCompatActivity {
             long user = buildDB.loginUser(readableDatabase, normalizedUsername, details[1]);
             if (user != -1) {
                 saveUserID.saveID(LoginPage.this, user);
+                saveUserID.saveName(LoginPage.this, normalizedUsername);
                 buildDB.resetLoginAttempts(readableDatabase, normalizedUsername);
                 Intent intent = new Intent(LoginPage.this, MainMenu.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -58,7 +59,7 @@ public class LoginPage extends AppCompatActivity {
                 failedLogin(readableDatabase, writableDatabase, normalizedUsername);
             }
         });
-        takeButtonFunc.takeBtn(this, createUser.class, R.id.takeToCreate);
+        takeButtonFunc.takeBtn(this, createUser.class, R.id.takeToCreate, null);
     }
 
     private void failedLogin(SQLiteDatabase readableDatabase, SQLiteDatabase writableDatabase, String username) {

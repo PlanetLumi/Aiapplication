@@ -8,7 +8,19 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 
 
-public class SaveData{
+public class SaveData {
+    public static String saveOption(Context context, String userData, String fileName) throws IOException {
+        fileClear(context, fileName);
+        FileSave(context, userData, fileName);
+        return "File Saved";
+    }
+
+    public static void fileClear(Context context, String fileName) throws IOException {
+        FileOutputStream fileOutput = context.openFileOutput(fileName, MODE_PRIVATE);
+        OutputStreamWriter outputWriter = new OutputStreamWriter(fileOutput);
+        outputWriter.write("");
+        outputWriter.close();
+    }
     public static void FileSave(Context context, String userData, String fileName) throws IOException {
         FileOutputStream fileOutput = context.openFileOutput(fileName, MODE_PRIVATE);
         OutputStreamWriter outputWriter = new OutputStreamWriter(fileOutput);

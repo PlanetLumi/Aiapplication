@@ -21,28 +21,23 @@ public class MainMenu extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        takeButtonFunc.takeBtn(MainMenu.this, DataCollect.class, R.id.takeToSettings);
-        ImageButton takeToRequest = findViewById(R.id.takeToRequest);
-        takeToRequest.setOnClickListener(v -> {
+        takeButtonFunc.takeBtn(MainMenu.this, DataCollect.class, R.id.takeToSettings, null);
+        takeButtonFunc.takeBtn(MainMenu.this, RequestPage.class, R.id.takeToRequest, () -> {
             try {
-                SaveData.FileSave(MainMenu.this, "1", "userChoice.txt");
-                takeButtonFunc.takeBtn(MainMenu.this, RequestPage.class, R.id.takeToRequest);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
-        });
-        ImageButton takeToComplaints = findViewById(R.id.takeToComplaints);
-        takeToComplaints.setOnClickListener(v -> {
-            try {
-                SaveData.FileSave(MainMenu.this, "2", "userChoice.txt");
-                takeButtonFunc.takeBtn(MainMenu.this, RequestPage.class, R.id.takeToRequest);
+                SaveData.saveOption(MainMenu.this, "1", "userChoice.txt");
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
         });
-        takeButtonFunc.takeBtn(MainMenu.this, SettingsPage.class, R.id.takeToSettings);
-        takeButtonFunc.takeBtn(MainMenu.this, DataCollect.class, R.id.takeToDetails);
+        takeButtonFunc.takeBtn(MainMenu.this, RequestPage.class, R.id.takeToComplaints, () -> {
+            try {
+                SaveData.saveOption(MainMenu.this, "2", "userChoice.txt");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        takeButtonFunc.takeBtn(MainMenu.this, SettingsPage.class, R.id.takeToSettings, null);
+        takeButtonFunc.takeBtn(MainMenu.this, DataCollect.class, R.id.takeToDetails, null);
     }
 
 }

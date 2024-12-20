@@ -15,11 +15,12 @@
     <color name="outline">#474747</color>
     <color name="white">#FFFFFFFF</color>
     <string name="Password"> Password</string>
-    <string name="RequestPrompt">List of Details e.g Price list, Employee name, Price of item etc.</string>
+    <string name="RequestPrompt">List of Details e.g: \n\nPrice list, \nEmployee name, \nPrice of item etc.</string>
     <string name="SaveDetails"> Save Details</string>
     <string name="Username"> Username</string>
     <string name="address">Address</string>
     <string name="app_name">Aiapplication</string>
+    <string name="attachText">Add Attachments</string>
     <string name="companyName">Company Name</string>
     <string name="createUserButton"> Click to create user with these details</string>
     <string name="createUserTitle"> Create User</string>

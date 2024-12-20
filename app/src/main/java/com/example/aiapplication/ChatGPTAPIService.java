@@ -5,7 +5,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 public class ChatGPTAPIService {
     private static final String BASE_URL = "https://api.openai.com";
-    private static final String API_KEY = "sk-proj-6eSB6nxzYDGVvfmTRr8TT3BlbkFJi2BqVbgMp43oOBM0K8I3";
+    private static final String API_KEY = "my key";
     private static Retrofit retrofit;
 
     public static Retrofit getInstance(){

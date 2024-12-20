@@ -15,31 +15,37 @@
 
     <EditText
         android:id="@+id/companyInp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_below="@id/requestTitle"
-        android:layout_marginTop="-1dp"
+        android:layout_width="403dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="-3dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="9dp"
         android:gravity="center"
         android:background="@drawable/popup_round_moody"
         android:hint="@string/companyName"
-        android:textSize="15sp" />
+        android:textSize="20sp" />
 
     <ScrollView
         android:id="@+id/scrollView"
-        android:layout_width="match_parent"
-        android:layout_height="248dp"
+        android:layout_width="402dp"
+        android:layout_height="249dp"
         android:layout_below="@id/companyInp"
         android:layout_marginStart="9dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="7dp"
         android:layout_marginEnd="9dp"
         android:background="@drawable/popup_round_moody">
 
 
         <EditText
+            android:paddingStart="5dp"
             android:id="@+id/detailsInp"
             android:layout_width="match_parent"
             android:layout_height="236dp"
             android:layout_marginTop="8dp"
+            android:background="@drawable/transparent"
             android:hint="@string/RequestPrompt"
             android:scrollbars="vertical" />
 
@@ -47,13 +53,34 @@
 
     <CheckBox
         android:id="@+id/usePersonalData"
+        android:layout_width="217dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/scrollView"
+        android:layout_marginTop="0dp"
+        android:text="@string/personalDataCheckBox"
+        android:textSize="15sp" />
+
+    <ImageButton
+        android:id="@+id/attachButton"
+        android:layout_width="34dp"
+        android:layout_height="33dp"
+        android:layout_below="@+id/scrollView"
+        android:layout_alignEnd="@id/usePersonalData"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="-181dp" />
+
+    <TextView
+        android:id="@+id/attachText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="visible"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:text="@string/personalDataCheckBox"
-        android:layout_below="@+id/scrollView"/>
+        android:layout_below="@+id/scrollView"
+        android:layout_alignStart="@id/attachButton"
+        android:layout_marginStart="-116dp"
+        android:layout_marginTop="11dp"
+        android:paddingEnd="10dp"
+        android:textSize="15sp"
+        android:text="@string/attachText" />
 
     <ImageButton
         android:id="@+id/saveButton"

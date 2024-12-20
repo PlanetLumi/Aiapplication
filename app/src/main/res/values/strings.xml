@@ -31,7 +31,7 @@
     <string name="generationAreaTitle"> Request Generated</string>
     <string name="send_Email_Button"> Click this button to start the sending email process</string>
     <string name="loginPageTitle">Welcome Back!</string>
-    <string name="RequestPrompt">List of Details e.g Price list, Employee name, Price of item etc.</string>
+    <string name="RequestPrompt">List of Details e.g: \n\nPrice list, \nEmployee name, \nPrice of item etc.</string>
     <string name="personalDataCheckBox">Fill with saved personal data</string>
     <string name="companyName">Company Name</string>
     <string name="domainFinderDesc">Please input the name of the companies domain</string>
@@ -40,6 +40,12 @@
     <string name="permissionsSwitch">Permissions</string>
     <string name="notificationsSwitch">Notifications</string>
     <string name="popUpTitle">Woo Hoo!</string>
-
+    <string name="attachText">Add Attachments</string>
+    <string name="options_popup">What would you like to use?</string>
+    <string name="choicetitle">Please choose an attachment option, left is files, right is camera.</string>
+    <string name="Filebutton">File button</string>
+    <string name="camera_button">Camera button</string>
+    <string name="OpenFiles">Open Files</string>
+    <string name="OpenCamera">Open Camera</string>
 
 </resources>

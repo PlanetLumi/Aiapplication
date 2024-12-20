@@ -17,15 +17,17 @@ public class saveButtonFunc{
             saveBtn.setOnClickListener(v -> {
                 try {
                     SaveData.FileSave(context, DataGrab.gatherUserData(context, fields), fileName);
+                    setPopup.showSuccess(context, "greetingsbot", "Data Saved Successfully!", null);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
                     if (targetActivity != null) {
                         Intent intent = new Intent(activity, targetActivity);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         activity.startActivity(intent);
                         activity.finish();
                     }
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+
             });
 
         }
@@ -40,7 +42,7 @@ public class saveButtonFunc{
                 try {
                     Log.d("userSaveBtn", "try block");
                     SaveData.FileSave(context, DataGrab.gatherUserData(context,fields), fileName);
-                    setPopup.setSuccessButton(context, "greetingsbot", message1, null);
+                    setPopup.showSuccess(context, "greetingsbot", message1, null);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -61,6 +63,7 @@ public class saveButtonFunc{
                 SaveData saveData = new SaveData();
                     try {
                         saveData.updateUserDb(context, DataGrab.gatherData(context, fields));
+                        setPopup.showSuccess(context, "greetingsbot", "Data Saved Successfully!", null);
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                 }

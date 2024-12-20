@@ -11,7 +11,7 @@ public class initialiseSettings {
         public static void initialise(Context context) throws FileNotFoundException {
             String defaultSettings = "[stylePalette, Default, permissions, true, notifications, true]";
             try {
-                FileOutputStream fileOutput = context.openFileOutput("settings.txt", Context.MODE_PRIVATE);
+                FileOutputStream fileOutput = context.openFileOutput(saveUserID.grabSettings(context), Context.MODE_PRIVATE);
                 OutputStreamWriter outputWriter = new OutputStreamWriter(fileOutput);
                 outputWriter.write(defaultSettings);
                 outputWriter.close();

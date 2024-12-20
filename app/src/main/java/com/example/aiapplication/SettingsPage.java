@@ -19,11 +19,12 @@ public class SettingsPage extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        String settings = saveUserID.grabSettings(SettingsPage.this);
 
 
-        spinnerFunc.setSpinners(SettingsPage.this, new String[]{"stylePalette"}, new int[] {R.array.style_palette},"settings.txt");
-        switchFunc.setSwitches(SettingsPage.this, new String[] {"permissions","notifications"}, "settings.txt");
-        saveButtonFunc.userSaveBtn(SettingsPage.this, SettingsPage.this, new String[]{"stylePalette", "permissions", "notifications"}, "settings.txt", "Settings Saved Successfully!",null);
+        spinnerFunc.setSpinners(SettingsPage.this, new String[]{"stylePalette"}, new int[] {R.array.style_palette},settings);
+        switchFunc.setSwitches(SettingsPage.this, new String[] {"permissions","notifications"}, settings);
+        saveButtonFunc.userSaveBtn(SettingsPage.this, SettingsPage.this, new String[]{"stylePalette", "permissions", "notifications"}, settings, "Settings Saved Successfully!",null);
         ExitButtonFunc.exitBtn(SettingsPage.this, MainMenu.class);
     }
 }

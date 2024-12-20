@@ -51,8 +51,8 @@ public class GenerationArea extends AppCompatActivity {
                 String subject = findElements.findSubject(request);
                 sendEmail.setOnClickListener(v -> {
                     emailFunc.sendEmail(GenerationArea.this,grabbedEmail.getText().toString(), subject, request.replace(subject, ""));
+                    setPopup.showSuccess(GenerationArea.this, "successbot","Request sent!", null);
                 });
-                setPopup.showSuccess(GenerationArea.this, "successbot","Request sent!", null);
             }
 
             @Override

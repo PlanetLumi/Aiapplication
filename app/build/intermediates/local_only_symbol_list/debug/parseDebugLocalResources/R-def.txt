@@ -49,6 +49,7 @@ drawable settings
 drawable successbot
 drawable successbotsunny
 drawable sucessbotmoody
+drawable transparent
 drawable workinghard
 id Address
 id FName
@@ -56,6 +57,8 @@ id GenerationBox
 id PNumber
 id Password
 id SName
+id attachButton
+id attachText
 id companyInp
 id createButton
 id datacollect
@@ -135,6 +138,7 @@ string SaveDetails
 string Username
 string address
 string app_name
+string attachText
 string companyName
 string createUserButton
 string createUserTitle

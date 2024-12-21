@@ -10,6 +10,7 @@ color greybase
 color orangebase
 color outline
 color white
+drawable attachments
 drawable camera
 drawable complaintsgrey
 drawable complaintsmoody
@@ -190,3 +191,4 @@ style Base.Theme.Aiapplication
 style Theme.Aiapplication
 xml backup_rules
 xml data_extraction_rules
+xml file_paths

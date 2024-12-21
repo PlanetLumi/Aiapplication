@@ -9,8 +9,17 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.widget.Toast;
 import android.widget.ListView;
-
+import androidx.security.crypto.EncryptedFile;
+import androidx.security.crypto.MasterKeys;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import androidx.core.app.ActivityCompat;
+
+import java.io.File;
+import java.io.InputStream;
+import java.security.GeneralSecurityException;
 
 public class Attachments {
 
@@ -39,7 +48,6 @@ public class Attachments {
         if (cameraIntent.resolveActivity(activity.getPackageManager()) != null) {
             activity.startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
         } else {
-            setPopup.showError(activity, "No camera app found", null);
         }
     }
 
@@ -49,7 +57,6 @@ public class Attachments {
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         activity.startActivityForResult(Intent.createChooser(intent, "Select File"), REQUEST_SELECT_FILE);
     }
-
 
     public void showOptionDialog(Activity activity) {
         // Inflate the custom layout
@@ -67,6 +74,13 @@ public class Attachments {
         // Create the dialog
         androidx.appcompat.app.AlertDialog dialog = builder.create();
 
+        // Configure the window for dim background
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent); // Set transparent background
+            dialog.getWindow().addFlags(android.view.WindowManager.LayoutParams.FLAG_DIM_BEHIND); // Enable dim background
+            dialog.getWindow().setDimAmount(0.8f); // Set dim amount (adjust 0.0 - 1.0 for effect)
+        }
+
         // Set button click listeners
         btnCamera.setOnClickListener(v -> {
             openCamera(activity); // Open the camera
@@ -81,5 +95,4 @@ public class Attachments {
         // Show the dialog
         dialog.show();
     }
-
 }

@@ -1,13 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Device and permission declarations -->
     <uses-feature android:name="android.hardware.camera" android:required="false" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" tools:ignore="ScopedStorage" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -15,9 +15,18 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-
         android:theme="@style/Theme.Aiapplication">
 
+        <!-- FileProvider declaration -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
 
         <!-- Launcher activity -->
         <activity
@@ -28,25 +37,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".createUser"
-            android:exported="true" />
-        <activity
-            android:name=".MainMenu"
-            android:exported="true" />
 
-        <!-- Data collection activity -->
-        <activity
-            android:name=".DataCollect"
-            android:exported="true" />
-        <activity
-            android:name=".RequestPage"
-            android:exported="true" />
-        <activity
-            android:name=".GenerationArea"
-            android:exported="true" />
-        <activity
-            android:name=".SettingsPage"
-            android:exported="true" />
+        <!-- Other activities -->
+        <activity android:name=".createUser" android:exported="true" />
+        <activity android:name=".MainMenu" android:exported="true" />
+        <activity android:name=".DataCollect" android:exported="true" />
+        <activity android:name=".RequestPage" android:exported="true" />
+        <activity android:name=".GenerationArea" android:exported="true" />
+        <activity android:name=".SettingsPage" android:exported="true" />
+
     </application>
+
 </manifest>

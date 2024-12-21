@@ -7,29 +7,34 @@ import android.util.Log;
 import android.view.View;
 
 
+import java.io.File;
 import java.io.IOException;
 
 public class saveButtonFunc{
 
-    public static void funcSaveBtn (Context context, Activity activity, String[] fields, String fileName, Class<?> targetActivity) {
+    public static void funcSaveBtn(Context context, Activity activity, String[] fields, String fileName, Class<?> targetActivity) {
         View saveBtn = activity.findViewById(R.id.saveButton);
         if (saveBtn != null) {
             saveBtn.setOnClickListener(v -> {
                 try {
+                    File file = new File(context.getFilesDir(), fileName);
+                    if (!file.exists()) {
+                        file.createNewFile(); // Ensure the file is created
+                    }
                     SaveData.FileSave(context, DataGrab.gatherUserData(context, fields), fileName);
                     setPopup.showSuccess(context, "greetingsbot", "Data Saved Successfully!", null);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+
                     if (targetActivity != null) {
                         Intent intent = new Intent(activity, targetActivity);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         activity.startActivity(intent);
                         activity.finish();
                     }
-
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    setPopup.showError(context, "Error saving data", null);
+                }
             });
-
         }
     }
     public static void userSaveBtn  (Context context, Activity activity, String[] fields, String fileName, String message1, Class<?> targetActivity) {

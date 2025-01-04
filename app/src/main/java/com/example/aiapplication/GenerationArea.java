@@ -1,4 +1,5 @@
 package com.example.aiapplication;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,6 +29,7 @@ public class GenerationArea extends AppCompatActivity {
         EdgeToEdge.enable(this);
         int layoutId = setPalette.setLayout(GenerationArea.this, "generation_area");
         setContentView(layoutId);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.generationArea), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -82,7 +84,7 @@ public class GenerationArea extends AppCompatActivity {
         generationBox.setFocusableInTouchMode(true);
 
         ChatGenCall chatGenCall = new ChatGenCall();
-        chatGenCall.generateRequest(preprompt,fileUris, requestSplit[3].replace("]", ""), new ChatGenCall.generateRequestCallBack() {
+        chatGenCall.generateRequest(GenerationArea.this,preprompt,fileUris, requestSplit[3].replace("]", ""), new ChatGenCall.generateRequestCallBack() {
             @Override
             public void onSuccess(String request) {
                 generationBox.setText(request);

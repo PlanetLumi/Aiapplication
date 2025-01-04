@@ -10,6 +10,12 @@ public class saveUserID {
         editor.putLong("userID", userID);
         editor.apply();
     }
+    public static void saveKeys(Context context, String key, String type){
+        SharedPreferences sharedPreferences = context.getSharedPreferences("UserSession", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(type, key);
+        editor.apply();
+    }
 
     public static void saveName(Context context, String userName){
     SharedPreferences sharedPreferences = context.getSharedPreferences("UserSession", Context.MODE_PRIVATE);
@@ -21,6 +27,10 @@ public class saveUserID {
     public static long grabID(Context context){
         SharedPreferences sharedPreferences = context.getSharedPreferences("UserSession", Context.MODE_PRIVATE);
         return sharedPreferences.getLong("userID", -1);
+    }
+    public static String grabKey(Context context, String keyName){
+        SharedPreferences sharedPreferences = context.getSharedPreferences("UserSession", Context.MODE_PRIVATE);
+        return sharedPreferences.getString(keyName, "");
     }
 
     public static String grabName(Context context){

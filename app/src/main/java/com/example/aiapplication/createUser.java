@@ -39,8 +39,12 @@ public class createUser extends AppCompatActivity {
             setPopup.showError(createUser.this, "Please fill in all fields!", null);
             return;
         }
-        if (buildDB.checkSpam(readableDatabase, "UserCredentials")) {
+        if (buildDB.checkSpam(readableDatabase)) {
             setPopup.showError(createUser.this, "You have made too many accounts!", "Please contact an administrator");
+            return;
+        }
+        if (!username.matches("^[a-zA-Z0-9_.]")) {
+            setPopup.showError(createUser.this, "Invalid Username", "Username cannot contain special characters");
             return;
         }
         boolean verified = true;

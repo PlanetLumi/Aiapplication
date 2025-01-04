@@ -7,7 +7,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class HunterGenCall {
-    String apiKey = "d52f75345524c888b7a60263cd7fd9de6ca7dbe5";
     String department = "support";
     String type = "generic";
     public interface EmailResultCallBack{
@@ -15,6 +14,7 @@ public class HunterGenCall {
         void onE(String errorMessage);
     }
     public void fetchEmail(Context context,  String domain, EmailResultCallBack callback){
+        String apiKey = saveUserID.grabKey(context, "hunterIoKey");
         HunterApiService hunterApiService = HunterAPI.getClient().create(HunterApiService.class);
         domain = (domain.replace("www.", "")).replace("http://", "").trim();
         if(!domain.contains(".com") && !domain.contains(".net") && !domain.contains(".org")){

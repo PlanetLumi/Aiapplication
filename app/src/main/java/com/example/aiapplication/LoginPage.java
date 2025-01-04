@@ -2,6 +2,7 @@ package com.example.aiapplication;
 
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.ImageButton;
@@ -20,6 +21,7 @@ public class LoginPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         int layoutId = setPalette.setLayout(LoginPage.this, "login_page");
         super.onCreate(savedInstanceState);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(layoutId);
         EdgeToEdge.enable(this);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.loginpage), (v, insets) -> {
@@ -36,6 +38,10 @@ public class LoginPage extends AppCompatActivity {
             String normalizedUsername = details[0].replace(",", "").toLowerCase();
             if (details[0].isEmpty() || details[1].isEmpty()) {
                 setPopup.showError(LoginPage.this, "Invalid Login", "Please enter a username and password.");
+                return;
+            }
+            if (!normalizedUsername.matches("^[a-zA-Z0-9_.]+$")) {
+                setPopup.showError(LoginPage.this, "Invalid Login", "Username cannot contain special characters");
                 return;
             }
             if (!buildDB.checkIfUserExists(readableDatabase, normalizedUsername)) {

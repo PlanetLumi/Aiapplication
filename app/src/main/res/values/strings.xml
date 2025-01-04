@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Aiapplication</string>
+    <string name="app_name">Cust0rd Desk</string>
     <string name="style_palette_prompt">Select a palette</string>
     <string-array name = "style_palette">
         <item>Robotic</item>
@@ -47,5 +47,4 @@
     <string name="camera_button">Camera button</string>
     <string name="OpenFiles">Open Files</string>
     <string name="OpenCamera">Open Camera</string>
-
 </resources>

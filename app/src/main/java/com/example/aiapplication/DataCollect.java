@@ -1,4 +1,5 @@
 package com.example.aiapplication;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +15,7 @@ public class DataCollect extends AppCompatActivity {
         EdgeToEdge.enable(this);
         int layoutId = setPalette.setLayout(DataCollect.this, "data_collect");
         setContentView(layoutId);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.datacollect), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);

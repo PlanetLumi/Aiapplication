@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.aiapplication.app-mergeDebugResources-29:/values-h320dp-port-v13/values-h320dp-port-v13.xml",
+            "outputFile": "com.example.aiapplication.app-mergeDebugResources-30:/values-h320dp-port-v13/values-h320dp-port-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Lumie123\\.gradle\\caches\\8.9\\transforms\\f4fb994489ddeb5de3a0203257953846\\transformed\\material-1.12.0\\res\\values-h320dp-port-v13\\values-h320dp-port-v13.xml",
+                    "source": "C:\\Users\\Lumie123\\.gradle\\caches\\8.9\\transforms\\1463b6d09e1ea5c6a2a6c431e005a0cd\\transformed\\material-1.12.0\\res\\values-h320dp-port-v13\\values-h320dp-port-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

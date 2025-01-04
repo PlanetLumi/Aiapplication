@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class buildDB extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 54; //
     private static buildDB instance;
@@ -27,6 +30,7 @@ public class buildDB extends SQLiteOpenHelper {
                     "locked BOOLEAN DEFAULT 0," +
                     "lockTime INTEGER DEFAULT 0," +
                     "loginAttempts INTEGER DEFAULT 0)";
+
     buildDB(@Nullable Context context) {
         super(context, "UserDetails.db", null, DATABASE_VERSION);
     }
@@ -102,7 +106,19 @@ public class buildDB extends SQLiteOpenHelper {
 
     public static String readDB(SQLiteDatabase db, String[] list, long UserID) {
         String selection = defineDB.FeedEntry._ID + " = ?";
-
+        //Sanitising SQL injections
+        List<String> validColumns = Arrays.asList(
+                defineDB.FeedEntry._ID,
+                defineDB.FeedEntry.COLUMN_NAME_FNAME,
+                defineDB.FeedEntry.COLUMN_NAME_SNAME,
+                defineDB.FeedEntry.COLUMN_NAME_PHONE,
+                defineDB.FeedEntry.COLUMN_NAME_ADDRESS
+        );
+        for (String column : list) {
+            if (!validColumns.contains(column)) {
+                throw new IllegalArgumentException("Invalid column name: " + column);
+            }
+        }
 
         Cursor cursor = db.query(
                 "UserDetails",
@@ -334,10 +350,10 @@ public class buildDB extends SQLiteOpenHelper {
                 selection,
                 selectionArgs);
     }
-    public static boolean checkSpam(SQLiteDatabase db, String tableName){
+    public static boolean checkSpam(SQLiteDatabase db){
         int count = 0;
         try{
-            Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + tableName, null);
+            Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM UserCredentials", null);
             if (cursor.moveToFirst()) {
             count = cursor.getInt(0);
             }

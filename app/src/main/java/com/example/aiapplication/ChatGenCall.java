@@ -1,4 +1,5 @@
 package com.example.aiapplication;
+import android.content.Context;
 import android.net.Uri;
 
 import androidx.annotation.NonNull;
@@ -20,7 +21,7 @@ public class ChatGenCall {
         void onE(String errorMessage);
     }
 
-    public void generateRequest(String preprompt, @Nullable List<Uri> fileContents, String userRequest, generateRequestCallBack callback) {
+    public void generateRequest(Context context, String preprompt, @Nullable List<Uri> fileContents, String userRequest, generateRequestCallBack callback) {
         List<ChatRequest.Message> messages = new ArrayList<>();
         messages.add(new ChatRequest.Message("user", userRequest));
         messages.add(new ChatRequest.Message("system", preprompt));
@@ -32,7 +33,7 @@ public class ChatGenCall {
         }
 
         ChatRequest chatRequest = new ChatRequest("gpt-3.5-turbo", messages);
-        Call<ChatResponse> call = ChatGPTAPIService.getApi().getChatResponse(chatRequest);
+        Call<ChatResponse> call = ChatGPTAPIService.getApi(context).getChatResponse(chatRequest);
         call.enqueue(new Callback<>() {
             @Override
             public void onResponse(@NonNull Call<ChatResponse> call, @NonNull Response<ChatResponse> response) {

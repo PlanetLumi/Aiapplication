@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "344832053096",
+    "project_id": "cust0rd-desk",
+    "storage_bucket": "cust0rd-desk.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:344832053096:android:1f67d16f5ad9b3540c50dd",
+        "android_client_info": {
+          "package_name": "com.example.aiapplication"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA43orlXGq_v-sZczgZGKsGuMgOUSHEQhA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

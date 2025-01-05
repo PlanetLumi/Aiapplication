@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.aiapplication.app-mergeDebugResources-30:/values-en-rIN/values-en-rIN.xml",
+            "outputFile": "com.example.aiapplication.app-mergeDebugResources-34:/values-en-rIN/values-en-rIN.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Lumie123\\.gradle\\caches\\8.9\\transforms\\5a738333ac11717da468ccaf468d2ea3\\transformed\\core-1.13.0\\res\\values-en-rIN\\values-en-rIN.xml",
+                    "source": "C:\\Users\\Lumie123\\.gradle\\caches\\8.9\\transforms\\8e05804b4931d0d83c6d885fa823df1c\\transformed\\core-1.13.0\\res\\values-en-rIN\\values-en-rIN.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Lumie123\\.gradle\\caches\\8.9\\transforms\\02b5f911a92c7a2d865bd95a30dc4a00\\transformed\\appcompat-1.7.0\\res\\values-en-rIN\\values-en-rIN.xml",
+                    "source": "C:\\Users\\Lumie123\\.gradle\\caches\\8.9\\transforms\\3541e059c054869ddfff51624c018018\\transformed\\appcompat-1.7.0\\res\\values-en-rIN\\values-en-rIN.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",

@@ -1,79 +1,100 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="4dp"
-    android:paddingRight="4dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="16dp"
     android:background="@color/greybase"
     android:id="@+id/main">
 
-
+    <!-- Title -->
     <TextView
         android:id="@+id/title"
-        android:layout_width="430dp"
-        android:layout_height="90dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/mainMenuTitle"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
 
+    <!-- Greetings Robot Image -->
     <ImageView
         android:id="@+id/greetingsRobot"
-        android:layout_width="395dp"
-        android:layout_height="240dp"
-        android:layout_below="@id/title"
-        android:layout_marginTop="2dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:src="@drawable/greetingsbotsunny"
-        android:text=""
-        tools:layout_editor_absoluteX="14dp"
-        tools:layout_editor_absoluteY="64dp" />
+        android:adjustViewBounds="true"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.6"
+        app:layout_constraintHeight_percent="0.3"
+        android:layout_marginTop="16dp" />
+
+    <!-- Refund Button -->
+
+    <!-- Complaints Button -->
+
+    <!-- Settings Button -->
 
     <ImageButton
         android:id="@+id/takeToRequest"
-        android:layout_width="200dp"
-        android:layout_height="324dp"
-        android:layout_below="@id/greetingsRobot"
-        android:layout_marginTop="49dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="92dp"
         android:background="?android:attr/selectableItemBackground"
         android:contentDescription="@string/takeToRequest"
+        android:scaleType="fitCenter"
         android:src="@drawable/refundbuttonsunny"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="512dp" />
+        app:layout_constraintEnd_toStartOf="@id/takeToComplaints"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/greetingsRobot"
+        app:layout_constraintWidth_percent="0.45" />
+
+    <!-- Details Button -->
 
     <ImageButton
         android:id="@+id/takeToComplaints"
-        android:layout_width="200dp"
-        android:layout_height="324dp"
-        android:layout_below="@id/greetingsRobot"
-        android:layout_marginStart="-3dp"
-        android:layout_marginTop="49dp"
-        android:layout_toEndOf="@id/takeToRequest"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="92dp"
         android:background="?android:attr/selectableItemBackground"
         android:contentDescription="@string/takeToComplaints"
-        android:src="@drawable/complaintssunny" />
+        android:scaleType="fitCenter"
+        android:src="@drawable/complaintssunny"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/takeToRequest"
+        app:layout_constraintTop_toBottomOf="@id/greetingsRobot"
+        app:layout_constraintWidth_percent="0.45" />
+
+
+    <!-- Details Button -->
 
     <ImageButton
         android:id="@+id/takeToSettings"
-        android:layout_width="117dp"
-        android:layout_height="95dp"
-        android:layout_alignEnd="@id/title"
-        android:layout_marginEnd="-14dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="16dp"
         android:background="?android:attr/selectableItemBackground"
         android:contentDescription="@string/takeToSettings"
         android:src="@drawable/settings"
-        android:text="" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.15"
+        app:layout_constraintTop_toTopOf="@id/title" />
 
     <ImageButton
-        android:layout_width="117dp"
-        android:layout_height="95dp"
-        android:layout_below="@id/takeToSettings"
-        android:layout_alignEnd="@id/title"
-        android:layout_marginTop="-5dp"
-        android:layout_marginEnd="-4dp"
+        android:id="@+id/takeToDetails"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:background="?android:attr/selectableItemBackground"
         android:contentDescription="@string/takeToDetails"
         android:src="@drawable/details"
-        android:id="@+id/takeToDetails"
-        android:text="" />
+        app:layout_constraintEnd_toEndOf="@id/takeToSettings"
+        app:layout_constraintTop_toBottomOf="@id/takeToSettings" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,7 @@
             "outputFile": "com.example.aiapplication.test.app-debugAndroidTest-4:/values_values.arsc.flat",
             "map": [
                 {
-                    "source": "C:\\Users\\Lumie123\\.gradle\\caches\\8.9\\transforms\\64ffc5db77acc7525a80cb8b53d83bfb\\transformed\\core-1.6.1\\res\\values\\values.xml",
+                    "source": "C:\\Users\\Lumie123\\.gradle\\caches\\8.9\\transforms\\7c087e66a892fe4e04980f1f61583b07\\transformed\\core-1.6.1\\res\\values\\values.xml",
                     "from": {
                         "startLines": "4,11",
                         "startColumns": "0,0",
@@ -28,7 +28,7 @@
             "outputFile": "com.example.aiapplication.test.app-debugAndroidTest-4:/values-v21_values-v21.arsc.flat",
             "map": [
                 {
-                    "source": "C:\\Users\\Lumie123\\.gradle\\caches\\8.9\\transforms\\64ffc5db77acc7525a80cb8b53d83bfb\\transformed\\core-1.6.1\\res\\values-v21\\values.xml",
+                    "source": "C:\\Users\\Lumie123\\.gradle\\caches\\8.9\\transforms\\7c087e66a892fe4e04980f1f61583b07\\transformed\\core-1.6.1\\res\\values-v21\\values.xml",
                     "from": {
                         "startLines": "4,13",
                         "startColumns": "0,0",
@@ -52,7 +52,7 @@
             "outputFile": "com.example.aiapplication.test.app-debugAndroidTest-4:/values-v28_values-v28.arsc.flat",
             "map": [
                 {
-                    "source": "C:\\Users\\Lumie123\\.gradle\\caches\\8.9\\transforms\\64ffc5db77acc7525a80cb8b53d83bfb\\transformed\\core-1.6.1\\res\\values-v28\\values.xml",
+                    "source": "C:\\Users\\Lumie123\\.gradle\\caches\\8.9\\transforms\\7c087e66a892fe4e04980f1f61583b07\\transformed\\core-1.6.1\\res\\values-v28\\values.xml",
                     "from": {
                         "startLines": "4,13",
                         "startColumns": "0,0",
@@ -76,7 +76,7 @@
             "outputFile": "com.example.aiapplication.test.app-debugAndroidTest-4:/values-v18_values-v18.arsc.flat",
             "map": [
                 {
-                    "source": "C:\\Users\\Lumie123\\.gradle\\caches\\8.9\\transforms\\64ffc5db77acc7525a80cb8b53d83bfb\\transformed\\core-1.6.1\\res\\values-v18\\values.xml",
+                    "source": "C:\\Users\\Lumie123\\.gradle\\caches\\8.9\\transforms\\7c087e66a892fe4e04980f1f61583b07\\transformed\\core-1.6.1\\res\\values-v18\\values.xml",
                     "from": {
                         "startLines": "4,12",
                         "startColumns": "0,0",

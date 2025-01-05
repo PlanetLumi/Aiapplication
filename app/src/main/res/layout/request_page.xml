@@ -1,110 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:background="@color/greybase"
     android:id="@+id/requestPage">
 
+    <!-- Title -->
     <TextView
         android:id="@+id/requestTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:gravity="center"
         android:text="@string/requestPageTitle"
-        android:textSize="45sp" />
+        android:textSize="45sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.1" />
 
+    <!-- Grabbed Email -->
     <EditText
         android:id="@+id/companyInp"
-        android:layout_width="403dp"
-        android:layout_height="72dp"
-        android:layout_below="@id/requestTitle"
-        android:layout_marginTop="-3dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:layout_marginStart="9dp"
-        android:layout_marginEnd="9dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/popup_round"
         android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textSize="35sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toBottomOf="@id/requestTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.1"
         android:hint="@string/companyName"
-        android:textSize="20sp" />
+        android:layout_marginTop="8dp" />
+    <!-- ScrollView -->
 
+    <!-- CheckBox -->
+    <!-- ScrollView -->
     <ScrollView
         android:id="@+id/scrollView"
-        android:layout_width="402dp"
-        android:layout_height="249dp"
-        android:layout_below="@id/companyInp"
-        android:layout_marginStart="9dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="9dp"
-        android:background="@drawable/popup_round">
-
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/popup_round"
+        app:layout_constraintTop_toBottomOf="@id/companyInp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.3"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp">
 
         <EditText
-            android:paddingStart="5dp"
             android:id="@+id/detailsInp"
             android:layout_width="match_parent"
-            android:layout_height="236dp"
-            android:layout_marginTop="8dp"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
             android:hint="@string/RequestPrompt"
             android:background="@drawable/transparent"
-            android:scrollbars="vertical" />
-
+            android:scrollbars="vertical"
+            android:textSize="15sp" />
     </ScrollView>
-
     <CheckBox
         android:id="@+id/usePersonalData"
-        android:layout_width="217dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/scrollView"
-        android:layout_marginTop="0dp"
         android:text="@string/personalDataCheckBox"
-        android:textSize="15sp" />
+        android:textSize="12sp"
+        app:layout_constraintTop_toBottomOf="@id/scrollView"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp" />
 
+    <!-- Attachments Button -->
     <ImageButton
         android:id="@+id/attachButton"
-        android:layout_width="34dp"
-        android:layout_height="33dp"
-        android:layout_below="@+id/scrollView"
-        android:layout_alignEnd="@id/usePersonalData"
-        android:layout_marginStart="150dp"
-        android:layout_marginTop="5dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:background="?android:attr/selectableItemBackground"
         android:src="@drawable/attachments"
-        android:layout_marginEnd="-181dp" />
+        app:layout_constraintTop_toBottomOf="@id/scrollView"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp" />
+
+    <!-- Attachments Text -->
+
+    <!-- Save Button -->
+
+    <!-- Exit Button -->
 
     <TextView
         android:id="@+id/attachText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/scrollView"
-        android:layout_alignStart="@id/attachButton"
-        android:layout_marginStart="-116dp"
-        android:layout_marginTop="11dp"
-        android:paddingEnd="10dp"
-        android:textSize="15sp"
-        android:text="@string/attachText" />
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/attachText"
+        android:textSize="12sp"
+        app:layout_constraintEnd_toEndOf="@id/saveButton"
+        app:layout_constraintHorizontal_bias="0.827"
+        app:layout_constraintStart_toStartOf="@id/usePersonalData"
+        app:layout_constraintTop_toBottomOf="@id/scrollView" />
 
     <ImageButton
         android:id="@+id/saveButton"
-        android:layout_width="199dp"
-        android:layout_height="315dp"
-        android:layout_below="@+id/usePersonalData"
-        android:layout_alignEnd="@+id/exitButton"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="-204dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
         android:background="?android:attr/selectableItemBackground"
+        android:contentDescription="@string/saveButton"
+        android:scaleType="fitCenter"
         android:src="@drawable/savebutton"
-        android:contentDescription="@string/saveButton" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintStart_toEndOf="@id/exitButton"
+        app:layout_constraintTop_toBottomOf="@id/usePersonalData"
+        app:layout_constraintWidth_percent="0.45" />
 
     <ImageButton
         android:id="@+id/exitButton"
-        android:layout_width="199dp"
-        android:layout_height="315dp"
-        android:layout_below="@+id/usePersonalData"
-        android:layout_marginTop="15dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
         android:background="?android:attr/selectableItemBackground"
         android:contentDescription="@string/takeBackButton"
-        android:src="@drawable/exitbutton" />
+        android:scaleType="fitCenter"
+        android:src="@drawable/exitbutton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/usePersonalData"
+        app:layout_constraintWidth_percent="0.45" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

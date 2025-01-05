@@ -7,6 +7,7 @@ color buttonblue
 color buttongrey
 color buttonorange
 color greybase
+color logoutbutton
 color orangebase
 color outline
 color white
@@ -83,9 +84,9 @@ id greetingsRobot
 id loginButton
 id loginbot
 id loginpage
+id logoutButton
 id main
 id newUser
-id notifications
 id option
 id permissions
 id requestPage
@@ -95,7 +96,6 @@ id scrollView
 id sendEmail
 id settings
 id stylePalette
-id success
 id successImage
 id successText
 id successText2
@@ -142,6 +142,8 @@ layout settings_page_sunny
 layout sucess_popup
 layout sucess_popup_moody
 layout sucess_popup_sunny
+mipmap app_photo
+mipmap app_photo_round
 mipmap ic_launcher
 mipmap ic_launcher_round
 string Filebutton
@@ -161,8 +163,14 @@ string createUserButton
 string createUserTitle
 string domainFinderDesc
 string first_name
+string gcm_defaultSenderId
 string generationAreaTitle
+string google_api_key
+string google_app_id
+string google_crash_reporting_api_key
+string google_storage_bucket
 string inputDetailsTitle
+string log_out
 string loginButton
 string loginPageTitle
 string mainMenuTitle
@@ -172,6 +180,7 @@ string permissionsSwitch
 string personalDataCheckBox
 string phone_number
 string popUpTitle
+string project_id
 string requestPageTitle
 string saveButton
 string save_data

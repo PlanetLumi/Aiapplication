@@ -1,86 +1,116 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="4dp"
-    android:paddingRight="4dp"
     android:background="@color/greybase"
     android:id="@+id/settings">
 
-
+    <!-- Title -->
     <TextView
         android:id="@+id/title"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/settingsPageTitle"
-        android:textSize="40sp" />
+        android:textSize="40sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
 
+    <!-- Spinner -->
     <Spinner
         android:id="@+id/stylePalette"
-        android:layout_width="408dp"
-        android:layout_height="42dp"
-        android:layout_below="@id/title"
-        android:layout_marginTop="8dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="@drawable/popup_round"
-        android:prompt="@string/style_palette_prompt" />
+        android:prompt="@string/style_palette_prompt"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintHeight_percent="0.05"
+        android:layout_marginEnd="8dp" />
 
+    <!-- Permissions Switch -->
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/permissions"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/stylePalette"
-        android:layout_marginTop="2dp"
         android:checked="true"
-        android:text="@string/permissionsSwitch" />
+        android:text="@string/permissionsSwitch"
+        app:layout_constraintTop_toBottomOf="@id/stylePalette"
+        app:layout_constraintStart_toStartOf="parent"
+        android:paddingStart="8dp"
+        app:layout_constraintWidth_percent="0.45"
+        android:layout_marginTop="16dp" />
 
-    <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/notifications"
-        android:layout_width="147dp"
+
+    <!-- Robot Image -->
+
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/permissions"
-        android:layout_alignEnd="@id/permissions"
-        android:layout_marginTop="-48dp"
-        android:layout_marginEnd="-168dp"
-        android:checked="true"
-        android:text="@string/notificationsSwitch" />
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/logoutbutton"
+        android:padding="12dp"
+        android:text="@string/log_out"
+        android:textColor="@color/buttongrey"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:cornerRadius="12dp"
+        app:layout_constraintHeight_percent="0.1"
+        app:layout_constraintStart_toStartOf="@id/saveButton"
+        app:layout_constraintTop_toBottomOf="@id/stylePalette"
+        app:layout_constraintWidth_percent="0.45" />
 
     <ImageView
         android:id="@+id/workingHard"
-        android:layout_width="401dp"
-        android:layout_height="209dp"
-        android:layout_below="@id/title"
-        android:layout_marginTop="106dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:src="@drawable/workinghard"
-        android:text=""
-        tools:layout_editor_absoluteX="14dp"
-        tools:layout_editor_absoluteY="64dp" />
+        app:layout_constraintTop_toBottomOf="@id/permissions"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.25"
+        android:layout_marginTop="16dp" />
+
+    <!-- Exit Button -->
+
+    <!-- Save Button -->
+    <ImageButton
+        android:id="@+id/exitButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:contentDescription="@string/takeBackButton"
+        android:scaleType="fitCenter"
+        android:src="@drawable/exitbutton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/workingHard"
+        app:layout_constraintWidth_percent="0.45" />
 
     <ImageButton
         android:id="@+id/saveButton"
-        android:layout_width="200dp"
-        android:layout_height="324dp"
-        android:layout_below="@+id/workingHard"
-        android:layout_alignEnd="@id/exitButton"
-        android:layout_marginTop="33dp"
-        android:layout_marginEnd="-204dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:background="?android:attr/selectableItemBackground"
+        android:contentDescription="@string/saveButton"
+        android:scaleType="fitCenter"
         android:src="@drawable/savebutton"
-        android:contentDescription="@string/saveButton" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
+        app:layout_constraintStart_toEndOf="@id/exitButton"
+        app:layout_constraintTop_toBottomOf="@id/workingHard"
+        app:layout_constraintWidth_percent="0.45" />
 
-    <ImageButton
-        android:id="@+id/exitButton"
-        android:layout_width="200dp"
-        android:layout_height="324dp"
-        android:layout_below="@+id/workingHard"
-        android:layout_marginStart="-3dp"
-        android:layout_marginTop="33dp"
-        android:layout_marginBottom="-567dp"
-        android:background="?android:attr/selectableItemBackground"
-        android:src="@drawable/exitbutton"
-        android:contentDescription="@string/takeBackButton"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="512dp" />
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

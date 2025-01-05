@@ -1,4 +1,4 @@
-com.example.aiapplication.test.app-core-1.6.1-0 C:\Users\Lumie123\.gradle\caches\8.9\transforms\64ffc5db77acc7525a80cb8b53d83bfb\transformed\core-1.6.1\res
+com.example.aiapplication.test.app-core-1.6.1-0 C:\Users\Lumie123\.gradle\caches\8.9\transforms\7c087e66a892fe4e04980f1f61583b07\transformed\core-1.6.1\res
 com.example.aiapplication.test.app-androidTest-1 C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\build\generated\res\resValues\androidTest\debug
 com.example.aiapplication.test.app-mergeDebugAndroidTestResources-2 C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
 com.example.aiapplication.test.app-mergeDebugAndroidTestResources-3 C:\Users\Lumie123\AndroidStudioProjects\Aiapplication\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir

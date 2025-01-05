@@ -1,76 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/greybase"
     android:id="@+id/loginpage">
 
-    <ImageView
-        android:id="@+id/loginbot"
-        android:layout_width="match_parent"
-        android:layout_height="152dp"
-        android:layout_alignTop="@+id/userName"
-        android:layout_marginTop="-159dp"
-        android:gravity="center"
-        android:src="@drawable/loginbotsunny"
-        tools:layout_editor_absoluteX="14dp"
-        tools:layout_editor_absoluteY="64dp" />
-
+    <!-- Title -->
     <TextView
         android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="88dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/loginPageTitle"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="24dp" />
 
+    <!-- Robot Image -->
+    <ImageView
+        android:id="@+id/loginbot"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/loginbotsunny"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_percent="0.6"
+        app:layout_constraintHeight_percent="0.3"
+        android:layout_marginTop="16dp" />
 
+    <!-- Username Input -->
     <EditText
         android:id="@+id/userName"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/title"
-        android:layout_marginTop="188dp"
-        android:gravity="center"
         android:background="@drawable/popup_round_sunny"
-        android:hint="@string/Username" />
+        android:gravity="center"
+        android:hint="@string/Username"
+        app:layout_constraintTop_toBottomOf="@id/loginbot"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
 
+    <!-- Password Input -->
     <EditText
         android:id="@+id/Password"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/userName"
-        android:layout_marginTop="23dp"
+        android:background="@drawable/popup_round_sunny"
         android:gravity="center"
         android:hint="@string/Password"
-        android:background="@drawable/popup_round_sunny"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        app:layout_constraintTop_toBottomOf="@id/userName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
 
-    <ImageButton
-        android:id="@+id/loginButton"
-        android:layout_width="200dp"
-        android:layout_height="324dp"
-        android:layout_below="@id/Password"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="98dp"
-        android:layout_toEndOf="@id/takeToCreate"
-        android:background="?android:attr/selectableItemBackground"
-        android:contentDescription="@string/loginButton"
-        android:src="@drawable/savebuttonsunny"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="512dp" />
+    <!-- Create User Button -->
+
+    <!-- Login Button -->
 
     <ImageButton
         android:id="@+id/takeToCreate"
-        android:layout_width="200dp"
-        android:layout_height="324dp"
-        android:layout_below="@id/Password"
-        android:layout_marginTop="98dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
         android:background="?android:attr/selectableItemBackground"
-        android:src="@drawable/createusersunny"
         android:contentDescription="@string/createUserButton"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="512dp" />
+        android:scaleType="fitCenter"
+        android:src="@drawable/createusersunny"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Password"
+        app:layout_constraintWidth_percent="0.45" />
 
-</RelativeLayout>
+    <ImageButton
+        android:id="@+id/loginButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:contentDescription="@string/loginButton"
+        android:scaleType="fitCenter"
+        android:src="@drawable/savebuttonsunny"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.36"
+        app:layout_constraintStart_toEndOf="@id/takeToCreate"
+        app:layout_constraintTop_toBottomOf="@id/Password"
+        app:layout_constraintWidth_percent="0.45" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

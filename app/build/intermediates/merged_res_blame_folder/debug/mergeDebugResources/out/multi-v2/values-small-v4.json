@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.aiapplication.app-mergeDebugResources-30:/values-small-v4/values-small-v4.xml",
+            "outputFile": "com.example.aiapplication.app-mergeDebugResources-34:/values-small-v4/values-small-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Lumie123\\.gradle\\caches\\8.9\\transforms\\1463b6d09e1ea5c6a2a6c431e005a0cd\\transformed\\material-1.12.0\\res\\values-small-v4\\values-small-v4.xml",
+                    "source": "C:\\Users\\Lumie123\\.gradle\\caches\\8.9\\transforms\\fe4dfa2fc95b37cd47ad32ff67b6dc61\\transformed\\material-1.12.0\\res\\values-small-v4\\values-small-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

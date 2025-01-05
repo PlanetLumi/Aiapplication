@@ -11,6 +11,7 @@
     <color name="buttongrey">#D4DBDF</color>
     <color name="buttonorange">#EFA107</color>
     <color name="greybase">#EDF4F8</color>
+    <color name="logoutbutton">#B22222</color>
     <color name="orangebase">#E47B02</color>
     <color name="outline">#474747</color>
     <color name="white">#FFFFFFFF</color>
@@ -31,8 +32,14 @@
     <string name="createUserTitle"> Create User</string>
     <string name="domainFinderDesc">Please input the name of the companies domain</string>
     <string name="first_name">First Name</string>
+    <string name="gcm_defaultSenderId" translatable="false">344832053096</string>
     <string name="generationAreaTitle"> Request Generated</string>
+    <string name="google_api_key" translatable="false">AIzaSyA43orlXGq_v-sZczgZGKsGuMgOUSHEQhA</string>
+    <string name="google_app_id" translatable="false">1:344832053096:android:1f67d16f5ad9b3540c50dd</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyA43orlXGq_v-sZczgZGKsGuMgOUSHEQhA</string>
+    <string name="google_storage_bucket" translatable="false">cust0rd-desk.firebasestorage.app</string>
     <string name="inputDetailsTitle">Your Info</string>
+    <string name="log_out">LOG OUT</string>
     <string name="loginButton"> Click to Login</string>
     <string name="loginPageTitle">Welcome Back!</string>
     <string name="mainMenuTitle">Help Desk</string>
@@ -42,6 +49,7 @@
     <string name="personalDataCheckBox">Fill with saved personal data</string>
     <string name="phone_number">Phone Number</string>
     <string name="popUpTitle">Woo Hoo!</string>
+    <string name="project_id" translatable="false">cust0rd-desk</string>
     <string name="requestPageTitle">Make A Request</string>
     <string name="saveButton"> Click to save details </string>
     <string name="save_data">Save Data</string>

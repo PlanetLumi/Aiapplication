@@ -1,20 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.aiapplication.app-mergeDebugResources-30:/values-v24/values-v24.xml",
+            "outputFile": "com.example.aiapplication.app-mergeDebugResources-34:/values-v24/values-v24.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Lumie123\\.gradle\\caches\\8.9\\transforms\\02b5f911a92c7a2d865bd95a30dc4a00\\transformed\\appcompat-1.7.0\\res\\values-v24\\values-v24.xml",
-                    "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,212",
-                        "endColumns": "156,134",
-                        "endOffsets": "207,342"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Lumie123\\.gradle\\caches\\8.9\\transforms\\1463b6d09e1ea5c6a2a6c431e005a0cd\\transformed\\material-1.12.0\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\Lumie123\\.gradle\\caches\\8.9\\transforms\\fe4dfa2fc95b37cd47ad32ff67b6dc61\\transformed\\material-1.12.0\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,9,12,15",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -30,6 +20,16 @@
                         "endLines": "4,5,6,7,10,13,16,19",
                         "endColumns": "84,98,86,100,10,10,10,10",
                         "endOffsets": "427,526,613,714,913,1126,1327,1542"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Lumie123\\.gradle\\caches\\8.9\\transforms\\3541e059c054869ddfff51624c018018\\transformed\\appcompat-1.7.0\\res\\values-v24\\values-v24.xml",
+                    "from": {
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,212",
+                        "endColumns": "156,134",
+                        "endOffsets": "207,342"
                     }
                 }
             ]

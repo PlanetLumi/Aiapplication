@@ -30,7 +30,7 @@ public class MainMenu extends AppCompatActivity {
             return insets;
         });
         RequestToast(MainMenu.this);
-        takeButtonFunc.takeBtn(MainMenu.this, DataCollect.class, R.id.takeToSettings, null);
+        takeButtonFunc.takeBtn(MainMenu.this, DataCollect.class, R.id.takeToDetails, null);
         takeButtonFunc.takeBtn(MainMenu.this, RequestPage.class, R.id.takeToRequest, () -> {
             try {
                 SaveData.saveOption(MainMenu.this, "1", "userChoice.txt");
@@ -46,7 +46,6 @@ public class MainMenu extends AppCompatActivity {
             }
         });
         takeButtonFunc.takeBtn(MainMenu.this, SettingsPage.class, R.id.takeToSettings, null);
-        takeButtonFunc.takeBtn(MainMenu.this, DataCollect.class, R.id.takeToDetails, null);
     }
     public static void RequestToast(Context context){
         // Create an AlertDialog to collect API keys from the user

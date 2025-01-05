@@ -1,106 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:background="@color/greybase"
     android:id="@+id/datacollect">
 
-    <ImageView
-        android:id="@+id/workingHard2"
-        android:layout_width="match_parent"
-        android:layout_height="187dp"
-        android:layout_below="@id/title"
-        android:layout_marginTop="123dp"
-        app:srcCompat="@drawable/workinghard"
-        tools:layout_editor_absoluteX="14dp"
-        tools:layout_editor_absoluteY="64dp" />
-
-    <EditText
-        android:id="@+id/SName"
-        android:layout_width="220dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/FName"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp"
-        android:gravity="center"
-        android:layout_marginTop="17dp"
-        android:background="@drawable/popup_round"
-        android:hint="@string/surname" />
-
+    <!-- Title -->
     <TextView
         android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textSize="40sp"
-        android:text="@string/inputDetailsTitle" />
+        android:gravity="center"
+        android:text="@string/inputDetailsTitle"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
 
-
+    <!-- First Name Input -->
     <EditText
         android:id="@+id/FName"
-        android:layout_width="220dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/title"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="23dp"
-        android:layout_marginEnd="15dp"
-        android:layout_toStartOf="@+id/PNumber"
-        android:background="@drawable/popup_round"
+        android:hint="@string/first_name"
         android:gravity="center"
-        android:hint="@string/first_name" />
+        android:background="@drawable/popup_round"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/SName"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintWidth_percent="0.45" />
 
+    <!-- Surname Input -->
+    <EditText
+        android:id="@+id/SName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/surname"
+        android:gravity="center"
+        android:background="@drawable/popup_round"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintStart_toEndOf="@id/FName"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintWidth_percent="0.45" />
+
+    <!-- Phone Number Input -->
     <EditText
         android:id="@+id/PNumber"
-        android:layout_width="166dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/title"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="22dp"
-        android:layout_marginEnd="10dp"
-        android:background="@drawable/popup_round"
+        android:hint="@string/phone_number"
         android:gravity="center"
-        android:hint="@string/phone_number" />
+        android:background="@drawable/popup_round"
+        app:layout_constraintTop_toBottomOf="@id/FName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
 
+    <!-- Address Input -->
     <EditText
         android:id="@+id/Address"
-        android:layout_width="220dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:hint="@string/address"
         android:gravity="center"
-        android:layout_below="@id/SName"
-        android:layout_marginTop="13dp"
-        android:layout_marginEnd="41dp"
         android:background="@drawable/popup_round"
-        android:hint="@string/address" />
+        app:layout_constraintTop_toBottomOf="@id/PNumber"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
 
-    <ImageButton
-        android:id="@+id/saveButton"
-        android:layout_width="200dp"
-        android:layout_height="324dp"
-        android:layout_below="@+id/Address"
-        android:layout_alignEnd="@id/exitButton"
-        android:layout_marginTop="186dp"
-        android:layout_marginEnd="-207dp"
-        android:background="?android:attr/selectableItemBackground"
-        android:src="@drawable/savebutton"
-        android:contentDescription="@string/saveButton"
-        android:text="@string/save_data" />
+    <!-- Robot Image -->
+    <ImageView
+        android:id="@+id/workingHard2"
+        android:layout_width="0dp"
+        android:layout_height="187dp"
+        app:srcCompat="@drawable/workinghard"
+        app:layout_constraintTop_toBottomOf="@id/Address"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Go Back Button -->
+
+    <!-- Save Button -->
 
     <ImageButton
         android:id="@+id/exitButton"
-        android:layout_width="200dp"
-        android:layout_height="324dp"
-        android:layout_below="@id/Address"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="186dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         android:background="?android:attr/selectableItemBackground"
-        android:src="@drawable/exitbutton"
         android:contentDescription="@string/takeBackButton"
-        tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="512dp" />
+        android:scaleType="fitCenter"
+        android:src="@drawable/exitbutton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/workingHard2"
+        app:layout_constraintWidth_percent="0.45" />
 
+    <ImageButton
+        android:id="@+id/saveButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:contentDescription="@string/saveButton"
+        android:scaleType="fitCenter"
+        android:src="@drawable/savebutton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toEndOf="@id/exitButton"
+        app:layout_constraintTop_toBottomOf="@id/workingHard2"
+        app:layout_constraintWidth_percent="0.45" />
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

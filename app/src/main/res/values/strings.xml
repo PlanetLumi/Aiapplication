@@ -47,4 +47,5 @@
     <string name="camera_button">Camera button</string>
     <string name="OpenFiles">Open Files</string>
     <string name="OpenCamera">Open Camera</string>
+    <string name="log_out">LOG OUT</string>
 </resources>

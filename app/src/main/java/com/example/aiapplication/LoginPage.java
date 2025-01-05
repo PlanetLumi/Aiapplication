@@ -41,7 +41,7 @@ public class LoginPage extends AppCompatActivity {
                 return;
             }
             if (!normalizedUsername.matches("^[a-zA-Z0-9_.]+$")) {
-                setPopup.showError(LoginPage.this, "Invalid Login", "Username cannot contain special characters");
+                setPopup.showError(LoginPage.this, "Invalid Login", "Username cannot contain special characters - only alphanumerics, underscores, and periods are allowed.");
                 return;
             }
             if (!buildDB.checkIfUserExists(readableDatabase, normalizedUsername)) {

@@ -63,7 +63,7 @@ public class MainMenu extends AppCompatActivity {
         layout.addView(chatGptKeyInput);
 
         final EditText hunterIoKeyInput = new EditText(context);
-        hunterIoKeyInput.setHint("Enter Hunter IO API Key");
+        hunterIoKeyInput.setHint("Enter Hunter IO API K ey");
         layout.addView(hunterIoKeyInput);
 
         builder.setView(layout);

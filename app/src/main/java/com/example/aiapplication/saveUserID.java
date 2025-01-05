@@ -40,4 +40,11 @@ public class saveUserID {
     public static String grabSettings(Context context) {
         return "settings_" + grabName(context) + ".txt";
     }
+
+    public static void clearID(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("UserSession", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.clear();
+        editor.apply();
+    }
 }

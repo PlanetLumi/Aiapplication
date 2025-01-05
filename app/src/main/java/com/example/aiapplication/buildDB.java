@@ -294,23 +294,35 @@ public class buildDB extends SQLiteOpenHelper {
         return  getLoginAttempts(db, username) * 600000L;
 
     }
-    public static long findCurrentDuration(SQLiteDatabase db, String username){
-        username = (username).toLowerCase();
+    public static long findCurrentDuration(SQLiteDatabase db, String username) {
+        username = username.toLowerCase();
         String selection = "username = ?";
         String[] selectionArgs = {username};
         String[] projection = {"lockTime"};
-        Cursor cursor = db.query(
-                "UserCredentials",
-                projection,
-                selection,
-                selectionArgs,
-                null,
-                null,
-                null
-        );
-        cursor.moveToFirst();
-        cursor.close();
-        return (findLockDuration(db, username) - (System.currentTimeMillis() - cursor.getLong(cursor.getColumnIndexOrThrow("lockTime")))) / 60000;
+
+        Cursor cursor = null;
+        try {
+            cursor = db.query(
+                    "UserCredentials",
+                    projection,
+                    selection,
+                    selectionArgs,
+                    null,
+                    null,
+                    null
+            );
+
+            if (cursor != null && cursor.moveToFirst()) {
+                long lockTime = cursor.getLong(cursor.getColumnIndexOrThrow("lockTime"));
+                return (findLockDuration(db, username) - (System.currentTimeMillis() - lockTime)) / 60000;
+            } else {
+                return 0; // Return 0 if no data is found
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
+            }
+        }
     }
     public static void userUnlocked(SQLiteDatabase db, String username) {
         ContentValues values = new ContentValues();

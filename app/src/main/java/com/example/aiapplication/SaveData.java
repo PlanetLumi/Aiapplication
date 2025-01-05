@@ -9,10 +9,9 @@ import java.io.OutputStreamWriter;
 
 
 public class SaveData {
-    public static String saveOption(Context context, String userData, String fileName) throws IOException {
+    public static void saveOption(Context context, String userData, String fileName) throws IOException {
         fileClear(context, fileName);
         FileSave(context, userData, fileName);
-        return "File Saved";
     }
 
     public static void fileClear(Context context, String fileName) throws IOException {

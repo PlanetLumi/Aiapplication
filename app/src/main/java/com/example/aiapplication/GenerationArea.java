@@ -2,6 +2,8 @@ package com.example.aiapplication;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -74,9 +76,12 @@ public class GenerationArea extends AppCompatActivity {
 
             @Override
             public void onE(String errorMessage) {
-                grabbedEmail.setText("Error");
-                setPopup.showError(GenerationArea.this, "Email Grab Failed!", "Please try again.");
-            }
+                grabbedEmail.setText("DOMAIN NOT FOUND");
+                new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                    if (!isFinishing() && !isDestroyed()) {
+                        setPopup.showError(GenerationArea.this, "Email Grab Failed!", "Please try again.");
+                    }
+                }, 200);}
         });
 
         TextView generationBox = findViewById(R.id.GenerationBox);

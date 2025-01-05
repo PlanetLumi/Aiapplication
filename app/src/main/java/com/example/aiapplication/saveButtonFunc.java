@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 
 
+import androidx.annotation.Nullable;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -37,7 +39,7 @@ public class saveButtonFunc{
             });
         }
     }
-    public static void userSaveBtn  (Context context, Activity activity, String[] fields, String fileName, String message1, Class<?> targetActivity) {
+    public static void userSaveBtn  (Context context, Activity activity, String[] fields, String fileName, String message1, Class<?> targetActivity, boolean recreate) {
         Log.d("userSaveBtn", "userSaveBtn called");
         View saveBtn = activity.findViewById(R.id.saveButton);
         Log.d("userSaveBtn", "saveBtn:" + saveBtn);
@@ -58,6 +60,9 @@ public class saveButtonFunc{
                         activity.finish();
                     }
             });
+            if (recreate) {
+                activity.recreate();
+            }
 
         }
     }

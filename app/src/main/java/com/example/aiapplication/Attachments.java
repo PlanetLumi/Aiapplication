@@ -48,6 +48,7 @@ public class Attachments {
         if (cameraIntent.resolveActivity(activity.getPackageManager()) != null) {
             activity.startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
         } else {
+            Toast.makeText(activity, "No camera app found", Toast.LENGTH_SHORT).show();
         }
     }
 

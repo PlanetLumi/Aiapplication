@@ -1,7 +1,9 @@
 package com.example.aiapplication;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,11 +24,14 @@ public class SettingsPage extends AppCompatActivity {
             return insets;
         });
         String settings = saveUserID.grabSettings(SettingsPage.this);
-
-
         spinnerFunc.setSpinners(SettingsPage.this, new String[]{"stylePalette"}, new int[] {R.array.style_palette},settings);
         switchFunc.setSwitches(SettingsPage.this, new String[] {"permissions"}, settings);
-        saveButtonFunc.userSaveBtn(SettingsPage.this, SettingsPage.this, new String[]{"stylePalette", "permissions"}, settings, "Settings Saved Successfully!",null);
+        saveButtonFunc.userSaveBtn(SettingsPage.this, SettingsPage.this, new String[]{"stylePalette", "permissions"}, settings, "Settings Saved Successfully!", null, true);
         ExitButtonFunc.exitBtn(SettingsPage.this, MainMenu.class);
+        Button LogOut = findViewById(R.id.logoutButton);
+        LogOut.setOnClickListener(view -> {
+            saveUserID.clearID(SettingsPage.this);
+            startActivity(new Intent(SettingsPage.this, LoginPage.class));
+        });
     }
 }

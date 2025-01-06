@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\Users\\Lumie123\\.gradle\\daemon\\8.9\\com.example.aiapplication.app-debug-36:\\drawable_ic_launcher_foreground.xml.flat",
-        "source": "C:\\Users\\Lumie123\\.gradle\\daemon\\8.9\\com.example.aiapplication.app-main-38:\\drawable\\ic_launcher_foreground.xml"
-    },
-    {
         "merged": "C:\\Users\\Lumie123\\.gradle\\daemon\\8.9\\com.example.aiapplication.app-debug-36:\\drawable_errorymoody.png.flat",
         "source": "C:\\Users\\Lumie123\\.gradle\\daemon\\8.9\\com.example.aiapplication.app-main-38:\\drawable\\errorymoody.png"
+    },
+    {
+        "merged": "C:\\Users\\Lumie123\\.gradle\\daemon\\8.9\\com.example.aiapplication.app-debug-36:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\Lumie123\\.gradle\\daemon\\8.9\\com.example.aiapplication.app-main-38:\\drawable\\ic_launcher_foreground.xml"
     },
     {
         "merged": "C:\\Users\\Lumie123\\.gradle\\daemon\\8.9\\com.example.aiapplication.app-debug-36:\\layout_request_page.xml.flat",
@@ -152,10 +152,6 @@
         "source": "C:\\Users\\Lumie123\\.gradle\\daemon\\8.9\\com.example.aiapplication.app-main-38:\\layout\\login_page_sunny.xml"
     },
     {
-        "merged": "com.example.aiapplication.app-debug-36:/layout_generation_area_sunny.xml.flat",
-        "source": "com.example.aiapplication.app-main-38:/layout/generation_area_sunny.xml"
-    },
-    {
         "merged": "C:\\Users\\Lumie123\\.gradle\\daemon\\8.9\\com.example.aiapplication.app-debug-36:\\layout_login_page.xml.flat",
         "source": "C:\\Users\\Lumie123\\.gradle\\daemon\\8.9\\com.example.aiapplication.app-main-38:\\layout\\login_page.xml"
     },
@@ -252,12 +248,12 @@
         "source": "C:\\Users\\Lumie123\\.gradle\\daemon\\8.9\\com.example.aiapplication.app-main-38:\\drawable\\loginbotsunny.png"
     },
     {
-        "merged": "C:\\Users\\Lumie123\\.gradle\\daemon\\8.9\\com.example.aiapplication.app-debug-36:\\drawable_popup_round_sunny.xml.flat",
-        "source": "C:\\Users\\Lumie123\\.gradle\\daemon\\8.9\\com.example.aiapplication.app-main-38:\\drawable\\popup_round_sunny.xml"
-    },
-    {
         "merged": "C:\\Users\\Lumie123\\.gradle\\daemon\\8.9\\com.example.aiapplication.app-debug-36:\\layout_generation_area_sunny.xml.flat",
         "source": "C:\\Users\\Lumie123\\.gradle\\daemon\\8.9\\com.example.aiapplication.app-main-38:\\layout\\generation_area_sunny.xml"
+    },
+    {
+        "merged": "C:\\Users\\Lumie123\\.gradle\\daemon\\8.9\\com.example.aiapplication.app-debug-36:\\drawable_popup_round_sunny.xml.flat",
+        "source": "C:\\Users\\Lumie123\\.gradle\\daemon\\8.9\\com.example.aiapplication.app-main-38:\\drawable\\popup_round_sunny.xml"
     },
     {
         "merged": "C:\\Users\\Lumie123\\.gradle\\daemon\\8.9\\com.example.aiapplication.app-debug-36:\\drawable_sendemailsunny.png.flat",
@@ -320,12 +316,12 @@
         "source": "C:\\Users\\Lumie123\\.gradle\\daemon\\8.9\\com.example.aiapplication.app-main-38:\\layout\\settings_page_moody.xml"
     },
     {
-        "merged": "com.example.aiapplication.app-debug-36:/layout_generation_area_moody.xml.flat",
-        "source": "com.example.aiapplication.app-main-38:/layout/generation_area_moody.xml"
-    },
-    {
         "merged": "C:\\Users\\Lumie123\\.gradle\\daemon\\8.9\\com.example.aiapplication.app-debug-36:\\layout_main_menu_sunny.xml.flat",
         "source": "C:\\Users\\Lumie123\\.gradle\\daemon\\8.9\\com.example.aiapplication.app-main-38:\\layout\\main_menu_sunny.xml"
+    },
+    {
+        "merged": "com.example.aiapplication.app-debug-36:/xml_file_paths.xml.flat",
+        "source": "com.example.aiapplication.app-main-38:/xml/file_paths.xml"
     },
     {
         "merged": "C:\\Users\\Lumie123\\.gradle\\daemon\\8.9\\com.example.aiapplication.app-debug-36:\\drawable_popup_round.xml.flat",
@@ -354,10 +350,6 @@
     {
         "merged": "C:\\Users\\Lumie123\\.gradle\\daemon\\8.9\\com.example.aiapplication.app-debug-36:\\mipmap-xxxhdpi_app_photo.png.flat",
         "source": "C:\\Users\\Lumie123\\.gradle\\daemon\\8.9\\com.example.aiapplication.app-main-38:\\mipmap-xxxhdpi\\app_photo.png"
-    },
-    {
-        "merged": "com.example.aiapplication.app-debug-36:/layout_generation_area.xml.flat",
-        "source": "com.example.aiapplication.app-main-38:/layout/generation_area.xml"
     },
     {
         "merged": "C:\\Users\\Lumie123\\.gradle\\daemon\\8.9\\com.example.aiapplication.app-debug-36:\\mipmap-mdpi_app_photo_round.png.flat",

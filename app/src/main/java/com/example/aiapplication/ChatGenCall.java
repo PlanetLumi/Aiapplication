@@ -13,7 +13,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChatGenCall {
+public class  ChatGenCall {
 
     public interface generateRequestCallBack {
         void onSuccess(String request);

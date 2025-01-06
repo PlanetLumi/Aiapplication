@@ -1,4 +1,7 @@
 package com.example.aiapplication;
+import static androidx.fragment.app.FragmentManager.TAG;
+
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
@@ -40,6 +43,14 @@ public class GenerationArea extends AppCompatActivity {
         });
 
         // Retrieve the encrypted file paths from the Intent
+        Intent intent = getIntent();
+        ArrayList<String> encryptedPaths = intent.getStringArrayListExtra("encryptedFilePaths");
+
+        if (encryptedPaths != null && !encryptedPaths.isEmpty()) {
+            Log.d("GenerationArea", "Received encrypted file paths: " + encryptedPaths.toString());
+        } else {
+            Log.e("GenerationArea", "No encrypted file paths received.");
+        }
         List<String> encryptedFilePaths = getIntent().getStringArrayListExtra("encryptedFilePaths");
         if (encryptedFilePaths == null || encryptedFilePaths.isEmpty()) {
             Log.e("GenerationArea", "No encrypted file paths received.");
@@ -142,6 +153,7 @@ public class GenerationArea extends AppCompatActivity {
                 }
             }
 
+            // Generate a URI for the decrypted file
             Uri fileUri = androidx.core.content.FileProvider.getUriForFile(
                     this,
                     getPackageName() + ".fileprovider",
@@ -155,7 +167,6 @@ public class GenerationArea extends AppCompatActivity {
             return null;
         }
     }
-
 
     private String findType() {
         String generationType = ReadData.returnData(GenerationArea.this, "userChoice.txt");

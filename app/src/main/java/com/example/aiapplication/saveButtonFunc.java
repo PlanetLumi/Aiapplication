@@ -1,8 +1,11 @@
 package com.example.aiapplication;
 
+import static android.content.Intent.getIntent;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.View;
 
@@ -11,10 +14,12 @@ import androidx.annotation.Nullable;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class saveButtonFunc{
 
-    public static void funcSaveBtn(Context context, Activity activity, String[] fields, String fileName, Class<?> targetActivity) {
+    public static void funcSaveBtn(Context context, Activity activity, String[] fields, String fileName, Class<?> targetActivity, @Nullable Intent intent) {
         View saveBtn = activity.findViewById(R.id.saveButton);
         if (saveBtn != null) {
             saveBtn.setOnClickListener(v -> {
@@ -24,11 +29,7 @@ public class saveButtonFunc{
                         file.createNewFile(); // Ensure the file is created
                     }
                     SaveData.FileSave(context, DataGrab.gatherUserData(context, fields), fileName);
-                    setPopup.showSuccess(context, "greetingsbot", "Data Saved Successfully!", null);
-
                     if (targetActivity != null) {
-                        Intent intent = new Intent(activity, targetActivity);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         activity.startActivity(intent);
                         activity.finish();
                     }

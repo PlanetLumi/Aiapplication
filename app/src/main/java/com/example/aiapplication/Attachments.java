@@ -43,8 +43,13 @@ public class Attachments {
         }
     }
 
+
     public void openCamera(Activity activity) {
+        File photoFile = new File(activity.getExternalFilesDir(null), "photo_" + System.currentTimeMillis() + ".jpg");
+        Uri photoUri = androidx.core.content.FileProvider.getUriForFile(activity, "com.example.aiapplication.fileprovider", photoFile);
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri); // Specify where to save the photo
+
         if (cameraIntent.resolveActivity(activity.getPackageManager()) != null) {
             activity.startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
         } else {
@@ -52,9 +57,9 @@ public class Attachments {
         }
     }
 
-    public void openFilePicker(Activity activity) {
+    public void openFilePicker(Activity activity, String mimeType) {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("image/*");
+        intent.setType(mimeType); // Allow all files: "*/*"
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         activity.startActivityForResult(Intent.createChooser(intent, "Select File"), REQUEST_SELECT_FILE);
     }
@@ -89,7 +94,7 @@ public class Attachments {
         });
 
         btnLibrary.setOnClickListener(v -> {
-            openFilePicker(activity); // Open the file picker
+            openFilePicker(activity, "*/*"); // Allow all file types
             dialog.dismiss(); // Close the dialog
         });
 

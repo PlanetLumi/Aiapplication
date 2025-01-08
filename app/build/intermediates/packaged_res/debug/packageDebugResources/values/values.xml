@@ -23,8 +23,10 @@
     <string name="SaveDetails"> Save Details</string>
     <string name="Username"> Username</string>
     <string name="address">Address</string>
+    <string name="all_credit_of_assets_is_reserved_to_dani">All asset credit is reserved to lead digital artist Dani</string>
     <string name="app_name">Cust0rd Desk</string>
     <string name="attachText">Add Attachments</string>
+    <string name="button_for_lead_digital_artist">Button for lead digital artist</string>
     <string name="camera_button">Camera button</string>
     <string name="choicetitle">Please choose an attachment option, left is files, right is camera.</string>
     <string name="companyName">Company Name</string>
@@ -48,6 +50,7 @@
     <string name="permissionsSwitch">Permissions</string>
     <string name="personalDataCheckBox">Fill with saved personal data</string>
     <string name="phone_number">Phone Number</string>
+    <string name="please_see_her_digital_art_page_here">Please see her digital art page here:</string>
     <string name="popUpTitle">Woo Hoo!</string>
     <string name="project_id" translatable="false">cust0rd-desk</string>
     <string name="requestPageTitle">Make A Request</string>

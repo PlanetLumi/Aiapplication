@@ -33,6 +33,11 @@ public class LoginPage extends AppCompatActivity {
         SQLiteDatabase writableDatabase = buildDB.getInstance(LoginPage.this).getWritableDatabase();
 
         ImageButton loginButton = findViewById(R.id.loginButton);
+        ImageButton daniButton = findViewById(R.id.daniButton);
+        daniButton.setOnClickListener(v -> {
+            setPopup.showDani(LoginPage.this);
+                });
+
         loginButton.setOnClickListener(v -> {
             String[] details = DataGrab.gatherData(LoginPage.this, new String[]{"userName", "Password"});
             String normalizedUsername = details[0].replace(",", "").toLowerCase();

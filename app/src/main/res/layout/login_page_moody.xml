@@ -33,6 +33,19 @@
         app:layout_constraintHeight_percent="0.3"
         android:layout_marginTop="16dp" />
 
+    <ImageButton
+        android:id="@+id/daniButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:background="?android:attr/selectableItemBackground"
+        android:contentDescription="@string/button_for_lead_digital_artist"
+        android:src="@drawable/danimini"
+        app:layout_constraintEnd_toEndOf="@id/title"
+        app:layout_constraintHorizontal_bias="0.984"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
     <!-- Username Input -->
     <EditText
         android:id="@+id/userName"

@@ -19,6 +19,8 @@ drawable complaintssunny
 drawable createuser
 drawable createusermoody
 drawable createusersunny
+drawable dani
+drawable danimini
 drawable details
 drawable detailsbotmoody
 drawable detailsbotsunny
@@ -68,6 +70,9 @@ id cameratxt
 id choice
 id companyInp
 id createButton
+id daniButton
+id daniImage
+id daniTitle
 id datacollect
 id detailsInp
 id error
@@ -115,6 +120,9 @@ id workingHard2
 layout create_user
 layout create_user_moody
 layout create_user_sunny
+layout dani_reference
+layout dani_reference_moody
+layout dani_reference_sunny
 layout data_collect
 layout data_collect_moody
 layout data_collect_sunny
@@ -154,8 +162,10 @@ string RequestPrompt
 string SaveDetails
 string Username
 string address
+string all_credit_of_assets_is_reserved_to_dani
 string app_name
 string attachText
+string button_for_lead_digital_artist
 string camera_button
 string choicetitle
 string companyName
@@ -179,6 +189,7 @@ string options_popup
 string permissionsSwitch
 string personalDataCheckBox
 string phone_number
+string please_see_her_digital_art_page_here
 string popUpTitle
 string project_id
 string requestPageTitle

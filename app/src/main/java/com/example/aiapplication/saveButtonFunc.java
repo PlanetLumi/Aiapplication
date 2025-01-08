@@ -60,10 +60,11 @@ public class saveButtonFunc{
                         activity.startActivity(intent);
                         activity.finish();
                     }
+                if (recreate) {
+                    activity.recreate();
+                }
             });
-            if (recreate) {
-                activity.recreate();
-            }
+
 
         }
     }

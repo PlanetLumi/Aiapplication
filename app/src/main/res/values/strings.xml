@@ -48,4 +48,7 @@
     <string name="OpenFiles">Open Files</string>
     <string name="OpenCamera">Open Camera</string>
     <string name="log_out">LOG OUT</string>
+    <string name="all_credit_of_assets_is_reserved_to_dani">All asset credit is reserved to lead digital artist Dani</string>
+    <string name="please_see_her_digital_art_page_here">Please see her digital art page here:</string>
+    <string name="button_for_lead_digital_artist">Button for lead digital artist</string>
 </resources>

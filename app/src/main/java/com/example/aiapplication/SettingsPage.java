@@ -23,12 +23,15 @@ public class SettingsPage extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        //Sets up spinners and switches
         String settings = saveUserID.grabSettings(SettingsPage.this);
         spinnerFunc.setSpinners(SettingsPage.this, new String[]{"stylePalette"}, new int[] {R.array.style_palette},settings);
         switchFunc.setSwitches(SettingsPage.this, new String[] {"permissions"}, settings);
+        //Defines save parameters and sets success popup
         saveButtonFunc.userSaveBtn(SettingsPage.this, SettingsPage.this, new String[]{"stylePalette", "permissions"}, settings, "Settings Saved Successfully!", null, true);
         ExitButtonFunc.exitBtn(SettingsPage.this, MainMenu.class);
         Button LogOut = findViewById(R.id.logoutButton);
+        //Sets custom log out button that clears all the data for the user and goes to login page
         LogOut.setOnClickListener(view -> {
             saveUserID.clearID(SettingsPage.this);
             startActivity(new Intent(SettingsPage.this, LoginPage.class));

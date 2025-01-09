@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
+
+//Do not know use but do not want to break anything
 public class CustomOptionAdapter extends ArrayAdapter<String> {
 
     private final Context context;

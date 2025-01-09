@@ -6,6 +6,7 @@ public class HunterAPI {
     private static final String BASE_URL = "https://api.hunter.io/v2/";
     private static Retrofit retrofit;
 
+    //Defines HunterAPI
     public static Retrofit getClient() {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()

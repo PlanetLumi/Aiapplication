@@ -21,17 +21,20 @@ public class  ChatGenCall {
         void onE(String errorMessage);
     }
 
+    //Gives user data and preprompting
     public void generateRequest(Context context, String preprompt, @Nullable List<Uri> fileContents, String userRequest, generateRequestCallBack callback) {
         List<ChatRequest.Message> messages = new ArrayList<>();
         messages.add(new ChatRequest.Message("user", userRequest));
         messages.add(new ChatRequest.Message("system", preprompt));
 
+        // If attached file contents are provided, add them to the messages
         if (fileContents != null && !fileContents.isEmpty()) {
             for (Uri content : fileContents) {
                 messages.add(new ChatRequest.Message("system", "Attached File Content: " + content));
             }
         }
 
+        //makes request with total saved message
         ChatRequest chatRequest = new ChatRequest("gpt-3.5-turbo", messages);
         Call<ChatResponse> call = ChatGPTAPIService.getApi(context).getChatResponse(chatRequest);
         call.enqueue(new Callback<>() {

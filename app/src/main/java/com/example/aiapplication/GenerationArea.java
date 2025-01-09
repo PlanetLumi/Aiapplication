@@ -73,11 +73,13 @@ public class GenerationArea extends AppCompatActivity {
             }
         }
 
-
+        //Checks to see if prompt for complaint or refund
         String preprompt = findType();
         TextView grabbedEmail = findViewById(R.id.grabbedEmail);
+        //Checks users input text file
         String[] requestSplit = ReadData.returnData(GenerationArea.this, "userRequestInput.txt").split(",");
 
+        //Calling for email
         HunterGenCall hunterGenCall = new HunterGenCall();
         hunterGenCall.fetchEmail(this, requestSplit[1], new HunterGenCall.EmailResultCallBack() {
             @Override
@@ -89,6 +91,7 @@ public class GenerationArea extends AppCompatActivity {
             public void onE(String errorMessage) {
                 grabbedEmail.setText("DOMAIN NOT FOUND");
                 new Handler(Looper.getMainLooper()).postDelayed(() -> {
+                    //Checks to see if activity is built before displaying error as to not crash
                     if (!isFinishing() && !isDestroyed()) {
                         setPopup.showError(GenerationArea.this, "Email Grab Failed!", "Please try again.");
                     }
@@ -96,17 +99,21 @@ public class GenerationArea extends AppCompatActivity {
         });
 
         TextView generationBox = findViewById(R.id.GenerationBox);
+        //Allows drag
         generationBox.setFocusable(true);
         generationBox.setFocusableInTouchMode(true);
 
         ChatGenCall chatGenCall = new ChatGenCall();
+        //main request function
         chatGenCall.generateRequest(GenerationArea.this,preprompt,fileUris, requestSplit[3].replace("]", ""), new ChatGenCall.generateRequestCallBack() {
             @Override
             public void onSuccess(String request) {
                 generationBox.setText(request);
+                //Checks to find subject of email
                 String subject = findElements.findSubject(request);
                 ImageButton sendEmail = findViewById(R.id.sendEmail);
                 sendEmail.setOnClickListener(v -> {
+                    //Testing to see if attachment is being read
                     Log.d("GenerationArea", "Preparing to send email...");
                     if (fileUris.isEmpty()) {
                         Log.e("GenerationArea", "No file URIs to attach.");
@@ -115,7 +122,9 @@ public class GenerationArea extends AppCompatActivity {
                             Log.d("GenerationArea", "Attaching URI: " + uri.toString());
                         }
                     }
+                    //Fills email with parameters
                     emailFunc.sendEmail(GenerationArea.this, grabbedEmail.getText().toString(), subject, request.replace(subject, ""), fileUris);
+                    //Shows popup
                     setPopup.showSuccess(GenerationArea.this, "successbot", "Request sent!", null);
                 });
             }
@@ -130,12 +139,15 @@ public class GenerationArea extends AppCompatActivity {
         ExitButtonFunc.exitBtn(GenerationArea.this, RequestPage.class);
     }
 
+    //Decrypts the files in the saved file paths as URI's
     private Uri processEncryptedFile(String encryptedFilePath) {
         try {
             Log.d("GenerationArea", "Processing encrypted file: " + encryptedFilePath);
+            //Saved key
             String masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC);
             File encryptedFile = new File(encryptedFilePath);
 
+            //Builds encryption to REVERSE-cypher text
             EncryptedFile encrypted = new EncryptedFile.Builder(
                     encryptedFile,
                     this,
@@ -143,6 +155,7 @@ public class GenerationArea extends AppCompatActivity {
                     EncryptedFile.FileEncryptionScheme.AES256_GCM_HKDF_4KB
             ).build();
 
+            //Finds decrypted file and sends it to output stream
             File decryptedFile = new File(getCacheDir(), encryptedFile.getName() + "_decrypted");
             try (FileInputStream fis = encrypted.openFileInput();
                  FileOutputStream fos = new FileOutputStream(decryptedFile)) {

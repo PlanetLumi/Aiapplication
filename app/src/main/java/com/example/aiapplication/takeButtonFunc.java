@@ -10,7 +10,7 @@ public class  takeButtonFunc {
         View takeBtn = activity.findViewById(buttonId);
             if (takeBtn != null) {
                 takeBtn.setOnClickListener(v -> {
-                    // Allows seemless transitions to other parts of the button
+                    //Allows for custom function defined for button
                     if (customAction != null) {
                         customAction.run();
                     }

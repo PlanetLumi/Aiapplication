@@ -5,6 +5,8 @@ import android.content.Context;
 
 
 public class setBoxFunc{
+
+    //sets all the boxes in the activity to save or false
     public static void setBoxes(Activity activity, String[] idNames){
         for (String idName : idNames) {
             int boxGrab = activity.getResources().getIdentifier(idName, "id", activity.getPackageName());

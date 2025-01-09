@@ -5,6 +5,7 @@ public class ChatRequest {
     private String model;
     private List<Message> messages;
 
+    //defines chat request
     public ChatRequest(String model, List<Message> messages) {
         this.model = model;
         this.messages = messages;

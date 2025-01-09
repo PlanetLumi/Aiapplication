@@ -11,7 +11,7 @@ public class ChatGPTAPIService {
     private static final String BASE_URL = "https://api.openai.com";
     private static Retrofit retrofit;
 
-    // Initialize Retrofit instance
+    // Initialize instance of ChatGPT Api
     public static Retrofit getInstance(Context context) {
         if (retrofit == null) {
             // Fetch the API key using the context
@@ -26,7 +26,7 @@ public class ChatGPTAPIService {
                         return chain.proceed(newRequest);
                     }).build();
 
-            // Build the Retrofit instance
+            // Build Retrofit instance
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .client(client)

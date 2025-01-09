@@ -29,8 +29,10 @@ public class MainMenu extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        //Check API keys
         RequestToast(MainMenu.this);
         takeButtonFunc.takeBtn(MainMenu.this, DataCollect.class, R.id.takeToDetails, null);
+        //Adds extra function to button, saves choice to file
         takeButtonFunc.takeBtn(MainMenu.this, RequestPage.class, R.id.takeToRequest, () -> {
             try {
                 SaveData.saveOption(MainMenu.this, "1", "userChoice.txt");
@@ -38,6 +40,7 @@ public class MainMenu extends AppCompatActivity {
                 throw new RuntimeException(e);
             }
         });
+        //Adds extra function to button, saves choice to file
         takeButtonFunc.takeBtn(MainMenu.this, RequestPage.class, R.id.takeToComplaints, () -> {
             try {
                 SaveData.saveOption(MainMenu.this, "2", "userChoice.txt");
@@ -63,7 +66,7 @@ public class MainMenu extends AppCompatActivity {
         layout.addView(chatGptKeyInput);
 
         final EditText hunterIoKeyInput = new EditText(context);
-        hunterIoKeyInput.setHint("Enter Hunter IO API K ey");
+        hunterIoKeyInput.setHint("Enter Hunter IO API Key");
         layout.addView(hunterIoKeyInput);
 
         builder.setView(layout);
@@ -75,13 +78,8 @@ public class MainMenu extends AppCompatActivity {
             saveUserID.saveKeys(context, chatGptKey, "chatGptKey");
             String hunterIoKey = hunterIoKeyInput.getText().toString().trim();
             saveUserID.saveKeys(context, hunterIoKey, "hunterIoKey");
-
-            // Display the keys in a Toast (for demonstration purposes)
-            // WARNING: In real applications, do not display or expose API keys in plain text!
             Toast.makeText(context, "ChatGPT Key: " + chatGptKey + "\nHunter IO Key: " + hunterIoKey,
                     Toast.LENGTH_LONG).show();
-
-            // Here, you could encrypt and store the keys securely using the Android Keystore
         });
 
         // Set up the "Cancel" button

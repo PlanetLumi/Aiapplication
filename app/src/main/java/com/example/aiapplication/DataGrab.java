@@ -17,17 +17,18 @@ import java.util.List;
 
 public class DataGrab extends AppCompatActivity {
 
+    //Finds all Ids for each ID in the layout
     public static Collection<Integer> fillDataGrabs(Context context, String[] idNames) {
         List<Integer> dataPoints = new ArrayList<>();
         for (int i = 0; i < idNames.length; i++) {
-            int resourceId = context.getResources().getIdentifier(idNames[i], "id", context.getPackageName());
+            int resourceId = context.getResources().getIdentifier(idNames[i], "id", context.getPackageName()); //Converts string typed ID into valid int value
             dataPoints.add(resourceId);
         }
         return dataPoints;
     }
-
+    //Saves data into string variable to be accessed
     public static String[] gatherData(Context context, String[] idNames) {
-        List<Integer> dataPoints = (List<Integer>) fillDataGrabs(context, idNames);
+        List<Integer> dataPoints = (List<Integer>) fillDataGrabs(context, idNames); //finds all the ids in the layout
         String[] userData = new String[dataPoints.size()];
         Activity activity = (Activity) context;
 
@@ -35,13 +36,14 @@ public class DataGrab extends AppCompatActivity {
             View current = activity.findViewById(dataPoints.get(i));
             if (current instanceof EditText) {
                 // Get text from EditText and add to list
-                String text = ((EditText) current).getText().toString();
+                String text = ((EditText) current).getText().toString(); //saves if text is inputed
                 userData[i] = text;
             }
         }
 
         return userData; // Return as a String array
     }
+    //Saves data into string variable to be accessed
     public static String gatherUserData(Context context, String[] idNames) {
         Log.d("DataGrab", "gatherUserData called");
         List<Integer> dataPoints = (List<Integer>) fillDataGrabs(context, idNames);
@@ -51,6 +53,7 @@ public class DataGrab extends AppCompatActivity {
         for (int i = 0; i < dataPoints.size(); i++) {
             View current = ((AppCompatActivity) context).findViewById(dataPoints.get(i));
             Log.d("DataGrab", "Current View: " + current.getClass().getSimpleName());
+            //Defines each value's type to rebuild activity again
             if (current instanceof EditText) {
                 String data = idNames[i] + "," +  (((EditText) current).getText().toString());
                 userData.add(data);

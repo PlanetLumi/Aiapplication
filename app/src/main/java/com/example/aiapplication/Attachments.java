@@ -33,6 +33,7 @@ public class Attachments {
     }
 
     public static void requestPermissions(Activity activity) {
+        // Request camera and storage permissions
         if (ActivityCompat.checkSelfPermission(activity, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED ||
                 ActivityCompat.checkSelfPermission(activity, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(
@@ -45,27 +46,32 @@ public class Attachments {
 
 
     public void openCamera(Activity activity) {
+        // Create a file to store the image
         File photoFile = new File(activity.getExternalFilesDir(null), "photo_" + System.currentTimeMillis() + ".jpg");
+        // Create a URI for the file
         Uri photoUri = androidx.core.content.FileProvider.getUriForFile(activity, "com.example.aiapplication.fileprovider", photoFile);
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri); // Specify where to save the photo
 
         if (cameraIntent.resolveActivity(activity.getPackageManager()) != null) {
+            // Start the camera intent
             activity.startActivityForResult(cameraIntent, REQUEST_IMAGE_CAPTURE);
         } else {
             Toast.makeText(activity, "No camera app found", Toast.LENGTH_SHORT).show();
         }
     }
 
+    // Handle the result of the camera intent
     public void openFilePicker(Activity activity, String mimeType) {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType(mimeType); // Allow all files: "*/*"
+        intent.setType(mimeType); // Allows all files: "*/*"
         intent.addCategory(Intent.CATEGORY_OPENABLE);
+        // Ensure the intent resolves to an activity
         activity.startActivityForResult(Intent.createChooser(intent, "Select File"), REQUEST_SELECT_FILE);
     }
 
     public void showOptionDialog(Activity activity) {
-        // Inflate the custom layout
+        // Inflates the custom layout
         android.view.LayoutInflater inflater = activity.getLayoutInflater();
         android.view.View dialogView = inflater.inflate(setPalette.setLayout(context, "option_picker"), null);
 
@@ -84,7 +90,7 @@ public class Attachments {
         if (dialog.getWindow() != null) {
             dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent); // Set transparent background
             dialog.getWindow().addFlags(android.view.WindowManager.LayoutParams.FLAG_DIM_BEHIND); // Enable dim background
-            dialog.getWindow().setDimAmount(0.8f); // Set dim amount (adjust 0.0 - 1.0 for effect)
+            dialog.getWindow().setDimAmount(0.8f); // Set dim amount (value from 0 - 1 as a percentage)
         }
 
         // Set button click listeners
@@ -98,7 +104,7 @@ public class Attachments {
             dialog.dismiss(); // Close the dialog
         });
 
-        // Show the dialog
+        // Show popup
         dialog.show();
     }
 }

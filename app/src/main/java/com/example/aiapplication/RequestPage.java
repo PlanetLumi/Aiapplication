@@ -57,10 +57,7 @@ public class RequestPage extends AppCompatActivity {
         generationAreaIntent = new Intent(this, GenerationArea.class);
         generationAreaIntent.putExtra("userRequestInputFilePath", new File(getFilesDir(), "userRequestInput.txt").getAbsolutePath());
 
-        // Configure the save button
         saveButtonFunc.funcSaveBtn(RequestPage.this, RequestPage.this, new String[]{"companyInp", "detailsInp", "usePersonalData"}, "userRequestInput.txt", GenerationArea.class, generationAreaIntent);
-
-        // Configure the exit button
         ExitButtonFunc.exitBtn(RequestPage.this, MainMenu.class);
 
         // Set up the file picker button
@@ -90,8 +87,7 @@ public class RequestPage extends AppCompatActivity {
         if (resultCode == RESULT_OK) {
             if (requestCode == Attachments.REQUEST_IMAGE_CAPTURE) {
                 // Handle the captured image
-                // Depending on your openCamera logic, you may need to retrieve the saved photo URI
-                Uri photoUri = data != null ? data.getData() : null; // Replace this with your saved URI logic
+                Uri photoUri = data != null ? data.getData() : null;
                 if (photoUri != null) {
                     encryptAndSaveFileAsync(photoUri, () -> {
                         // Handle UI updates or transition
@@ -118,6 +114,7 @@ public class RequestPage extends AppCompatActivity {
         }
     }
 
+    //Checks permissions
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -179,14 +176,16 @@ public class RequestPage extends AppCompatActivity {
         }
     }
 
+    //Asynchronous method to encrypt and save file
     private void encryptAndSaveFileAsync(Uri fileUri, Runnable onComplete) {
         Executors.newSingleThreadExecutor().execute(() -> {
             try {
                 Log.d(TAG, "Encrypting and saving file: " + fileUri.toString());
+                // Encrypt and save the file
                 InputStream inputStream = getContentResolver().openInputStream(fileUri);
                 byte[] buffer = new byte[1024];
                 int bytesRead;
-
+                // Create a new EncryptedFile instance
                 String masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC);
                 File encryptedFile = new File(getFilesDir(), "encrypted_" + System.currentTimeMillis());
 
@@ -197,6 +196,7 @@ public class RequestPage extends AppCompatActivity {
                         EncryptedFile.FileEncryptionScheme.AES256_GCM_HKDF_4KB
                 ).build();
 
+                // Write the encrypted data to the EncryptedFile
                 try (FileOutputStream fos = encrypted.openFileOutput()) {
                     while ((bytesRead = inputStream.read(buffer)) != -1) {
                         fos.write(buffer, 0, bytesRead);

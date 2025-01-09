@@ -5,6 +5,7 @@ import android.view.View;
 
 public class ExitButtonFunc{
 
+    //Button that is predefined to take to previous activity
     public static void exitBtn  (Activity activity, Class<?> targetActivity) {
         View exitBtn = activity.findViewById(R.id.exitButton);
         if (exitBtn != null) {
